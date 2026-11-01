@@ -1,0 +1,142 @@
+name: ProDataGrid trim contract validation
+
+on:
+  push:
+    branches: [codex/verify-trim-contract-596db0a]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Verify ${{ matrix.rid }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            rid: win-x64
+          - os: ubuntu-24.04
+            rid: linux-x64
+          - os: macos-latest
+            rid: osx-arm64
+    runs-on: ${{ matrix.os }}
+    env:
+      DOTNET_CLI_UI_LANGUAGE: en
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '10.0.403'
+
+      - name: Record actual toolchain
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifacts/logs -Force | Out-Null
+          dotnet --info | Tee-Object -FilePath artifacts/logs/toolchain.log
+          if ((dotnet --version).Trim() -ne '10.0.403') { throw 'Unexpected selected SDK.' }
+
+      - name: Ensure Linux NativeAOT prerequisites
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          if ! command -v clang >/dev/null || ! dpkg-query -W -f='${Status}' zlib1g-dev 2>/dev/null | grep -q 'install ok installed'; then
+            sudo apt-get update
+            sudo apt-get install -y clang zlib1g-dev
+          fi
+          clang --version
+
+      - name: Run complete solution tests
+        id: tests
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          & dotnet test Avalonia.Controls.DataGrid.slnx -c Release -m:2 -p:CollectCoverage=false --logger 'trx;LogFilePrefix=trim-contract' 2>&1 |
+            Tee-Object -FilePath artifacts/logs/solution-tests.log
+          exit $LASTEXITCODE
+
+      - name: Validate source-generation benchmark semantics
+        id: benchmark
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          & dotnet build tests/ProDataGrid.SourceGeneration.Benchmarks/ProDataGrid.SourceGeneration.Benchmarks.csproj -c Release -m:2 2>&1 |
+            Tee-Object -FilePath artifacts/logs/benchmark-build.log
+          $buildExit = $LASTEXITCODE
+          if ($buildExit -ne 0) { exit $buildExit }
+          & dotnet run -c Release --no-build --no-restore --project tests/ProDataGrid.SourceGeneration.Benchmarks/ProDataGrid.SourceGeneration.Benchmarks.csproj -- --validate 2>&1 |
+            Tee-Object -FilePath artifacts/logs/benchmark-semantics.log
+          exit $LASTEXITCODE
+
+      - name: Publish strict NativeAOT consumer
+        id: publish
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          & dotnet publish tests/ProDataGrid.SourceGeneration.AotSmoke/ProDataGrid.SourceGeneration.AotSmoke.csproj -c Release -r ${{ matrix.rid }} --self-contained true -m:2 -p:TrimmerSingleWarn=false -o artifacts/strict 2>&1 |
+            Tee-Object -FilePath artifacts/logs/strict-publish.log
+          $publishExit = $LASTEXITCODE
+          if ($publishExit -ne 0) { exit $publishExit }
+          if (Select-String -Path artifacts/logs/strict-publish.log -Pattern 'NU1902.*Microsoft.Build.Tasks.Git' -Quiet) { throw 'The SourceLink vulnerability warning remains.' }
+          $nativeCode = $false
+          $nativeDiagnostics = @()
+          foreach ($line in Get-Content artifacts/logs/strict-publish.log) {
+            if ($line -match 'Generating native code') { $nativeCode = $true }
+            if ($nativeCode -and $line -match '(warning|error)\s+IL[0-9]{4}') { $nativeDiagnostics += $line }
+          }
+          if (-not $nativeCode -or $nativeDiagnostics.Count -ne 0) { throw 'Strict native analysis was not measured cleanly.' }
+          exit 0
+
+      - name: Execute actual NativeAOT consumer
+        id: native
+        if: steps.publish.outcome == 'success'
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $executable = if ($IsWindows) { './artifacts/strict/ProDataGrid.SourceGeneration.AotSmoke.exe' } else { './artifacts/strict/ProDataGrid.SourceGeneration.AotSmoke' }
+          & $executable 2>&1 | Tee-Object -FilePath artifacts/logs/strict-run.log
+          exit $LASTEXITCODE
+
+      - name: Verify compatibility reflection still produces real IL diagnostics
+        id: negative
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $false
+          & dotnet publish tests/ProDataGrid.SourceGeneration.AotSmoke/ProDataGrid.SourceGeneration.AotSmoke.csproj -c Release -r ${{ matrix.rid }} --self-contained true -m:2 -p:TrimmerSingleWarn=false -p:ProDataGridReflectionEnabled=true -o artifacts/compatibility-control 2>&1 |
+            Tee-Object -FilePath artifacts/logs/compatibility-control.log
+          $publishExit = $LASTEXITCODE
+          $nativeCode = $false
+          $nativeError = $false
+          foreach ($line in Get-Content artifacts/logs/compatibility-control.log) {
+            if ($line -match 'Generating native code') { $nativeCode = $true }
+            if ($nativeCode -and $line -match 'error\s+IL[0-9]{4}') { $nativeError = $true }
+          }
+          if ($publishExit -eq 0 -or -not $nativeError) { throw 'Expected native IL errors were not measured.' }
+          exit 0
+
+      - name: Record outcomes
+        if: always()
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifacts/logs -Force | Out-Null
+          $checks = [ordered]@{ tests = '${{ steps.tests.outcome }}'; benchmark = '${{ steps.benchmark.outcome }}'; publish = '${{ steps.publish.outcome }}'; native = '${{ steps.native.outcome }}'; negative = '${{ steps.negative.outcome }}' }
+          $failed = @($checks.Keys | Where-Object { $checks[$_] -ne 'success' })
+          [ordered]@{ source = '596db0a6e401eb9c26b98e67de3ff6f247f0bed9'; validationHead = '${{ github.sha }}'; rid = '${{ matrix.rid }}'; checks = $checks; failed = $failed } |
+            ConvertTo-Json -Depth 5 | Tee-Object -FilePath artifacts/logs/outcomes.json
+          if ($failed.Count -gt 0) { exit 1 }
+
+      - name: Upload logs and test results
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: trim-contract-${{ matrix.rid }}
+          path: |
+            artifacts/logs/
+            src/**/TestResults/*.trx
+          if-no-files-found: error
