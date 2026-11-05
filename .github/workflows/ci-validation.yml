@@ -1,0 +1,444 @@
+name: PR399 macOS functional recheck
+
+on:
+  push:
+    branches: ['codex/verify-perf399-functional-recheck-*']
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: 'Full source SHA: must be the sole parent of this CI-only commit'
+        type: string
+        required: true
+        default: 'd0a415f76adcc0a2a42998121e0c8353ca5650ab'
+
+permissions:
+  contents: read
+
+# Different pushes/attempts retain separate results; do not cancel an expensive run.
+concurrency:
+  group: perf399-functional-recheck-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: macOS / targeted LeakTests and full final suite
+    if: >-
+      github.repository == 'aleksandr-miheichev/ProDataGrid' &&
+      github.event.repository.fork == true &&
+      github.event.repository.private == false
+    runs-on: macos-26
+    timeout-minutes: 100
+    env:
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+      PYTHONUNBUFFERED: '1'
+      REQUESTED_SOURCE: ${{ inputs.source_sha || '' }}
+      MATRIX_RUNNER: macos-26
+      MATRIX_RID: osx-arm64
+      MATRIX_ARCH: arm64
+
+    steps:
+      - name: Record invocation before setup
+        timeout-minutes: 1
+        shell: pwsh
+        run: |
+          $evidencePath = Join-Path $env:GITHUB_WORKSPACE 'evidence'
+          New-Item -ItemType Directory -Path $evidencePath -Force | Out-Null
+          $dotnetInstallPath = Join-Path $env:RUNNER_TEMP 'dotnet-perf399-functional'
+          "DOTNET_INSTALL_DIR=$dotnetInstallPath" | Out-File -LiteralPath $env:GITHUB_ENV -Append -Encoding utf8
+          "DOTNET_ROOT=$dotnetInstallPath" | Out-File -LiteralPath $env:GITHUB_ENV -Append -Encoding utf8
+          [ordered]@{
+            repository = $env:GITHUB_REPOSITORY
+            workflow_sha = $env:GITHUB_SHA
+            ref = $env:GITHUB_REF
+            event = $env:GITHUB_EVENT_NAME
+            run_id = $env:GITHUB_RUN_ID
+            run_attempt = $env:GITHUB_RUN_ATTEMPT
+            runner = $env:MATRIX_RUNNER
+            rid = $env:MATRIX_RID
+            started_utc = [DateTime]::UtcNow.ToString('o')
+          } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $evidencePath 'invocation.json') -Encoding utf8
+
+      - name: Checkout the CI-only fork commit
+        timeout-minutes: 5
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aleksandr-miheichev/ProDataGrid
+          ref: ${{ github.sha }}
+          path: ci-checkout
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install the exact stable Python
+        timeout-minutes: 8
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+          architecture: arm64
+          allow-prereleases: false
+          check-latest: false
+
+      - name: Install the exact stable SDK into an isolated directory
+        timeout-minutes: 10
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          dotnet-version: '10.0.403'
+          architecture: arm64
+          skip-lts-prepass: true
+          check-latest: false
+          cache: false
+
+      - name: Run one baseline target, one final target, then one full final suite
+        timeout-minutes: 60
+        shell: python
+        run: |
+          import datetime
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import platform
+          import re
+          import shutil
+          import signal
+          import subprocess
+          import sys
+          import traceback
+          import xml.etree.ElementTree as ET
+
+          workspace = Path(os.environ['GITHUB_WORKSPACE']).resolve()
+          evidence = workspace / 'evidence'
+          repo = workspace / 'ci-checkout'
+          root = Path(os.environ['RUNNER_TEMP']) / ('perf399-functional-recheck-' + os.environ['GITHUB_RUN_ID'] + '-' + os.environ['GITHUB_RUN_ATTEMPT'])
+          root.mkdir(exist_ok=False)
+          expected_source = 'd0a415f76adcc0a2a42998121e0c8353ca5650ab'
+          base = 'f92035975ac5ab6c0cdede8228952bcd8f618a2e'
+          expected_full_tests = 6019
+          failed_case = 'DataGrid_ColumnDefinitionsSource_DoesNotLeak'
+          leak_project = 'src/Avalonia.Controls.DataGrid.LeakTests/Avalonia.Controls.DataGrid.LeakTests.csproj'
+          full_run = 'https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241'
+          native_run = 'https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729'
+          active_phases = ('provenance-and-preflight', 'baseline-targeted-leak-case', 'final-targeted-leak-case', 'final-full-solution-tests')
+          results = {name: {'status': 'not_run', 'reason': 'Bounded functional recheck; reuse earlier exact-source evidence without repeating this phase', 'source_sha': expected_source, 'evidence_run': full_run} for name in ('source-generation-semantic-validation', 'primary-ABBABAAB', 'primary-BAABABBA', 'same-source-control-ABBABAAB')}
+          results.update({name: {'status': 'not_run', 'reason': 'Functional recheck only; reuse the successful exact-source native-only run', 'source_sha': expected_source, 'evidence_run': native_run} for name in ('strict-native-aot', 'reflection-enabled-negative-control')})
+          commands = []
+          abort_remaining = False
+          manifest_path = repo / '.github/ci-toolchain.json'
+
+          def write_json(path, value):
+              path.parent.mkdir(parents=True, exist_ok=True)
+              temporary = path.with_suffix(path.suffix + '.tmp')
+              temporary.write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
+              temporary.replace(path)
+
+          class CommandTimedOut(RuntimeError):
+              pass
+
+          def capture(command, cwd=repo):
+              global abort_remaining
+              command = [str(x) for x in command]
+              try:
+                  result = subprocess.run(command, cwd=cwd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=60)
+              except subprocess.TimeoutExpired as error:
+                  abort_remaining = True
+                  output = error.stdout or b''
+                  if isinstance(output, bytes):
+                      output = output.decode('utf-8', errors='replace')
+                  with (evidence / 'observations.jsonl').open('a', encoding='utf-8') as log:
+                      log.write(json.dumps({'command': command, 'cwd': str(cwd), 'exit_code': None, 'timed_out': True, 'timeout_seconds': 60, 'output': output}) + '\n')
+                  raise CommandTimedOut('Observation command exceeded 60 seconds: ' + repr(command)) from error
+              with (evidence / 'observations.jsonl').open('a', encoding='utf-8') as log:
+                  log.write(json.dumps({'command': command, 'cwd': str(cwd), 'exit_code': result.returncode, 'output': result.stdout}) + '\n')
+              result.check_returncode()
+              return result.stdout.strip()
+
+          def terminate_tree(process, log, record):
+              try:
+                  if os.name == 'nt':
+                      cleanup = ['taskkill', '/PID', str(process.pid), '/T', '/F']
+                      record['termination_command'] = cleanup
+                      cleanup_result = subprocess.run(cleanup, stdout=log, stderr=subprocess.STDOUT, timeout=30)
+                      record['termination_exit_code'] = cleanup_result.returncode
+                  else:
+                      record['termination_process_group'] = process.pid
+                      try:
+                          os.killpg(process.pid, signal.SIGTERM)
+                      except ProcessLookupError:
+                          pass
+                      try:
+                          process.wait(timeout=10)
+                      except subprocess.TimeoutExpired:
+                          pass
+                      # Kill the whole group even if its original parent already exited.
+                      try:
+                          os.killpg(process.pid, signal.SIGKILL)
+                      except ProcessLookupError:
+                          pass
+                  process.wait(timeout=10)
+                  record['termination_parent_exit_code'] = process.returncode
+              except Exception:
+                  record['termination_error'] = traceback.format_exc()
+                  log.write(record['termination_error'])
+
+          def run_logged(name, command, cwd=repo, timeout=600):
+              global abort_remaining
+              command = [str(x) for x in command]
+              record = {'name': name, 'command': command, 'cwd': str(cwd), 'timeout_seconds': timeout, 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+              commands.append(record)
+              write_json(evidence / 'commands.json', commands)
+              with (evidence / (name + '.log')).open('w', encoding='utf-8') as log:
+                  log.write(json.dumps(record) + '\n')
+                  log.flush()
+                  try:
+                      options = {'creationflags': subprocess.CREATE_NEW_PROCESS_GROUP} if os.name == 'nt' else {'start_new_session': True}
+                      process = subprocess.Popen(command, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, **options)
+                      try:
+                          record['exit_code'] = process.wait(timeout=timeout)
+                      except subprocess.TimeoutExpired as error:
+                          abort_remaining = True
+                          record['timed_out'] = True
+                          record['exit_code'] = None
+                          log.write(f'\nOuter command timeout after {timeout} seconds; aborting remaining phases.\n')
+                          log.flush()
+                          terminate_tree(process, log, record)
+                          raise CommandTimedOut(f'{name} exceeded {timeout} seconds; all later phases are Not run') from error
+                  except BaseException:
+                      traceback.print_exc(file=log)
+                      record['exit_code'] = None
+                      raise
+                  finally:
+                      record['finished_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                      write_json(evidence / 'commands.json', commands)
+              return record['exit_code']
+
+          def require_success(name, command, cwd=repo, timeout=600):
+              code = run_logged(name, command, cwd, timeout)
+              if code != 0:
+                  raise RuntimeError(f'{name} exited {code}; retained the original log')
+
+          def phase(name, operation):
+              global abort_remaining
+              if abort_remaining:
+                  results[name] = {'status': 'not_run', 'reason': 'A previous command timed out; do not risk overlapping surviving child processes'}
+                  write_json(evidence / 'phase-results.json', results)
+                  return False
+              results[name] = {'status': 'running'}
+              write_json(evidence / 'phase-results.json', results)
+              try:
+                  operation()
+                  results[name] = {'status': 'passed'}
+              except CommandTimedOut as error:
+                  abort_remaining = True
+                  results[name] = {'status': 'inconclusive', 'timed_out': True, 'error': str(error)}
+                  (evidence / (name + '-exception.log')).write_text(traceback.format_exc(), encoding='utf-8')
+                  print(name + ': ' + str(error), flush=True)
+              except Exception as error:
+                  results[name] = {'status': 'failed', 'error': str(error)}
+                  (evidence / (name + '-exception.log')).write_text(traceback.format_exc(), encoding='utf-8')
+                  print(name + ': ' + str(error), flush=True)
+              write_json(evidence / 'phase-results.json', results)
+              return results[name]['status'] == 'passed'
+
+          def digest(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          def sdk_record(path):
+              return {'path': str(path), 'revision': capture(['git', 'rev-parse', 'HEAD'], path), 'sdk': capture(['dotnet', '--version'], path), 'runtimes': capture(['dotnet', '--list-runtimes'], path), 'dotnet_info': capture(['dotnet', '--info'], path)}
+
+          def verify_source_tree(path):
+              changed = capture(['git', 'diff', '--name-only', 'HEAD'], path)
+              if changed:
+                  raise RuntimeError('Tracked product files changed during validation: ' + changed)
+
+          def validate_test_counters(entries, expected_total):
+              required = ('total', 'executed', 'passed', 'failed', 'notExecuted', 'inconclusive')
+              totals = {key: 0 for key in required}
+              issues = []
+              if not entries:
+                  issues.append('No TRX suites were produced; actual execution is unverified')
+              for entry in entries:
+                  label = entry['file']
+                  raw = entry.get('counters')
+                  if entry.get('parse_error') or not raw or any(key not in raw for key in required):
+                      issues.append(label + ': missing or unreadable actual-execution counters')
+                      continue
+                  try:
+                      counters = {key: int(value) for key, value in raw.items()}
+                      if any(value < 0 for value in counters.values()):
+                          raise ValueError('Negative TRX counter')
+                  except (ValueError, TypeError):
+                      issues.append(label + ': invalid TRX counters')
+                      continue
+                  for key in required:
+                      totals[key] += counters[key]
+                  if counters['total'] <= 0 or counters['executed'] != counters['total'] or counters['passed'] != counters['executed']:
+                      issues.append(label + ': every declared test must have executed and passed')
+                  for key, value in counters.items():
+                      if key not in ('total', 'executed', 'passed') and value != 0:
+                          issues.append(label + ': non-passing counter ' + key + '=' + str(value))
+                  outcomes = entry.get('result_outcomes', {})
+                  if sum(outcomes.values()) != counters['total'] or outcomes.get('Passed', 0) != counters['passed'] or any(outcome != 'Passed' and count for outcome, count in outcomes.items()):
+                      issues.append(label + ': actual UnitTestResult outcomes do not prove every test passed')
+              if totals['total'] != expected_total or totals['executed'] != expected_total or totals['passed'] != expected_total:
+                  issues.append(f'Expected exactly {expected_total} total/executed/passed tests; observed {totals}')
+              return {'status': 'passed' if not issues else 'inconclusive', 'expected_total': expected_total, 'aggregate_counters': totals, 'issues': issues}
+
+          def parse_trx_text(text, label, include_all_results=False):
+              tree = ET.fromstring(text)
+              counters = next((node for node in tree.iter() if node.tag.rsplit('}', 1)[-1] == 'Counters'), None)
+              outcomes = {}
+              details = []
+              for node in tree.iter():
+                  if node.tag.rsplit('}', 1)[-1] != 'UnitTestResult':
+                      continue
+                  outcome = node.attrib.get('outcome', '<missing>')
+                  outcomes[outcome] = outcomes.get(outcome, 0) + 1
+                  if include_all_results or outcome != 'Passed':
+                      detail = {'test_name': node.attrib.get('testName'), 'outcome': outcome, 'execution_id': node.attrib.get('executionId')}
+                      for item in node.iter():
+                          name = item.tag.rsplit('}', 1)[-1]
+                          if name in ('Message', 'StackTrace'):
+                              detail['error_message' if name == 'Message' else 'stack_trace'] = ''.join(item.itertext())
+                      details.append(detail)
+              return {'file': label, 'counters': dict(counters.attrib) if counters is not None else None, 'result_outcomes': outcomes, 'result_details_scope': 'all' if include_all_results else 'non-passing only', 'result_details': details}
+
+          def counter_validator_selftests():
+              def entry(total):
+                  return {'file': 'synthetic.trx', 'counters': {'total': str(total), 'executed': str(total), 'passed': str(total), 'failed': '0', 'notExecuted': '0', 'inconclusive': '0'}, 'result_outcomes': {'Passed': total}}
+              skipped = entry(1)
+              skipped['counters'].update(executed='0', passed='0', notExecuted='1')
+              skipped['result_outcomes'] = {'NotExecuted': 1}
+              missing = entry(1)
+              del missing['counters']['executed']
+              no_actual = entry(1)
+              no_actual['result_outcomes'] = {}
+              initial_failure = entry(6019)
+              initial_failure['counters'].update(passed='6018', failed='1')
+              initial_failure['result_outcomes'] = {'Passed': 6018, 'Failed': 1}
+              cases = [
+                  ('target_exactly_one_passed', [entry(1)], 1, True),
+                  ('target_skipped_is_not_passed', [skipped], 1, False),
+                  ('target_zero_execution_rejected', [entry(0)], 1, False),
+                  ('target_multiple_matches_rejected', [entry(2)], 1, False),
+                  ('target_missing_executed_counter_rejected', [missing], 1, False),
+                  ('target_missing_actual_result_rejected', [no_actual], 1, False),
+                  ('final_exact6019_passed', [entry(6019)], 6019, True),
+                  ('initial6018_passed_one_failed_rejected', [initial_failure], 6019, False),
+                  ('truncated6018_suite_rejected', [entry(6018)], 6019, False),
+                  ('missing_trx_rejected', [], 6019, False),
+              ]
+              records = []
+              for name, entries, expected, accepted in cases:
+                  actual = validate_test_counters(entries, expected)
+                  records.append({'case': name, 'status': 'passed' if (actual['status'] == 'passed') == accepted else 'failed', 'expected_accepted': accepted, 'actual': actual})
+              failed_trx = '<TestRun><Results><UnitTestResult testName="LeakTests.DataGrid_ColumnDefinitionsSource_DoesNotLeak" outcome="Failed"><Output><ErrorInfo><Message>System.NullReferenceException</Message><StackTrace>Avalonia.Headless.HeadlessUnitTestSession.Dispose; LeakTestSession.cs:line46</StackTrace></ErrorInfo></Output></UnitTestResult></Results><ResultSummary><Counters total="1" executed="1" passed="0" failed="1" notExecuted="0" inconclusive="0" /></ResultSummary></TestRun>'
+              parsed = parse_trx_text(failed_trx, 'failed-target-fixture.trx', True)
+              assessment = validate_test_counters([parsed], 1)
+              preserved = assessment['status'] != 'passed' and parsed['result_details'][0]['error_message'] == 'System.NullReferenceException' and 'LeakTestSession.cs:line46' in parsed['result_details'][0]['stack_trace']
+              records.append({'case': 'target_failure_message_stack_and_outcome_retained', 'status': 'passed' if preserved else 'failed', 'expected_accepted': False, 'actual': assessment})
+              assert all(record['status'] == 'passed' for record in records), records
+              return {'status': 'passed', 'case_count': len(records), 'cases': records}
+
+          def prepare():
+              global source, baseline_tree, final_tree
+              assert sys.version_info[:3] == (3, 15, 2), sys.version
+              assert sys.platform == 'darwin' and platform.machine().lower() in ('arm64', 'aarch64'), 'This bounded recheck is macOS ARM64 only'
+              manifest = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
+              shutil.copy2(manifest_path, evidence / 'toolchain-manifest.json')
+              assert manifest['validation_mode'] == 'functional-recheck'
+              assert manifest['source']['recorded_candidate_sha'] == expected_source
+              assert manifest['source']['baseline_sha'] == base
+              assert manifest['source']['expected_total_tests'] == expected_full_tests
+              assert manifest['targeted_case']['expected_total_tests'] == 1
+              assert manifest['initial_failure']['run_url'] == full_run
+              assert manifest['reused_evidence']['native_run_url'] == native_run
+              head = capture(['git', 'rev-parse', 'HEAD'])
+              assert head == os.environ['GITHUB_SHA'], 'Workflow checkout does not match the triggering SHA'
+              parents = capture(['git', 'rev-list', '--parents', '-n', '1', head]).split()
+              assert len(parents) == 2, 'The CI-only commit must have exactly one parent'
+              source = os.environ['REQUESTED_SOURCE'] if os.environ['GITHUB_EVENT_NAME'] == 'workflow_dispatch' else parents[1]
+              assert re.fullmatch('[0-9a-f]{40}', source), 'Use an exact 40-character source SHA'
+              assert source == parents[1] == expected_source, 'Source input, CI-only sole direct parent and pinned final source must match'
+              assert capture(['git', 'rev-parse', source + '^{commit}']) == source
+              assert capture(['git', 'rev-parse', base + '^{commit}']) == base
+              changed = capture(['git', 'diff', '--name-only', source, head]).splitlines()
+              allowed = {'.github/workflows/ci-validation.yml', '.github/ci-toolchain.json'}
+              assert set(changed) == allowed, 'Only the two CI files may differ from the exact final source: ' + repr(changed)
+              assert set(manifest['install_paths'].values()) == allowed
+              write_json(evidence / 'counter-validator-selftests.json', counter_validator_selftests())
+              write_json(evidence / 'initial-failure-retained.json', manifest['initial_failure'])
+              provenance = {'validation_mode': 'functional-recheck', 'workflow_sha': head, 'source_sha': source, 'baseline_sha': base, 'ci_only_paths': changed, 'source_resolution': 'explicit input' if os.environ['GITHUB_EVENT_NAME'] == 'workflow_dispatch' else 'sole direct parent', 'initial_failure': manifest['initial_failure'], 'reused_evidence': manifest['reused_evidence'], 'execution_plan': 'One baseline target, one final target, then one unfiltered final6019 suite; no automatic retry', 'successful_retry_interpretation': 'A successful bounded recheck does not prove the existing external teardown race is fixed', 'manifest_sha256': digest(manifest_path), 'environment': {'python': sys.version, 'python_executable': sys.executable, 'platform': platform.platform(), 'uname': platform.uname()._asdict(), 'logical_cpus': os.cpu_count(), 'runner_label': 'macos-26', 'rid': 'osx-arm64', 'runner_arch': os.environ.get('RUNNER_ARCH'), 'image_os': os.environ.get('ImageOS'), 'image_version': os.environ.get('ImageVersion'), 'dotnet_root': os.environ.get('DOTNET_ROOT')}, 'retained_work_root': str(root)}
+              write_json(evidence / 'provenance.json', provenance)
+              baseline_tree, final_tree = root / 'baseline', root / 'final'
+              for name, path, revision in [('baseline', baseline_tree, base), ('final', final_tree, source)]:
+                  require_success('worktree-' + name, ['git', 'worktree', 'add', '--detach', path, revision])
+              selected = [sdk_record(path) for path in (baseline_tree, final_tree)]
+              write_json(evidence / 'preflight-sdk.json', selected)
+              for item, revision in zip(selected, (base, source)):
+                  assert item['revision'] == revision and item['sdk'] == '10.0.403', item
+                  assert re.search(r'^Microsoft\.NETCore\.App 10\.0\.14 ', item['runtimes'], re.MULTILINE), item
+              assert len(capture(['dotnet', '--list-sdks'], final_tree).splitlines()) == 1, 'The isolated install unexpectedly contains additional SDKs'
+
+          def run_tests(label, path, revision, target=False):
+              verify_source_tree(path)
+              assert capture(['git', 'rev-parse', 'HEAD'], path) == revision
+              trx_dir = evidence / (label + '-trx')
+              expected = 1 if target else expected_full_tests
+              command = ['dotnet', 'test', leak_project if target else 'Avalonia.Controls.DataGrid.slnx', '-c', 'Release']
+              if not target:
+                  command.append('-m:2')
+              command.extend(['-p:CollectCoverage=false', '--settings', 'build/ci.runsettings'])
+              if target:
+                  command.extend(['--filter', 'FullyQualifiedName~' + failed_case])
+              command.extend(['--logger', 'trx', '--results-directory', trx_dir])
+              code = None
+              try:
+                  code = run_logged(label, command, path, timeout=600 if target else 1200)
+              finally:
+                  entries = []
+                  for trx in sorted(trx_dir.glob('*.trx')):
+                      try:
+                          entry = parse_trx_text(trx.read_text(encoding='utf-8-sig'), str(trx.relative_to(evidence)), target)
+                      except Exception:
+                          entry = {'file': str(trx.relative_to(evidence)), 'parse_error': traceback.format_exc()}
+                      entries.append(entry)
+                  assessment = validate_test_counters(entries, expected)
+                  write_json(evidence / (label + '-results.json'), {'source_sha': revision, 'exit_code': code, 'assessment': assessment, 'suites': entries, 'filter': 'FullyQualifiedName~' + failed_case if target else None, 'settings': 'build/ci.runsettings', 'attempts_this_workflow': 1, 'initial_failure_run': full_run, 'successful_retry_claim': 'This result never establishes that the underlying teardown race is fixed'})
+              verify_source_tree(path)
+              assert code == 0, f'{label} exited {code}; retain original failure details and continue only independent planned checks'
+              assert assessment['status'] == 'passed', '; '.join(assessment['issues'])
+              if target:
+                  actual_results = [detail for entry in entries for detail in entry.get('result_details', [])]
+                  assert len(actual_results) == 1 and failed_case in (actual_results[0].get('test_name') or ''), 'Exactly the requested target test must have executed'
+
+          write_json(evidence / 'phase-results.json', results)
+          if phase('provenance-and-preflight', prepare):
+              phase('baseline-targeted-leak-case', lambda: run_tests('baseline-target', baseline_tree, base, True))
+              phase('final-targeted-leak-case', lambda: run_tests('final-target', final_tree, source, True))
+              phase('final-full-solution-tests', lambda: run_tests('final-full-suite', final_tree, source, False))
+          else:
+              for name in active_phases[1:]:
+                  results[name] = {'status': 'not_run', 'reason': 'Exact-source macOS ARM64 preflight did not pass'}
+              write_json(evidence / 'phase-results.json', results)
+          print(json.dumps(results, indent=2), flush=True)
+          print('The initial failed run and all results remain preserved; a successful recheck does not establish an external race fix.', flush=True)
+          print('Native, semantic benchmark validation and performance comparisons are Not run in this functional recheck.', flush=True)
+          sys.exit(0 if all(results.get(name, {}).get('status') == 'passed' for name in active_phases) else 1)
+
+      - name: Preserve every recheck log, TRX and failure assessment
+        timeout-minutes: 10
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: perf399-functional-recheck-macOS-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: |
+            evidence/*.log
+            evidence/*.json
+            evidence/*.jsonl
+            evidence/baseline-target-trx/*.trx
+            evidence/final-target-trx/*.trx
+            evidence/final-full-suite-trx/*.trx
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6

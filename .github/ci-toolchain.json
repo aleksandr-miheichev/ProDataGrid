@@ -1,0 +1,283 @@
+{
+  "schema_version": 3,
+  "verified_on": "2026-11-05",
+  "repository": "aleksandr-miheichev/ProDataGrid",
+  "upstream_repository": "wieslawsoltes/ProDataGrid",
+  "install_paths": {
+    "workflow": ".github/workflows/ci-validation.yml",
+    "manifest": ".github/ci-toolchain.json"
+  },
+  "dotnet": {
+    "sdk": "10.0.403",
+    "runtime": "10.0.14",
+    "channel": "10.0",
+    "isolated_install": true,
+    "skip_lts_prepass": true,
+    "source_global_json_policy": "Do not edit tracked global.json. The existing 10.0.100/latestFeature policy selects 10.0.403 from the isolated installation. Verify the actual selected SDK in every exact-revision worktree.",
+    "official_metadata": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json"
+  },
+  "python": {
+    "version": "3.15.2",
+    "allow_prereleases": false,
+    "official_release": "https://www.python.org/downloads/release/python-3152/",
+    "hosted_distribution": "https://github.com/actions/python-versions/releases/tag/3.15.2-40340363276",
+    "manifest": "https://github.com/actions/python-versions/blob/main/versions-manifest.json",
+    "verified_platforms": [
+      "linux-26.04-x64",
+      "win32-x64",
+      "darwin-arm64"
+    ]
+  },
+  "actions": {
+    "actions/checkout": {
+      "version": "v7.0.1",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "release": "https://github.com/actions/checkout/releases/tag/v7.0.1"
+    },
+    "actions/setup-dotnet": {
+      "version": "v6.1.0",
+      "sha": "0f4a354dd5547a28c70b7853dbd95d5b67886e73",
+      "release": "https://github.com/actions/setup-dotnet/releases/tag/v6.1.0"
+    },
+    "actions/setup-python": {
+      "version": "v7.1.0",
+      "sha": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "release": "https://github.com/actions/setup-python/releases/tag/v7.1.0"
+    },
+    "actions/upload-artifact": {
+      "version": "v7.0.2",
+      "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "release": "https://github.com/actions/upload-artifact/releases/tag/v7.0.2"
+    }
+  },
+  "runner_reference": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+  "permissions": {
+    "contents": "read"
+  },
+  "local_validation": {
+    "python": "D:/Python 15/python.exe (3.15.2)",
+    "pyyaml": "6.0.3",
+    "actionlint": "D:/claude-projects/tools/actionlint/actionlint.exe (1.7.12)",
+    "checks": "YAML/JSON parsing; embedded Python compilation without product execution; native PowerShell parsing; unchanged strict counter AST;11 pure counter/failure-parser fixtures;3 isolated CLI-plan/timeout scenarios; Mac-only exact source, pins, upload patterns, headroom; actionlint -shellcheck= without ignores.",
+    "actionlint_arguments": [
+      "-shellcheck="
+    ],
+    "product_executions": "Not run locally: no product build/test, native publish/run, benchmark or profiling is authorized by preparing these two artifacts.",
+    "ci_execution": "Not run: preparation does not publish a branch, create a PR, dispatch Actions or alter credentials/repository policy.",
+    "fixture_source": "Embedded unchanged validate_test_counters plus parse_trx_text/counter_validator_selftests in the paired workflow; CI retains actual fixture results as evidence/counter-validator-selftests.json.",
+    "counter_fixture_results": {
+      "status": "passed",
+      "case_count": 11,
+      "cases": [
+        {
+          "case": "target_exactly_one_passed",
+          "status": "passed",
+          "expected_accepted": true,
+          "assessment_status": "passed"
+        },
+        {
+          "case": "target_skipped_is_not_passed",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "target_zero_execution_rejected",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "target_multiple_matches_rejected",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "target_missing_executed_counter_rejected",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "target_missing_actual_result_rejected",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "final_exact6019_passed",
+          "status": "passed",
+          "expected_accepted": true,
+          "assessment_status": "passed"
+        },
+        {
+          "case": "initial6018_passed_one_failed_rejected",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "truncated6018_suite_rejected",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "missing_trx_rejected",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        },
+        {
+          "case": "target_failure_message_stack_and_outcome_retained",
+          "status": "passed",
+          "expected_accepted": false,
+          "assessment_status": "inconclusive"
+        }
+      ],
+      "unchanged_counter_validator_ast": true,
+      "source_sha256": "66b20033d6a5a2f8068caca630c4d99d8a3a9996a325623b3d31b6b873d32e39"
+    },
+    "command_plan_fixture_results": [
+      {
+        "scenario": "all_pass",
+        "status": "passed",
+        "product_command_calls": 3,
+        "workflow_cli_exit": 0
+      },
+      {
+        "scenario": "baseline_failure",
+        "status": "passed",
+        "product_command_calls": 3,
+        "workflow_cli_exit": 1
+      },
+      {
+        "scenario": "baseline_timeout",
+        "status": "passed",
+        "product_command_calls": 1,
+        "workflow_cli_exit": 1
+      }
+    ],
+    "static_results": {
+      "yaml_json_python_powershell": "passed",
+      "actionlint": "passed, no ignore",
+      "active_cli_gate": "passed; ordinary target failure remains failure after later success; timeout prevents later commands",
+      "macos_arm64_only": "passed",
+      "exact_source_and_two_file_guard": "passed",
+      "step_timeout_budget_minutes": 94,
+      "job_timeout_minutes": 100,
+      "reserve_minutes": 6,
+      "product_executions": "Not run"
+    }
+  },
+  "validation_mode": "functional-recheck",
+  "source": {
+    "recorded_candidate_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+    "expected_total_tests": 6019,
+    "expected_target_tests_per_source": 1,
+    "branch_pattern": "codex/verify-perf399-functional-recheck-*",
+    "source_resolution": "Input, sole direct parent of the two-file CI-only commit and recorded candidate must match exactly. Baseline is a separate detached exact-revision worktree. No product files or dependency declarations change."
+  },
+  "targeted_case": {
+    "name": "LeakTests.DataGrid_ColumnDefinitionsSource_DoesNotLeak",
+    "project": "src/Avalonia.Controls.DataGrid.LeakTests/Avalonia.Controls.DataGrid.LeakTests.csproj",
+    "filter": "FullyQualifiedName~DataGrid_ColumnDefinitionsSource_DoesNotLeak",
+    "expected_total_tests": 1,
+    "runs_per_source": 1,
+    "settings": "build/ci.runsettings",
+    "settings_blob_sha": "d3bab3f2e51bd211e1b6ae46242ba518c8cf2821",
+    "settings_source_identity": "The same settings blob exists at baseline and final; MaxCpuCount=1 serializes process-global headless containers."
+  },
+  "initial_failure": {
+    "run_id": 42001896241,
+    "run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "workflow_sha": "d16d7e4759e6f45ee494d75d5df171a788d58f34",
+    "runner": "macos-26",
+    "architecture": "arm64",
+    "expected_total": 6019,
+    "passed": 6018,
+    "failed": 1,
+    "test": "LeakTests.DataGrid_ColumnDefinitionsSource_DoesNotLeak",
+    "observed_exception": "System.NullReferenceException",
+    "observed_location": "Avalonia.Headless.HeadlessUnitTestSession.Dispose; LeakTestSession.cs:46, before the retention assertion",
+    "observed_family": "Existing Avalonia12.1.0 headless teardown failure family; this workflow does not change external Avalonia",
+    "artifact_id": 13403574345,
+    "artifact_name": "perf399-macOS-42001896241-attempt-1",
+    "artifact_api": "https://api.github.com/repos/aleksandr-miheichev/ProDataGrid/actions/artifacts/13403574345",
+    "artifact_expired_at_preparation": false,
+    "preservation_policy": "Keep the initial failed run, downloaded logs/TRX and raw observations unchanged. This is one additional bounded verification, never replacement or erasure of the failure.",
+    "successful_recheck_interpretation": "A successful retry does not prove the underlying external teardown race is fixed."
+  },
+  "execution_plan": {
+    "order": [
+      "baseline-target-once",
+      "final-target-once",
+      "final-full-solution-unfiltered-once"
+    ],
+    "full_solution": "Avalonia.Controls.DataGrid.slnx",
+    "full_solution_expected_total": 6019,
+    "full_solution_filter": null,
+    "target_command": "dotnet test src/Avalonia.Controls.DataGrid.LeakTests/Avalonia.Controls.DataGrid.LeakTests.csproj -c Release -p:CollectCoverage=false --settings build/ci.runsettings --filter FullyQualifiedName~DataGrid_ColumnDefinitionsSource_DoesNotLeak --logger trx",
+    "full_command": "dotnet test Avalonia.Controls.DataGrid.slnx -c Release -m:2 -p:CollectCoverage=false --settings build/ci.runsettings --logger trx",
+    "count_policy": "Use the unchanged strict TRX validator: total/executed/passed must equal the exact expected1 or6019, all non-passing counters zero, required counters and actual UnitTestResult outcomes present. Each target must identify the requested method. No skipped/missing/filtered-out test is passed.",
+    "failure_policy": "Record every CLI exit, TRX outcome, failure message and stack. Target failures remain failed phases even if later planned checks succeed. Run later independent planned checks after ordinary failure, but abort all later product phases after any timeout. No automatic retry, profiler, benchmark, native publish or dependency upgrade."
+  },
+  "reused_evidence": {
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "full_source_run_id": 42001896241,
+    "full_source_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+    "full_source_run_overall_conclusion": "failure",
+    "full_source_scope": "Earlier successful semantic/performance phases are separately scoped evidence; the final macOS full-suite6018pass+1fail remains visible and is the reason for this bounded recheck.",
+    "native_run_id": 42006151729,
+    "native_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729",
+    "native_workflow_sha": "c9f79c558916a0cd60eb9db5258b15890e681cfd",
+    "native_verified_sole_parent_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "native_run_conclusion_at_preparation": "success",
+    "not_run_in_this_workflow": [
+      "source-generation-semantic-validation",
+      "primary-ABBABAAB",
+      "primary-BAABABBA",
+      "same-source-control-ABBABAAB",
+      "strict-native-aot",
+      "reflection-enabled-negative-control"
+    ],
+    "reuse_policy": "Every listed phase is explicitly Not run here with its earlier run link; no inherited phase is relabeled passed, no old failure is hidden, and no performance acceptance or threshold is introduced."
+  },
+  "runners": [
+    {
+      "label": "macos-26",
+      "rid": "osx-arm64",
+      "architecture": "arm64"
+    }
+  ],
+  "timeouts": {
+    "job_minutes": 100,
+    "setup_step_minutes": {
+      "invocation": 1,
+      "fork_checkout": 5,
+      "python": 8,
+      "dotnet": 10
+    },
+    "orchestration_step_minutes": 60,
+    "upload_step_minutes": 10,
+    "minimum_job_headroom_minutes_after_all_step_limits": 6,
+    "command_seconds": {
+      "observation": 60,
+      "default": 600,
+      "each_target": 600,
+      "full_final_suite": 1200
+    },
+    "timeout_policy": "Retain partial logs/TRX and cleanup attempts; abort remaining product phases after any timeout even if process-tree cleanup is uncertain. Always-upload has bounded time below the job deadline. Existing command/test-counter budgets are not relaxed."
+  },
+  "retention": {
+    "artifact_days": 30,
+    "upload": "Immediate root logs/JSON/JSONL and immediate TRX files from the three named result directories only. No recursive glob, Git metadata, complete worktree, build tree or CodeGraph index.",
+    "partial_output": "CLI logs and TRX are written directly under evidence before process/step completion. Atomic JSON files retain observations.",
+    "worktrees": "Separate baseline and final detached worktrees remain until hosted VM decommissioning; do not delete outputs or recycle result paths.",
+    "initial_failure": "The earlier failed run/artifact remains intact; successful results do not erase it or establish a product/external race fix."
+  },
+  "manual_dispatch_note": "workflow_dispatch requires the workflow on the default branch. The codex/verify-perf399-functional-recheck-* push trigger runs this Mac-only body installed at the two existing CI paths directly on finald0; it does not add the full validation or native workflow alongside it."
+}
