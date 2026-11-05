@@ -1,0 +1,80 @@
+{
+  "validation_mode": "supplementary-binary-factor-controls",
+  "workflow_sha": "66a09bd2aab4f913435af85b8d4f3c1c1141e72f",
+  "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+  "ci_only_paths": [
+    ".github/ci-toolchain.json",
+    ".github/workflows/ci-validation.yml"
+  ],
+  "harness_commit": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+  "harness_blob_sha": "050b43b33fe7d6a841db2f94f13662356c377d31",
+  "harness_sha256": "04e15302ee8b4ba1736872cda826a0cdc515a35f621cd06fc19afa70f7ab7f58",
+  "original_python_runner_invoked": false,
+  "cwd_policy": "Own sibling prebuilt runtime-bin container at uniform path depth; supplementary copy context, not original source-worktree primary cwd",
+  "timed_components": [
+    "A",
+    "H",
+    "P"
+  ],
+  "C_role": "Build origin only; not timed",
+  "measurement_counts": {
+    "processes": 64,
+    "warmups_each": 6,
+    "samples_each": 24,
+    "scenarios": [
+      "source",
+      "scroll"
+    ],
+    "orders": [
+      "ABBABAAB",
+      "BAABABBA"
+    ]
+  },
+  "reused_evidence": {
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "full_source_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+    "full_source_scope": "Original failure retained, including Mac6018pass+1fail; primary/semantic successes stay separately scoped.",
+    "functional_recheck_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42011256034",
+    "functional_recheck_workflow_sha": "96cca078145b3a78d07c7adad3ce9e8dd79c810a",
+    "functional_recheck_status_at_preparation": "success: baseline1pass/final1pass/unfilteredfinal6019pass; initial failure retained; no external race-fix claim",
+    "native_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729",
+    "native_scope": "Earlier successful exact-source native-only actual executions on all three OS, not repeated.",
+    "not_run_in_this_workflow": [
+      "full-solution-tests",
+      "source-generation-semantic-validation",
+      "primary-ABBABAAB",
+      "primary-BAABABBA",
+      "same-source-control-ABBABAAB",
+      "strict-native-aot",
+      "reflection-enabled-negative-control"
+    ],
+    "reuse_policy": "All listed phases explicitly Not run with links, never relabeled passed. Keep original failures and primary positive estimates."
+  },
+  "environment": {
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "uname": {
+      "system": "Darwin",
+      "node": "iad20-gt1019-24cc6c04-6eeb-4c4f-b7c5-2ad7c798eac0-965BDE64ED2B.local",
+      "release": "25.6.0",
+      "version": "Darwin Kernel Version 25.6.0: Fri Jul 31 19:16:43 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_VMAPPLE",
+      "machine": "arm64",
+      "processor": "arm"
+    },
+    "logical_cpus": 3,
+    "runner": "macos-26",
+    "rid": "osx-arm64",
+    "image_os": "macos26",
+    "image_version": "20261026.0455.2",
+    "dotnet_root": "/Users/runner/work/_temp/dotnet-perf399-host-controls"
+  },
+  "interpretation": {
+    "A_vs_H": "Host DLL/PDB replacement effect with non-host baseline bytes fixed.",
+    "A_vs_P": "Final non-host runtime-set effect with baseline host DLL/PDB fixed; multiple source-built binaries may differ.",
+    "limits": "C is not timed contemporaneously. No additive decomposition of A/C, exclusion of interactions, proven root cause or automatic primary acceptance. Equal reported metadata does not prove identical actual realization or equal hot-path work.",
+    "acceptance": "Supplementary causal-diagnosis evidence only; no numerical allowance, threshold, cherry-picking or replacement of primary evidence.",
+    "parent_supplied_motivation": "Windows source-to-array H+1373/+691B vs P-86/+10B; scroll H+757/+13796B vs P-75/+2734B. Repeated Linux primary scroll positives near+9KB/+4KB with near-zero A/A remain unresolved. These motivate control, are not rerun here and do not prove causality."
+  },
+  "retained_work_root": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1"
+}

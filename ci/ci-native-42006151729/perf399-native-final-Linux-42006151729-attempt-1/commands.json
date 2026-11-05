@@ -1,0 +1,93 @@
+[
+  {
+    "name": "worktree-positive",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/home/runner/work/_temp/perf399-native-final-42006151729-1/strict-aot",
+      "d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    ],
+    "cwd": "/home/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T09:54:11.075341+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:54:11.254594+00:00"
+  },
+  {
+    "name": "worktree-negative",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/home/runner/work/_temp/perf399-native-final-42006151729-1/reflection-enabled",
+      "d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    ],
+    "cwd": "/home/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T09:54:11.254954+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:54:11.423033+00:00"
+  },
+  {
+    "name": "strict-aot-publish",
+    "command": [
+      "dotnet",
+      "publish",
+      "tests/ProDataGrid.SourceGeneration.AotSmoke/ProDataGrid.SourceGeneration.AotSmoke.csproj",
+      "-c",
+      "Release",
+      "-r",
+      "linux-x64",
+      "--self-contained",
+      "true",
+      "-p:TrimmerSingleWarn=false",
+      "-p:RuntimeFrameworkVersion=10.0.14",
+      "-p:ProDataGridReflectionEnabled=false",
+      "-o",
+      "/home/runner/work/_temp/perf399-native-final-42006151729-1/strict-aot-publish"
+    ],
+    "cwd": "/home/runner/work/_temp/perf399-native-final-42006151729-1/strict-aot",
+    "timeout_seconds": 900,
+    "started_utc": "2026-11-05T09:54:11.986311+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:55:48.655043+00:00"
+  },
+  {
+    "name": "strict-aot-run-native-binary",
+    "command": [
+      "/home/runner/work/_temp/perf399-native-final-42006151729-1/strict-aot-publish/ProDataGrid.SourceGeneration.AotSmoke"
+    ],
+    "cwd": "/home/runner/work/_temp/perf399-native-final-42006151729-1/strict-aot",
+    "timeout_seconds": 120,
+    "started_utc": "2026-11-05T09:55:49.004931+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:55:49.051093+00:00"
+  },
+  {
+    "name": "reflection-enabled-negative-publish",
+    "command": [
+      "dotnet",
+      "publish",
+      "tests/ProDataGrid.SourceGeneration.AotSmoke/ProDataGrid.SourceGeneration.AotSmoke.csproj",
+      "-c",
+      "Release",
+      "-r",
+      "linux-x64",
+      "--self-contained",
+      "true",
+      "-p:TrimmerSingleWarn=false",
+      "-p:RuntimeFrameworkVersion=10.0.14",
+      "-p:ProDataGridReflectionEnabled=true",
+      "-o",
+      "/home/runner/work/_temp/perf399-native-final-42006151729-1/reflection-enabled-publish"
+    ],
+    "cwd": "/home/runner/work/_temp/perf399-native-final-42006151729-1/reflection-enabled",
+    "timeout_seconds": 900,
+    "started_utc": "2026-11-05T09:55:49.236429+00:00",
+    "exit_code": 1,
+    "finished_utc": "2026-11-05T09:56:43.693333+00:00"
+  }
+]

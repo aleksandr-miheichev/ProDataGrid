@@ -1,0 +1,473 @@
+name: PR399 supplementary binary host controls
+
+on:
+  push:
+    branches: ['codex/verify-perf399-host-controls-*']
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: 'Full source SHA: must be the sole parent of this CI-only commit'
+        type: string
+        required: true
+        default: 'd0a415f76adcc0a2a42998121e0c8353ca5650ab'
+
+permissions:
+  contents: read
+
+# Different pushes/attempts retain separate results; do not cancel an expensive run.
+concurrency:
+  group: perf399-host-controls-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: ${{ matrix.name }} / supplementary binary factor controls
+    if: >-
+      github.repository == 'aleksandr-miheichev/ProDataGrid' &&
+      github.event.repository.fork == true &&
+      github.event.repository.private == false
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux
+            os: ubuntu-26.04
+            rid: linux-x64
+            arch: x64
+          - name: macOS
+            os: macos-26
+            rid: osx-arm64
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    env:
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+      PYTHONUNBUFFERED: '1'
+      REQUESTED_SOURCE: ${{ inputs.source_sha || '' }}
+      MATRIX_RUNNER: ${{ matrix.os }}
+      MATRIX_RID: ${{ matrix.rid }}
+      MATRIX_ARCH: ${{ matrix.arch }}
+
+    steps:
+      - name: Record invocation before setup
+        timeout-minutes: 1
+        shell: pwsh
+        run: |
+          $evidencePath = Join-Path $env:GITHUB_WORKSPACE 'evidence'
+          New-Item -ItemType Directory -Path $evidencePath -Force | Out-Null
+          $dotnetInstallPath = Join-Path $env:RUNNER_TEMP 'dotnet-perf399-host-controls'
+          "DOTNET_INSTALL_DIR=$dotnetInstallPath" | Out-File -LiteralPath $env:GITHUB_ENV -Append -Encoding utf8
+          "DOTNET_ROOT=$dotnetInstallPath" | Out-File -LiteralPath $env:GITHUB_ENV -Append -Encoding utf8
+          [ordered]@{
+            repository = $env:GITHUB_REPOSITORY
+            workflow_sha = $env:GITHUB_SHA
+            ref = $env:GITHUB_REF
+            event = $env:GITHUB_EVENT_NAME
+            run_id = $env:GITHUB_RUN_ID
+            run_attempt = $env:GITHUB_RUN_ATTEMPT
+            runner = $env:MATRIX_RUNNER
+            rid = $env:MATRIX_RID
+            started_utc = [DateTime]::UtcNow.ToString('o')
+          } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $evidencePath 'invocation.json') -Encoding utf8
+
+      - name: Checkout the CI-only fork commit
+        timeout-minutes: 5
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aleksandr-miheichev/ProDataGrid
+          ref: ${{ github.sha }}
+          path: ci-checkout
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout the immutable maintainer artifact
+        timeout-minutes: 5
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: wieslawsoltes/ProDataGrid
+          ref: 5b6504c697040b8ae76ff36e340dd9610a326e3b
+          path: maintainer-artifact
+          sparse-checkout: tools/pr-review
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Install the exact stable Python
+        timeout-minutes: 8
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+          architecture: ${{ matrix.arch }}
+          allow-prereleases: false
+          check-latest: false
+
+      - name: Install the exact stable SDK into an isolated directory
+        timeout-minutes: 10
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          dotnet-version: '10.0.403'
+          architecture: ${{ matrix.arch }}
+          skip-lts-prepass: true
+          check-latest: false
+          cache: false
+
+      - name: Prebuild binary factors, run controls, then validate raw evidence
+        timeout-minutes: 135
+        shell: python
+        run: |
+          import base64
+          import datetime
+          import hashlib
+          import json
+          import math
+          import os
+          from pathlib import Path
+          import platform
+          import re
+          import shutil
+          import signal
+          import statistics
+          import subprocess
+          import sys
+          import traceback
+          workspace=Path(os.environ['GITHUB_WORKSPACE']).resolve()
+          evidence=workspace/'evidence'
+          repo=workspace/'ci-checkout'
+          artifact=workspace/'maintainer-artifact'
+          root=Path(os.environ['RUNNER_TEMP'])/('perf399-host-controls-'+os.environ['GITHUB_RUN_ID']+'-'+os.environ['GITHUB_RUN_ATTEMPT'])
+          root.mkdir(exist_ok=False)
+          base='f92035975ac5ab6c0cdede8228952bcd8f618a2e'
+          expected_source='d0a415f76adcc0a2a42998121e0c8353ca5650ab'
+          harness_sha='5b6504c697040b8ae76ff36e340dd9610a326e3b'
+          harness=artifact/'tools/pr-review/ReviewPerformanceTests.cs'
+          host_dll='Avalonia.Controls.DataGrid.UnitTests.dll'
+          host_pdb='Avalonia.Controls.DataGrid.UnitTests.pdb'
+          product_dll='Avalonia.Controls.DataGrid.dll'
+          host_files=(host_dll,host_pdb)
+          shared_manifests=('Avalonia.Controls.DataGrid.UnitTests.deps.json','Avalonia.Controls.DataGrid.UnitTests.runtimeconfig.json')
+          scenarios=('source','scroll')
+          comparisons=(('AH-ABBABAAB','H','ABBABAAB'),('AH-BAABABBA','H','BAABABBA'),('AP-ABBABAAB','P','ABBABAAB'),('AP-BAABABBA','P','BAABABBA'))
+          active_phases=('provenance-prebuild-and-binary-proof','supplementary-binary-factor-timings','raw-evidence-and-input-validation')
+          full_run='https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241'
+          native_run='https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729'
+          results={name:{'status':'not_run','reason':'Supplementary binary factor controls only; earlier evidence stays separately scoped','source_sha':expected_source,'evidence_run':full_run} for name in ('full-solution-tests','source-generation-semantic-validation','primary-ABBABAAB','primary-BAABABBA','same-source-control-ABBABAAB')}
+          results.update({name:{'status':'not_run','reason':'No native repeat; refer to successful exact-source native-only evidence','source_sha':expected_source,'evidence_run':native_run} for name in ('strict-native-aot','reflection-enabled-negative-control')})
+          commands=[]
+          processes=[]
+          abort_remaining=False
+          manifest_path=repo/'.github/ci-toolchain.json'
+          assembly_metadata_script='\n$rows = @(foreach ($path in @($env:HOST_CONTROL_ASSEMBLY_PATHS | ConvertFrom-Json)) {\n try {\n  $identity=[System.Reflection.AssemblyName]::GetAssemblyName($path)\n  $file=[System.Diagnostics.FileVersionInfo]::GetVersionInfo($path)\n  [ordered]@{path=$path; assembly_identity=$identity.FullName; assembly_version=$identity.Version.ToString(); file_version=$file.FileVersion; product_version=$file.ProductVersion}\n } catch { [ordered]@{path=$path; metadata_error=$_.Exception.ToString()} }\n})\n[ordered]@{inspector_powershell=$PSVersionTable.PSVersion.ToString(); inspector_dotnet=[System.Environment]::Version.ToString(); assemblies=$rows} | ConvertTo-Json -Depth 6\n'
+
+          def write_json(path, value):
+              path.parent.mkdir(parents=True, exist_ok=True)
+              temporary = path.with_suffix(path.suffix + '.tmp')
+              temporary.write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
+              temporary.replace(path)
+
+          class CommandTimedOut(RuntimeError):
+              pass
+
+          def capture(command, cwd=repo, env=None):
+              global abort_remaining
+              command = [str(x) for x in command]
+              try:
+                  result = subprocess.run(command, cwd=cwd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=60, env=env)
+              except subprocess.TimeoutExpired as error:
+                  abort_remaining = True
+                  output = error.stdout or b''
+                  if isinstance(output, bytes):
+                      output = output.decode('utf-8', errors='replace')
+                  with (evidence / 'observations.jsonl').open('a', encoding='utf-8') as log:
+                      log.write(json.dumps({'command': command, 'cwd': str(cwd), 'exit_code': None, 'timed_out': True, 'timeout_seconds': 60, 'output': output}) + '\n')
+                  raise CommandTimedOut('Observation command exceeded 60 seconds: ' + repr(command)) from error
+              with (evidence / 'observations.jsonl').open('a', encoding='utf-8') as log:
+                  log.write(json.dumps({'command': command, 'cwd': str(cwd), 'exit_code': result.returncode, 'output': result.stdout}) + '\n')
+              result.check_returncode()
+              return result.stdout.strip()
+
+          def terminate_tree(process, log, record):
+              try:
+                  if os.name == 'nt':
+                      cleanup = ['taskkill', '/PID', str(process.pid), '/T', '/F']
+                      record['termination_command'] = cleanup
+                      cleanup_result = subprocess.run(cleanup, stdout=log, stderr=subprocess.STDOUT, timeout=30)
+                      record['termination_exit_code'] = cleanup_result.returncode
+                  else:
+                      record['termination_process_group'] = process.pid
+                      try:
+                          os.killpg(process.pid, signal.SIGTERM)
+                      except ProcessLookupError:
+                          pass
+                      try:
+                          process.wait(timeout=10)
+                      except subprocess.TimeoutExpired:
+                          pass
+                      # Kill the whole group even if its original parent already exited.
+                      try:
+                          os.killpg(process.pid, signal.SIGKILL)
+                      except ProcessLookupError:
+                          pass
+                  process.wait(timeout=10)
+                  record['termination_parent_exit_code'] = process.returncode
+              except Exception:
+                  record['termination_error'] = traceback.format_exc()
+                  log.write(record['termination_error'])
+
+          def run_logged(name, command, cwd=repo, timeout=600, env=None):
+              global abort_remaining
+              command = [str(x) for x in command]
+              record = {'name': name, 'command': command, 'cwd': str(cwd), 'timeout_seconds': timeout, 'benchmark_environment': {key: env[key] for key in ('DOTNET_TieredCompilation', 'REVIEW_SCENARIO', 'REVIEW_OUTPUT') if env and key in env}, 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+              commands.append(record)
+              write_json(evidence / 'commands.json', commands)
+              with (evidence / (name + '.log')).open('w', encoding='utf-8') as log:
+                  log.write(json.dumps(record) + '\n')
+                  log.flush()
+                  try:
+                      options = {'creationflags': subprocess.CREATE_NEW_PROCESS_GROUP} if os.name == 'nt' else {'start_new_session': True}
+                      process = subprocess.Popen(command, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, env=env, **options)
+                      try:
+                          record['exit_code'] = process.wait(timeout=timeout)
+                      except subprocess.TimeoutExpired as error:
+                          abort_remaining = True
+                          record['timed_out'] = True
+                          record['exit_code'] = None
+                          log.write(f'\nOuter command timeout after {timeout} seconds; aborting remaining phases.\n')
+                          log.flush()
+                          terminate_tree(process, log, record)
+                          raise CommandTimedOut(f'{name} exceeded {timeout} seconds; all later phases are Not run') from error
+                  except BaseException:
+                      traceback.print_exc(file=log)
+                      record['exit_code'] = None
+                      raise
+                  finally:
+                      record['finished_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                      write_json(evidence / 'commands.json', commands)
+              return record['exit_code']
+
+          def require_success(name, command, cwd=repo, timeout=600):
+              code = run_logged(name, command, cwd, timeout)
+              if code != 0:
+                  raise RuntimeError(f'{name} exited {code}; retained the original log')
+
+          def phase(name, operation):
+              global abort_remaining
+              if abort_remaining:
+                  results[name] = {'status': 'not_run', 'reason': 'A previous command timed out; do not risk overlapping surviving child processes'}
+                  write_json(evidence / 'phase-results.json', results)
+                  return False
+              results[name] = {'status': 'running'}
+              write_json(evidence / 'phase-results.json', results)
+              try:
+                  operation()
+                  results[name] = {'status': 'passed'}
+              except CommandTimedOut as error:
+                  abort_remaining = True
+                  results[name] = {'status': 'inconclusive', 'timed_out': True, 'error': str(error)}
+                  (evidence / (name + '-exception.log')).write_text(traceback.format_exc(), encoding='utf-8')
+                  print(name + ': ' + str(error), flush=True)
+              except Exception as error:
+                  results[name] = {'status': 'failed', 'error': str(error)}
+                  (evidence / (name + '-exception.log')).write_text(traceback.format_exc(), encoding='utf-8')
+                  print(name + ': ' + str(error), flush=True)
+              write_json(evidence / 'phase-results.json', results)
+              return results[name]['status'] == 'passed'
+
+          def digest(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          def sdk_record(path):
+              return {'path': str(path), 'revision': capture(['git', 'rev-parse', 'HEAD'], path), 'sdk': capture(['dotnet', '--version'], path), 'runtimes': capture(['dotnet', '--list-runtimes'], path), 'dotnet_info': capture(['dotnet', '--info'], path)}
+
+          def verify_source_tree(path):
+              changed = capture(['git', 'diff', '--name-only', 'HEAD'], path)
+              if changed:
+                  raise RuntimeError('Tracked product files changed during validation: ' + changed)
+
+          def inventory_tree(path):
+              files={}
+              for item in sorted(path.rglob('*')):
+                  assert not item.is_symlink(),'Unsupported runtime symlink: '+str(item)
+                  if item.is_file(): files[item.relative_to(path).as_posix()]={'sha256':digest(item),'bytes':item.stat().st_size}
+                  else: assert item.is_dir(),'Unsupported runtime entry: '+str(item)
+              return files
+
+          def overlay_proof(origin,donor,actual):
+              issues=[]
+              if set(actual)!=set(origin): issues.append('Runtime overlay changed its origin file set')
+              for name in host_files:
+                  if name not in origin or name not in donor or name not in actual: issues.append('Missing host DLL/PDB: '+name)
+              for name in set(actual)&set(origin):
+                  if actual[name]!=(donor.get(name) if name in host_files else origin[name]): issues.append('Wrong bytes/component provenance: '+name)
+              changed=sorted(name for name in set(actual)&set(origin) if actual[name]!=origin[name])
+              if not set(changed)<=set(host_files): issues.append('A non-host file changed')
+              return {'status':'passed' if not issues else 'inconclusive','changed_paths':changed,'allowed_copy_operations':list(host_files),'issues':issues}
+
+          def shared_manifest_proof(a,c):
+              issues=['A/C deps/runtimeconfig must be byte-identical: '+name for name in shared_manifests if name not in a or name not in c or a[name]!=c[name]]
+              return {'status':'passed' if not issues else 'inconclusive','files':{name:{'A':a.get(name),'C':c.get(name)} for name in shared_manifests},'issues':issues}
+
+          def strip_ansi_csi_for_summary(text):
+              # Strip only standard CSI sequences, including SGR; keep original logs intact.
+              return re.sub(r'(?:\x1b\[|\x9b)[0-?]*[ -/]*[@-~]', '', text)
+
+          def assess_one_test(exit_code,text):
+              pattern=r'^\s*Avalonia\.Controls\.DataGrid\.UnitTests\s+Total:\s*(\d+),\s*Errors:\s*(\d+),\s*Failed:\s*(\d+),\s*Skipped:\s*(\d+),\s*Not Run:\s*(\d+),[^\r\n]*$'
+              matches=list(re.finditer(pattern,strip_ansi_csi_for_summary(text),re.MULTILINE)); counters=None
+              if len(matches)==1:
+                  counters=dict(zip(('total','errors','failed','skipped','not_run'),map(int,matches[0].groups())))
+                  counters['executed']=counters['total']-counters['skipped']-counters['not_run']; counters['passed']=counters['executed']-counters['failed']
+              return {'accepted':exit_code==0 and len(matches)==1 and counters=={'total':1,'errors':0,'failed':0,'skipped':0,'not_run':0,'executed':1,'passed':1},'exit_code':exit_code,'summary_count':len(matches),'counters':counters,'summary_lines':[m.group(0).strip() for m in matches]}
+
+          def assess_vector(record,scenario):
+              keys={'scenario','times','bytes','count','selected','selectedCells','virtualSurface'}
+              if not isinstance(record,dict) or set(record)!=keys: return {'accepted':False,'issues':['Unexpected immutable-harness JSON shape']}
+              issues=[]
+              if record['scenario']!=scenario or record['count']!=10000 or type(record['selected']) is not int or record['selected']<0 or type(record['selectedCells']) is not int or record['selectedCells']<0 or type(record['virtualSurface']) is not bool: issues.append('Unexpected semantic-state fields')
+              times,allocations=record['times'],record['bytes']
+              if not isinstance(times,list) or len(times)!=24 or any(type(v) not in (int,float) or not math.isfinite(v) or v<0 for v in times): issues.append('Expected all24 finite nonnegative time samples')
+              if not isinstance(allocations,list) or len(allocations)!=24 or any(type(v) is not int or v<0 for v in allocations): issues.append('Expected all24 nonnegative integer allocation samples')
+              return {'accepted':not issues,'issues':issues}
+
+          def prepare():
+              global source,worktrees,runtime_dirs,runtime_before,plan
+              assert sys.version_info[:3]==(3,15,2) and sys.platform in ('linux','darwin')
+              manifest=json.loads(manifest_path.read_text(encoding='utf-8-sig')); shutil.copy2(manifest_path,evidence/'toolchain-manifest.json')
+              assert manifest['validation_mode']=='supplementary-binary-factor-controls'
+              assert manifest['source']['recorded_candidate_sha']==expected_source and manifest['source']['baseline_sha']==base
+              head=capture(['git','rev-parse','HEAD']); assert head==os.environ['GITHUB_SHA']
+              parents=capture(['git','rev-list','--parents','-n','1',head]).split(); assert len(parents)==2
+              source=os.environ['REQUESTED_SOURCE'] if os.environ['GITHUB_EVENT_NAME']=='workflow_dispatch' else parents[1]
+              assert re.fullmatch('[0-9a-f]{40}',source) and source==parents[1]==expected_source
+              assert capture(['git','rev-parse',base+'^{commit}'])==base
+              changed=capture(['git','diff','--name-only',source,head]).splitlines(); allowed={'.github/workflows/ci-validation.yml','.github/ci-toolchain.json'}
+              assert set(changed)==allowed and set(manifest['install_paths'].values())==allowed
+              assert capture(['git','rev-parse','HEAD'],artifact)==harness_sha
+              assert capture(['git','hash-object',harness],artifact)=='050b43b33fe7d6a841db2f94f13662356c377d31'
+              for key in ('CORECLR_ENABLE_PROFILING','COR_ENABLE_PROFILING'): assert os.environ.get(key,'0') in ('','0')
+              for key in ('DOTNET_STARTUP_HOOKS','DOTNET_DiagnosticPorts'): assert not os.environ.get(key)
+              worktrees={'A':root/'source-A','C':root/'source-C'}
+              for side,revision in (('A',base),('C',source)):
+                  require_success('worktree-'+side,['git','worktree','add','--detach',worktrees[side],revision])
+                  target=worktrees[side]/'src/Avalonia.Controls.DataGrid.UnitTests/ReviewPerformanceTests.cs'; assert not target.exists()
+                  shutil.copy2(harness,target); assert digest(target)==digest(harness)
+              sdk=[sdk_record(worktrees[side]) for side in ('A','C')]; write_json(evidence/'preflight-sdk.json',sdk)
+              for row,revision in zip(sdk,(base,source)):
+                  assert row['revision']==revision and row['sdk']=='10.0.403'
+                  assert re.findall(r'^Microsoft\.NETCore\.App (\S+) ',row['runtimes'],re.MULTILINE)==['10.0.14']
+              assert len(capture(['dotnet','--list-sdks'],worktrees['A']).splitlines())==1
+              # Finish both exact source builds before composing or timing any runtime.
+              for side in ('A','C'):
+                  require_success('unit-build-'+side,['dotnet','build','src/Avalonia.Controls.DataGrid.UnitTests','-c','Release','-p:CollectCoverage=false','--verbosity','quiet'],worktrees[side],timeout=1200)
+                  verify_source_tree(worktrees[side])
+              origins={side:worktrees[side]/'src/Avalonia.Controls.DataGrid.UnitTests/bin/Release/net10.0' for side in ('A','C')}
+              origin={side:inventory_tree(path) for side,path in origins.items()}; shared=shared_manifest_proof(origin['A'],origin['C'])
+              write_json(evidence/'original-build-inventories.json',{'source_revisions':{'A':base,'C':source},'build_bins':{k:str(v) for k,v in origins.items()},'files':origin,'deps_runtimeconfig_equality':shared}); assert shared['status']=='passed',shared
+              runtime_dirs={side:root/'runtime-bins'/side for side in ('A','C','H','P')}
+              for side,origin_side in (('A','A'),('C','C'),('H','A'),('P','C')): shutil.copytree(origins[origin_side],runtime_dirs[side])
+              for name in host_files:
+                  shutil.copy2(runtime_dirs['C']/name,runtime_dirs['H']/name)
+                  shutil.copy2(runtime_dirs['A']/name,runtime_dirs['P']/name)
+              runtime_before={side:inventory_tree(path) for side,path in runtime_dirs.items()}
+              assert runtime_before['A']==origin['A'] and runtime_before['C']==origin['C']
+              proofs={'H_vs_A':overlay_proof(runtime_before['A'],runtime_before['C'],runtime_before['H']),'P_vs_C':overlay_proof(runtime_before['C'],runtime_before['A'],runtime_before['P'])}; write_json(evidence/'binary-overlay-proofs.json',proofs)
+              assert all(proof['status']=='passed' for proof in proofs.values()),proofs
+              provenance={}
+              for side in ('A','C','H','P'):
+                  original='A' if side in ('A','H') else 'C'; donor='C' if side=='H' else 'A' if side=='P' else original
+                  provenance[side]={name:{'build_component':donor if side in ('H','P') and name in host_files else original,'source_revision':source if (donor if side in ('H','P') and name in host_files else original)=='C' else base,**row} for name,row in runtime_before[side].items()}
+              write_json(evidence/'runtime-input-inventories-before.json',{'runtime_directories':{k:str(v) for k,v in runtime_dirs.items()},'files':runtime_before,'component_provenance':provenance,'A_C_changed_paths':sorted(name for name in set(origin['A'])|set(origin['C']) if origin['A'].get(name)!=origin['C'].get(name))})
+              paths=[str(path) for side in ('A','C','H','P') for path in sorted(runtime_dirs[side].glob('*.dll'))]
+              (evidence/'assembly-metadata-script.log').write_text(assembly_metadata_script,encoding='utf-8')
+              env=dict(os.environ,HOST_CONTROL_ASSEMBLY_PATHS=json.dumps(paths)); encoded=base64.b64encode(assembly_metadata_script.encode('utf-16-le')).decode('ascii')
+              metadata=json.loads(capture(['pwsh','-NoProfile','-NonInteractive','-EncodedCommand',encoded],repo,env)); write_json(evidence/'runtime-assembly-versions.json',metadata)
+              rows={row['path']:row for row in metadata['assemblies']}
+              for side in ('A','C','H','P'):
+                  for name in (host_dll,product_dll): assert rows[str(runtime_dirs[side]/name)].get('assembly_version')
+              plan=[]
+              for label,other,order in comparisons:
+                  output=evidence/'timings'/label; output.mkdir(parents=True,exist_ok=False)
+                  for scenario in scenarios:
+                      for index,side in enumerate(order):
+                          component='A' if side=='A' else other
+                          plan.append({'batch':label,'order':order,'scenario':scenario,'index':index,'protocol_side':side,'component':component,'cwd':str(runtime_dirs[component]),'assembly':str(runtime_dirs[component]/host_dll),'raw_output':str(output/(scenario+'-'+side+'.jsonl')),'log_name':'timings/'+label+'/'+scenario+'-'+str(index)+'-'+side})
+              assert len(plan)==64; write_json(evidence/'timing-plan.json',plan)
+              write_json(evidence/'provenance.json',{'validation_mode':manifest['validation_mode'],'workflow_sha':head,'source_sha':source,'baseline_sha':base,'ci_only_paths':changed,'harness_commit':harness_sha,'harness_blob_sha':'050b43b33fe7d6a841db2f94f13662356c377d31','harness_sha256':digest(harness),'original_python_runner_invoked':False,'cwd_policy':'Own sibling prebuilt runtime-bin container at uniform path depth; supplementary copy context, not original source-worktree primary cwd','timed_components':['A','H','P'],'C_role':'Build origin only; not timed','measurement_counts':{'processes':64,'warmups_each':6,'samples_each':24,'scenarios':list(scenarios),'orders':['ABBABAAB','BAABABBA']},'reused_evidence':manifest['reused_evidence'],'environment':{'python':sys.version,'platform':platform.platform(),'uname':platform.uname()._asdict(),'logical_cpus':os.cpu_count(),'runner':os.environ['MATRIX_RUNNER'],'rid':os.environ['MATRIX_RID'],'image_os':os.environ.get('ImageOS'),'image_version':os.environ.get('ImageVersion'),'dotnet_root':os.environ.get('DOTNET_ROOT')},'interpretation':manifest['interpretation'],'retained_work_root':str(root)})
+
+          def run_timings():
+              # Throughout all four batches launch only the exact direct-run processes.
+              # Both builds and all inventories/assembly inspection/SDK queries have finished.
+              for row in plan:
+                  command=['dotnet',row['assembly'],'-class','*ReviewPerformanceTests','-parallel','none']
+                  env=dict(os.environ,DOTNET_TieredCompilation='0',REVIEW_SCENARIO=row['scenario'],REVIEW_OUTPUT=row['raw_output'])
+                  code=run_logged(row['log_name'],command,Path(row['cwd']),timeout=240,env=env)
+                  processes.append({**row,'exit_code':code}); write_json(evidence/'timing-process-status.json',processes)
+              assert len(processes)==64 and all(row['exit_code']==0 for row in processes),'Failed processes remain recorded; supplementary execution failed'
+
+          def validate_all():
+              # Begin after all scheduled timings; never inspect metadata between batches.
+              issues=[]; outcomes=[]; vectors=[]
+              for row in processes:
+                  text=(evidence/(row['log_name']+'.log')).read_text(encoding='utf-8',errors='replace')
+                  check=assess_one_test(row['exit_code'],text)
+                  outcomes.append({'batch':row['batch'],'scenario':row['scenario'],'index':row['index'],'component':row['component'],**check})
+                  if not check['accepted']: issues.append('Not exactly one passing test: '+row['log_name'])
+              write_json(evidence/'exact-test-outcomes.json',outcomes)
+              for label,other,order in comparisons:
+                  output=evidence/'timings'/label
+                  for scenario in scenarios:
+                      summary={'scope':'supplementary binary factor control','batch':label,'scenario':scenario,'order':order,'component_mapping':{'A':'A','B':other}}
+                      semantic_states=[]
+                      for side in ('A','B'):
+                          raw=output/(scenario+'-'+side+'.jsonl'); records=[]
+                          if raw.exists():
+                              for number,line in enumerate(raw.read_text(encoding='utf-8').splitlines(),1):
+                                  try:
+                                      record=json.loads(line); check=assess_vector(record,scenario); records.append(record)
+                                  except Exception: check={'accepted':False,'issues':[traceback.format_exc()]}
+                                  vectors.append({'batch':label,'scenario':scenario,'side':side,'raw_file':str(raw.relative_to(evidence)),'line':number,**check})
+                                  if not check['accepted']: issues.append('Invalid raw record: '+str(raw)+':'+str(number))
+                          if len(records)!=4: issues.append('Expected every one of four raw records; never discard samples: '+str(raw))
+                          if len(records)==4 and all(assess_vector(record,scenario)['accepted'] for record in records):
+                              summary[side]={'process_mean_ms':[statistics.mean(record['times']) for record in records],'process_mean_bytes':[statistics.mean(record['bytes']) for record in records]}
+                              semantic_states.extend((record['count'],record['selected'],record['selectedCells'],record['virtualSurface']) for record in records)
+                      summary['semantic_states']=semantic_states
+                      summary['semantic_metadata_identical']=len(semantic_states)==8 and len(set(semantic_states))==1
+                      if not summary['semantic_metadata_identical']: issues.append('Reported semantic metadata differs or is incomplete across A/B: '+label+'/'+scenario)
+                      with (output/'summary.jsonl').open('a',encoding='utf-8') as log: log.write(json.dumps(summary)+chr(10))
+              write_json(evidence/'vector-validation.json',{'checks':vectors,'expected_raw_records':64,'observed_raw_records':len(vectors),'issues':issues})
+              after={side:inventory_tree(path) for side,path in runtime_dirs.items()}
+              immutable={side:after[side]==runtime_before[side] for side in runtime_dirs}
+              write_json(evidence/'runtime-input-inventories-after.json',{'files':after,'unchanged_from_prebuild':immutable})
+              for side in ('A','C'): verify_source_tree(worktrees[side])
+              assert len(processes)==64 and len(outcomes)==64 and len(vectors)==64
+              assert all(immutable.values()),'Runtime inputs changed during supplementary timing'
+              assert not issues,'; '.join(issues)
+
+          write_json(evidence/'phase-results.json',results)
+          if phase('provenance-prebuild-and-binary-proof',prepare):
+              phase('supplementary-binary-factor-timings',run_timings)
+              phase('raw-evidence-and-input-validation',validate_all)
+          else:
+              for name in active_phases[1:]: results[name]={'status':'not_run','reason':'Exact-source prebuild/component proof did not pass'}
+              write_json(evidence/'phase-results.json',results)
+          print(json.dumps(results,indent=2),flush=True)
+          print('Supplementary binary factor controls only; no primary-protocol replay or automatic performance acceptance.',flush=True)
+          sys.exit(0 if all(results.get(name,{}).get('status')=='passed' for name in active_phases) else 1)
+
+      - name: Preserve every supplementary raw record, log and component proof
+        timeout-minutes: 10
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: perf399-host-controls-${{ matrix.name }}-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: |
+            evidence/*.log
+            evidence/*.json
+            evidence/*.jsonl
+            evidence/timings/*/*.log
+            evidence/timings/*/*.json
+            evidence/timings/*/*.jsonl
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6

@@ -1,0 +1,77 @@
+{
+  "validation_mode": "functional-recheck",
+  "workflow_sha": "96cca078145b3a78d07c7adad3ce9e8dd79c810a",
+  "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+  "ci_only_paths": [
+    ".github/ci-toolchain.json",
+    ".github/workflows/ci-validation.yml"
+  ],
+  "source_resolution": "sole direct parent",
+  "initial_failure": {
+    "run_id": 42001896241,
+    "run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "workflow_sha": "d16d7e4759e6f45ee494d75d5df171a788d58f34",
+    "runner": "macos-26",
+    "architecture": "arm64",
+    "expected_total": 6019,
+    "passed": 6018,
+    "failed": 1,
+    "test": "LeakTests.DataGrid_ColumnDefinitionsSource_DoesNotLeak",
+    "observed_exception": "System.NullReferenceException",
+    "observed_location": "Avalonia.Headless.HeadlessUnitTestSession.Dispose; LeakTestSession.cs:46, before the retention assertion",
+    "observed_family": "Existing Avalonia12.1.0 headless teardown failure family; this workflow does not change external Avalonia",
+    "artifact_id": 13403574345,
+    "artifact_name": "perf399-macOS-42001896241-attempt-1",
+    "artifact_api": "https://api.github.com/repos/aleksandr-miheichev/ProDataGrid/actions/artifacts/13403574345",
+    "artifact_expired_at_preparation": false,
+    "preservation_policy": "Keep the initial failed run, downloaded logs/TRX and raw observations unchanged. This is one additional bounded verification, never replacement or erasure of the failure.",
+    "successful_recheck_interpretation": "A successful retry does not prove the underlying external teardown race is fixed."
+  },
+  "reused_evidence": {
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "full_source_run_id": 42001896241,
+    "full_source_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+    "full_source_run_overall_conclusion": "failure",
+    "full_source_scope": "Earlier successful semantic/performance phases are separately scoped evidence; the final macOS full-suite6018pass+1fail remains visible and is the reason for this bounded recheck.",
+    "native_run_id": 42006151729,
+    "native_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729",
+    "native_workflow_sha": "c9f79c558916a0cd60eb9db5258b15890e681cfd",
+    "native_verified_sole_parent_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "native_run_conclusion_at_preparation": "success",
+    "not_run_in_this_workflow": [
+      "source-generation-semantic-validation",
+      "primary-ABBABAAB",
+      "primary-BAABABBA",
+      "same-source-control-ABBABAAB",
+      "strict-native-aot",
+      "reflection-enabled-negative-control"
+    ],
+    "reuse_policy": "Every listed phase is explicitly Not run here with its earlier run link; no inherited phase is relabeled passed, no old failure is hidden, and no performance acceptance or threshold is introduced."
+  },
+  "execution_plan": "One baseline target, one final target, then one unfiltered final6019 suite; no automatic retry",
+  "successful_retry_interpretation": "A successful bounded recheck does not prove the existing external teardown race is fixed",
+  "manifest_sha256": "9d4e0ec4e8daf92afbca5c2640d1d55aef307bb2cebf946937ca866cd8ee7a1d",
+  "environment": {
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "python_executable": "/Library/Frameworks/Python.framework/Versions/3.15/bin/python",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "uname": {
+      "system": "Darwin",
+      "node": "iad20-gt1022-544f2422-4509-4f61-afd9-24ec422493d7-AABECA11294D.local",
+      "release": "25.6.0",
+      "version": "Darwin Kernel Version 25.6.0: Fri Jul 31 19:16:43 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_VMAPPLE",
+      "machine": "arm64",
+      "processor": "arm"
+    },
+    "logical_cpus": 3,
+    "runner_label": "macos-26",
+    "rid": "osx-arm64",
+    "runner_arch": "ARM64",
+    "image_os": "macos26",
+    "image_version": "20261026.0455.2",
+    "dotnet_root": "/Users/runner/work/_temp/dotnet-perf399-functional"
+  },
+  "retained_work_root": "/Users/runner/work/_temp/perf399-functional-recheck-42011256034-1"
+}

@@ -1,0 +1,308 @@
+{
+  "schema_version": 2,
+  "verified_on": "2026-11-05",
+  "repository": "aleksandr-miheichev/ProDataGrid",
+  "upstream_repository": "wieslawsoltes/ProDataGrid",
+  "install_paths": {
+    "workflow": ".github/workflows/ci-validation.yml",
+    "manifest": ".github/ci-toolchain.json"
+  },
+  "dotnet": {
+    "sdk": "10.0.403",
+    "runtime": "10.0.14",
+    "channel": "10.0",
+    "isolated_install": true,
+    "skip_lts_prepass": true,
+    "source_global_json_policy": "Do not edit tracked global.json. The existing 10.0.100/latestFeature policy selects 10.0.403 from the isolated installation. Verify the actual selected SDK in every exact-revision worktree.",
+    "official_metadata": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json"
+  },
+  "python": {
+    "version": "3.15.2",
+    "allow_prereleases": false,
+    "official_release": "https://www.python.org/downloads/release/python-3152/",
+    "hosted_distribution": "https://github.com/actions/python-versions/releases/tag/3.15.2-40340363276",
+    "manifest": "https://github.com/actions/python-versions/blob/main/versions-manifest.json",
+    "verified_platforms": [
+      "linux-26.04-x64",
+      "win32-x64",
+      "darwin-arm64"
+    ]
+  },
+  "actions": {
+    "actions/checkout": {
+      "version": "v7.0.1",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "release": "https://github.com/actions/checkout/releases/tag/v7.0.1"
+    },
+    "actions/setup-dotnet": {
+      "version": "v6.1.0",
+      "sha": "0f4a354dd5547a28c70b7853dbd95d5b67886e73",
+      "release": "https://github.com/actions/setup-dotnet/releases/tag/v6.1.0"
+    },
+    "actions/setup-python": {
+      "version": "v7.1.0",
+      "sha": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "release": "https://github.com/actions/setup-python/releases/tag/v7.1.0"
+    },
+    "actions/upload-artifact": {
+      "version": "v7.0.2",
+      "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "release": "https://github.com/actions/upload-artifact/releases/tag/v7.0.2"
+    }
+  },
+  "runners": [
+    {
+      "label": "windows-2025",
+      "rid": "win-x64",
+      "architecture": "x64"
+    },
+    {
+      "label": "ubuntu-26.04",
+      "rid": "linux-x64",
+      "architecture": "x64"
+    },
+    {
+      "label": "macos-26",
+      "rid": "osx-arm64",
+      "architecture": "arm64"
+    }
+  ],
+  "runner_reference": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+  "permissions": {
+    "contents": "read"
+  },
+  "manual_dispatch_note": "GitHub requires workflow_dispatch on the default branch. This native-only body replaces .github/workflows/ci-validation.yml in a two-file CI-only commit directly on its pinned source; the variant-specific native push trigger does not add a second full-validation workflow.",
+  "local_validation": {
+    "python": "D:/Python 15/python.exe (3.15.2)",
+    "pyyaml": "6.0.3",
+    "actionlint": "D:/claude-projects/tools/actionlint/actionlint.exe (1.7.12)",
+    "checks": "Parse YAML/JSON; compile embedded orchestration without running product code; run the embedded pure native-log validator fixtures and timeout abort fixture; parse PowerShell; verify exact source/run provenance, native-only phase graph, pinned actions, immediate upload globs and bounded deadlines.",
+    "actionlint_arguments": [
+      "-shellcheck=",
+      "-ignore",
+      "label \"ubuntu-26\\.04\" is unknown"
+    ],
+    "known_linter_catalog_mismatch": "Unfiltered actionlint 1.7.12 rejects only ubuntu-26.04, which the current official GitHub standard/free runner reference lists without a preview marker. The narrow ignore handles this catalog drift; no workflow-expression or other lint diagnostic is ignored.",
+    "product_executions": "Not run locally: no product build/test, NativeAOT publish/run, benchmark or profiling is authorized by preparation of these four documents.",
+    "ci_execution": "Not run: preparation does not publish a branch, create a PR, dispatch Actions or alter credentials/repository policy.",
+    "fixture_source": "Embedded assess_native_publish and native_log_validator_selftests in the paired workflow; CI retains actual fixture results as evidence/native-log-validator-selftests.json.",
+    "native_log_validator_fixture_results": {
+      "status": "passed",
+      "cases": [
+        {
+          "case": "clean_native_exit_zero",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": true,
+          "actual_accepted": true,
+          "pre_native_il_count": 0,
+          "native_il_count": 0
+        },
+        {
+          "case": "all_75_pre_native_analyzer_warnings_recorded_native_clean",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": true,
+          "actual_accepted": true,
+          "pre_native_il_count": 75,
+          "native_il_count": 0
+        },
+        {
+          "case": "native_warning_rejected",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 75,
+          "native_il_count": 1
+        },
+        {
+          "case": "native_error_rejected_even_with_exit_zero",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 0,
+          "native_il_count": 1
+        },
+        {
+          "case": "missing_native_marker_rejected",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 75,
+          "native_il_count": 0
+        },
+        {
+          "case": "nonzero_publish_rejected_even_with_clean_native_log",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 0,
+          "native_il_count": 0
+        },
+        {
+          "case": "interrupted_publish_rejected",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 0,
+          "native_il_count": 0
+        },
+        {
+          "case": "first_marker_keeps_warning_before_repeated_marker",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 0,
+          "native_il_count": 1
+        },
+        {
+          "case": "analyzer_message_mention_is_not_a_marker",
+          "kind": "positive",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 1,
+          "native_il_count": 0
+        },
+        {
+          "case": "negative_real_post_marker_il_error_accepted",
+          "kind": "negative",
+          "status": "passed",
+          "expected_accepted": true,
+          "actual_accepted": true,
+          "pre_native_il_count": 0,
+          "native_il_count": 1
+        },
+        {
+          "case": "negative_pre_marker_il_error_only_rejected",
+          "kind": "negative",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 1,
+          "native_il_count": 0
+        },
+        {
+          "case": "negative_exit_zero_rejected_even_with_native_error",
+          "kind": "negative",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 0,
+          "native_il_count": 1
+        },
+        {
+          "case": "negative_missing_marker_rejected",
+          "kind": "negative",
+          "status": "passed",
+          "expected_accepted": false,
+          "actual_accepted": false,
+          "pre_native_il_count": 1,
+          "native_il_count": 0
+        }
+      ],
+      "case_count": 13,
+      "additional_marker_spelling_checks": [
+        "tab-indented CRLF marker passed",
+        "case-insensitive ellipsis marker passed"
+      ],
+      "legacy_false_positive_reproduced": true,
+      "corrected_pre_native_75_diagnostics_accepted_and_recorded": true,
+      "active_cli_exit_gate": "passed: a failed/inconclusive/Not run active native phase exits1; intentionally reused Not run phases do not claim passed",
+      "fixture_source_sha256": "91b3c605ab06c879410892926cd4412a0e632c040ef08a65830f616beef17fbc",
+      "timeout_abort_fixture": "passed: after a synthetic timeout, the next product phase was Not run and its callable was never invoked"
+    },
+    "static_results": {
+      "yaml_json_python_powershell": "passed",
+      "action_pins_sources_modes_phase_graph": "passed",
+      "actionlint": "passed with sole documented Ubuntu26.04 catalog exception",
+      "immediate_upload_patterns": "passed",
+      "step_timeout_budget_minutes": 84,
+      "job_timeout_minutes": 90,
+      "reserve_minutes": 6,
+      "product_executions": "Not run"
+    },
+    "workflow_variant_equivalence": "Identical implementation after substituting only variant labels, source SHA and prior-run URL; no broad substring replacement."
+  },
+  "validation_mode": "native-only",
+  "variant": "final",
+  "source": {
+    "recorded_candidate_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+    "expected_total_tests": 6019,
+    "full_suite_execution_this_run": "Not run: native-only revalidation, reused earlier exact-source evidence",
+    "push_resolution": "Use the sole direct parent of the CI-only commit; it must equal this exact recorded_candidate_sha. Require the diff to contain exactly the two install_paths and no product files.",
+    "dispatch_resolution": "The full source_sha input, CI-only direct parent and recorded_candidate_sha must match.",
+    "branch_pattern": "codex/verify-perf399-native-final-*"
+  },
+  "reused_evidence": {
+    "run_id": 42001896241,
+    "run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "workflow_sha": "d16d7e4759e6f45ee494d75d5df171a788d58f34",
+    "expected_total_tests": 6019,
+    "run_status_at_preparation": "in_progress",
+    "workflow_conclusion_at_preparation": null,
+    "phases": [
+      "full-solution-tests",
+      "source-generation-semantic-validation",
+      "primary-ABBABAAB",
+      "primary-BAABABBA",
+      "same-source-control-ABBABAAB"
+    ],
+    "reuse_policy": "Every listed phase is Not run in this follow-up, never passed by inheritance. Keep earlier artifacts and statuses separately attributed to this exact source. Verify earlier run completion and each phase before treating reused evidence as complete.",
+    "maintainer_harness_commit": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+    "performance_policy": "No repeated timings, numerical allowance, cherry-picking or new performance-acceptance claim. This follow-up changes the native IL-log phase boundary only.",
+    "source_identity_verified_via": "https://api.github.com/repos/aleksandr-miheichev/ProDataGrid/commits/d16d7e4759e6f45ee494d75d5df171a788d58f34",
+    "verified_sole_parent_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+  },
+  "native_validation": {
+    "positive_publish_gate": "Require completed publish exit0, the first standalone Generating native code marker, and zero warning/error IL diagnostics at or after that first marker, including across repeated markers. Preserve the entire pre-marker compiler/analyzer log and diagnostics without suppression.",
+    "native_execution_gate": "Require the actual published native executable to exist, record its SHA256 and toolchain, execute it directly, and require exit0. A clean log alone never proves the executable ran.",
+    "negative_control": "Unchanged exit/IL criteria: reflection-enabled publish must exit nonzero with genuine error IL2026/IL2070/IL2075/IL3050 after the first standalone Generating native code marker; pre-marker errors alone never validate this control.",
+    "reflection_disabled_property": false,
+    "warning_suppression_added": false,
+    "known_original_validator_defect": {
+      "earlier_original_run": 41999728294,
+      "observed_on": "Windows, Linux, macOS",
+      "publish_exit_code": 0,
+      "pre_native_il_warnings": 75,
+      "post_marker_native_il_diagnostics": 0,
+      "cause": "The previous validator searched the whole publish log and rejected compiler/analyzer warnings before native generation, preventing the native binary command.",
+      "correction_scope": "Partition at the observed native-generation marker; preserve both phases and keep all other positive/negative/CLI exit gates."
+    }
+  },
+  "timeouts": {
+    "job_minutes": 90,
+    "setup_step_minutes": {
+      "invocation": 1,
+      "fork_checkout": 5,
+      "python": 8,
+      "dotnet": 10
+    },
+    "orchestration_step_minutes": 50,
+    "upload_step_minutes": 10,
+    "minimum_job_headroom_minutes_after_all_step_limits": 6,
+    "command_seconds": {
+      "observation": 60,
+      "default": 600,
+      "strict_aot_publish": 900,
+      "reflection_negative_publish": 900,
+      "native_binary": 120
+    },
+    "timeout_policy": "Retain partial logs and process-tree/group cleanup attempts. Abort every later product phase after any timeout even if cleanup is uncertain. There are no timing phases in this mode. The bounded native-only step leaves always-upload time below the job deadline."
+  },
+  "retention": {
+    "artifact_days": 30,
+    "upload": "Immediate evidence/*.log, evidence/*.json and evidence/*.jsonl only. No recursive glob, worktree, build tree, Git metadata or CodeGraph index.",
+    "partial_output": "Native publish and native executable logs are written directly to the artifact staging directory before completion. Atomic JSON status files retain completed observations.",
+    "worktrees": "Do not delete or recycle an output directory during the job. Hosted VMs are ephemeral; only uploaded evidence survives VM decommissioning.",
+    "failures": "Retain every command, original publish log, pre-native analyzer diagnostics, post-marker native diagnostics, nonzero CLI result and timeout. No warning suppression or product-file change."
+  }
+}

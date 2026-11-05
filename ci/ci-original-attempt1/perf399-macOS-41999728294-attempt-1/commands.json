@@ -1,0 +1,233 @@
+[
+  {
+    "name": "worktree-validation",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-41999728294-1/validation",
+      "596db0a6e401eb9c26b98e67de3ff6f247f0bed9"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T09:08:22.732942+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:08:23.299246+00:00"
+  },
+  {
+    "name": "worktree-negative",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-41999728294-1/reflection-enabled",
+      "596db0a6e401eb9c26b98e67de3ff6f247f0bed9"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T09:08:23.300312+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:08:23.800382+00:00"
+  },
+  {
+    "name": "worktree-positive",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-41999728294-1/strict-aot",
+      "596db0a6e401eb9c26b98e67de3ff6f247f0bed9"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T09:08:23.801064+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:08:24.330405+00:00"
+  },
+  {
+    "name": "worktree-baseline-probe",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-41999728294-1/baseline-sdk-probe",
+      "f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T09:08:24.332316+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:08:24.884189+00:00"
+  },
+  {
+    "name": "full-solution-tests",
+    "command": [
+      "dotnet",
+      "test",
+      "Avalonia.Controls.DataGrid.slnx",
+      "-c",
+      "Release",
+      "-m:2",
+      "-p:CollectCoverage=false",
+      "--settings",
+      "build/ci.runsettings",
+      "--logger",
+      "trx",
+      "--results-directory",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/full-suite-trx"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-41999728294-1/validation",
+    "timeout_seconds": 1200,
+    "started_utc": "2026-11-05T09:08:26.591697+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:17:26.791607+00:00"
+  },
+  {
+    "name": "source-generation-semantic-validation",
+    "command": [
+      "dotnet",
+      "run",
+      "-c",
+      "Release",
+      "--project",
+      "tests/ProDataGrid.SourceGeneration.Benchmarks",
+      "--",
+      "--validate"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-41999728294-1/validation",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T09:17:27.617202+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:17:37.615999+00:00"
+  },
+  {
+    "name": "strict-aot-publish",
+    "command": [
+      "dotnet",
+      "publish",
+      "tests/ProDataGrid.SourceGeneration.AotSmoke/ProDataGrid.SourceGeneration.AotSmoke.csproj",
+      "-c",
+      "Release",
+      "-r",
+      "osx-arm64",
+      "--self-contained",
+      "true",
+      "-p:TrimmerSingleWarn=false",
+      "-p:RuntimeFrameworkVersion=10.0.14",
+      "-p:ProDataGridReflectionEnabled=false",
+      "-o",
+      "/Users/runner/work/_temp/perf399-41999728294-1/strict-aot-publish"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-41999728294-1/strict-aot",
+    "timeout_seconds": 900,
+    "started_utc": "2026-11-05T09:17:37.793665+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:18:53.589670+00:00"
+  },
+  {
+    "name": "reflection-enabled-negative-publish",
+    "command": [
+      "dotnet",
+      "publish",
+      "tests/ProDataGrid.SourceGeneration.AotSmoke/ProDataGrid.SourceGeneration.AotSmoke.csproj",
+      "-c",
+      "Release",
+      "-r",
+      "osx-arm64",
+      "--self-contained",
+      "true",
+      "-p:TrimmerSingleWarn=false",
+      "-p:RuntimeFrameworkVersion=10.0.14",
+      "-p:ProDataGridReflectionEnabled=true",
+      "-o",
+      "/Users/runner/work/_temp/perf399-41999728294-1/reflection-enabled-publish"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-41999728294-1/reflection-enabled",
+    "timeout_seconds": 900,
+    "started_utc": "2026-11-05T09:18:53.660810+00:00",
+    "exit_code": 1,
+    "finished_utc": "2026-11-05T09:20:10.367740+00:00"
+  },
+  {
+    "name": "primary-ABBABAAB-runner",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.15/bin/python",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/maintainer-artifact/tools/pr-review/run-comparison.py",
+      "--repo",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+      "--output",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/primary-ABBABAAB",
+      "--base",
+      "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+      "--candidate",
+      "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+      "--scenario",
+      "source",
+      "--scenario",
+      "scroll",
+      "--order",
+      "ABBABAAB"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 1200,
+    "started_utc": "2026-11-05T09:20:11.740931+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:22:58.882451+00:00"
+  },
+  {
+    "name": "primary-BAABABBA-runner",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.15/bin/python",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/maintainer-artifact/tools/pr-review/run-comparison.py",
+      "--repo",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+      "--output",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/primary-BAABABBA",
+      "--base",
+      "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+      "--candidate",
+      "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+      "--scenario",
+      "source",
+      "--scenario",
+      "scroll",
+      "--order",
+      "BAABABBA"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 1200,
+    "started_utc": "2026-11-05T09:22:59.980218+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:25:40.671629+00:00"
+  },
+  {
+    "name": "same-source-control-ABBABAAB-runner",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.15/bin/python",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/maintainer-artifact/tools/pr-review/run-comparison.py",
+      "--repo",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+      "--output",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/same-source-control-ABBABAAB",
+      "--base",
+      "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+      "--candidate",
+      "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+      "--scenario",
+      "source",
+      "--scenario",
+      "scroll",
+      "--order",
+      "ABBABAAB"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 1200,
+    "started_utc": "2026-11-05T09:25:42.006760+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T09:28:34.092770+00:00"
+  }
+]

@@ -1,0 +1,234 @@
+{
+  "status": "passed",
+  "case_count": 11,
+  "cases": [
+    {
+      "case": "target_exactly_one_passed",
+      "status": "passed",
+      "expected_accepted": true,
+      "actual": {
+        "status": "passed",
+        "expected_total": 1,
+        "aggregate_counters": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": []
+      }
+    },
+    {
+      "case": "target_skipped_is_not_passed",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 1,
+        "aggregate_counters": {
+          "total": 1,
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "notExecuted": 1,
+          "inconclusive": 0
+        },
+        "issues": [
+          "synthetic.trx: every declared test must have executed and passed",
+          "synthetic.trx: non-passing counter notExecuted=1",
+          "synthetic.trx: actual UnitTestResult outcomes do not prove every test passed",
+          "Expected exactly 1 total/executed/passed tests; observed {'total': 1, 'executed': 0, 'passed': 0, 'failed': 0, 'notExecuted': 1, 'inconclusive': 0}"
+        ]
+      }
+    },
+    {
+      "case": "target_zero_execution_rejected",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 1,
+        "aggregate_counters": {
+          "total": 0,
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "synthetic.trx: every declared test must have executed and passed",
+          "Expected exactly 1 total/executed/passed tests; observed {'total': 0, 'executed': 0, 'passed': 0, 'failed': 0, 'notExecuted': 0, 'inconclusive': 0}"
+        ]
+      }
+    },
+    {
+      "case": "target_multiple_matches_rejected",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 1,
+        "aggregate_counters": {
+          "total": 2,
+          "executed": 2,
+          "passed": 2,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "Expected exactly 1 total/executed/passed tests; observed {'total': 2, 'executed': 2, 'passed': 2, 'failed': 0, 'notExecuted': 0, 'inconclusive': 0}"
+        ]
+      }
+    },
+    {
+      "case": "target_missing_executed_counter_rejected",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 1,
+        "aggregate_counters": {
+          "total": 0,
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "synthetic.trx: missing or unreadable actual-execution counters",
+          "Expected exactly 1 total/executed/passed tests; observed {'total': 0, 'executed': 0, 'passed': 0, 'failed': 0, 'notExecuted': 0, 'inconclusive': 0}"
+        ]
+      }
+    },
+    {
+      "case": "target_missing_actual_result_rejected",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 1,
+        "aggregate_counters": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "synthetic.trx: actual UnitTestResult outcomes do not prove every test passed"
+        ]
+      }
+    },
+    {
+      "case": "final_exact6019_passed",
+      "status": "passed",
+      "expected_accepted": true,
+      "actual": {
+        "status": "passed",
+        "expected_total": 6019,
+        "aggregate_counters": {
+          "total": 6019,
+          "executed": 6019,
+          "passed": 6019,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": []
+      }
+    },
+    {
+      "case": "initial6018_passed_one_failed_rejected",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 6019,
+        "aggregate_counters": {
+          "total": 6019,
+          "executed": 6019,
+          "passed": 6018,
+          "failed": 1,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "synthetic.trx: every declared test must have executed and passed",
+          "synthetic.trx: non-passing counter failed=1",
+          "synthetic.trx: actual UnitTestResult outcomes do not prove every test passed",
+          "Expected exactly 6019 total/executed/passed tests; observed {'total': 6019, 'executed': 6019, 'passed': 6018, 'failed': 1, 'notExecuted': 0, 'inconclusive': 0}"
+        ]
+      }
+    },
+    {
+      "case": "truncated6018_suite_rejected",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 6019,
+        "aggregate_counters": {
+          "total": 6018,
+          "executed": 6018,
+          "passed": 6018,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "Expected exactly 6019 total/executed/passed tests; observed {'total': 6018, 'executed': 6018, 'passed': 6018, 'failed': 0, 'notExecuted': 0, 'inconclusive': 0}"
+        ]
+      }
+    },
+    {
+      "case": "missing_trx_rejected",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 6019,
+        "aggregate_counters": {
+          "total": 0,
+          "executed": 0,
+          "passed": 0,
+          "failed": 0,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "No TRX suites were produced; actual execution is unverified",
+          "Expected exactly 6019 total/executed/passed tests; observed {'total': 0, 'executed': 0, 'passed': 0, 'failed': 0, 'notExecuted': 0, 'inconclusive': 0}"
+        ]
+      }
+    },
+    {
+      "case": "target_failure_message_stack_and_outcome_retained",
+      "status": "passed",
+      "expected_accepted": false,
+      "actual": {
+        "status": "inconclusive",
+        "expected_total": 1,
+        "aggregate_counters": {
+          "total": 1,
+          "executed": 1,
+          "passed": 0,
+          "failed": 1,
+          "notExecuted": 0,
+          "inconclusive": 0
+        },
+        "issues": [
+          "failed-target-fixture.trx: every declared test must have executed and passed",
+          "failed-target-fixture.trx: non-passing counter failed=1",
+          "failed-target-fixture.trx: actual UnitTestResult outcomes do not prove every test passed",
+          "Expected exactly 1 total/executed/passed tests; observed {'total': 1, 'executed': 1, 'passed': 0, 'failed': 1, 'notExecuted': 0, 'inconclusive': 0}"
+        ]
+      }
+    }
+  ]
+}

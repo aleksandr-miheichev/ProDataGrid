@@ -1,0 +1,7 @@
+xUnit.net v3 In-Process Runner v3.2.2+728c1dce01 (64-bit .NET 10.0.14)
+  Discovering: Avalonia.Controls.DataGrid.UnitTests
+  Discovered:  Avalonia.Controls.DataGrid.UnitTests
+  Starting:    Avalonia.Controls.DataGrid.UnitTests
+  Finished:    Avalonia.Controls.DataGrid.UnitTests (ID = 'ae252a5ef00716a2c851fae06d0369538bc9613026d3724cf4e0cbba4c336b05')
+=== TEST EXECUTION SUMMARY ===
+   Avalonia.Controls.DataGrid.UnitTests  Total: 1, Errors: 0, Failed: 0, Skipped: 0, Not Run: 0, Time: 8,416s

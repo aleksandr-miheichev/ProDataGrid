@@ -1,0 +1,1574 @@
+{
+  "inspector_powershell": "7.6.9",
+  "inspector_dotnet": "10.0.14",
+  "assemblies": [
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Base.dll",
+      "assembly_identity": "Avalonia.Base, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid.UnitTests, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.dll",
+      "assembly_identity": "Avalonia.Controls, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.DesignerSupport.dll",
+      "assembly_identity": "Avalonia.DesignerSupport, Version=0.7.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "0.7.0.0",
+      "file_version": "0.7.0.0",
+      "product_version": "0.7.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Dialogs.dll",
+      "assembly_identity": "Avalonia.Dialogs, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Fonts.Inter.dll",
+      "assembly_identity": "Avalonia.Fonts.Inter, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.HarfBuzz.dll",
+      "assembly_identity": "Avalonia.HarfBuzz, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Headless.XUnit.dll",
+      "assembly_identity": "Avalonia.Headless.XUnit, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Headless.dll",
+      "assembly_identity": "Avalonia.Headless, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Markup.Xaml.Loader.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml.Loader, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Markup.Xaml.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Markup.dll",
+      "assembly_identity": "Avalonia.Markup, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Metal.dll",
+      "assembly_identity": "Avalonia.Metal, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.MicroCom.dll",
+      "assembly_identity": "Avalonia.MicroCom, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.OpenGL.dll",
+      "assembly_identity": "Avalonia.OpenGL, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Remote.Protocol.dll",
+      "assembly_identity": "Avalonia.Remote.Protocol, Version=12.1.0.0, Culture=neutral, PublicKeyToken=7ecde292c616a9f3",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Skia.dll",
+      "assembly_identity": "Avalonia.Skia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Themes.Fluent.dll",
+      "assembly_identity": "Avalonia.Themes.Fluent, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Themes.Simple.dll",
+      "assembly_identity": "Avalonia.Themes.Simple, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Vulkan.dll",
+      "assembly_identity": "Avalonia.Vulkan, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.dll",
+      "assembly_identity": "Avalonia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/HarfBuzzSharp.dll",
+      "assembly_identity": "HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "1.0.0.0",
+      "file_version": "8.3.1.3",
+      "product_version": "8.3.1.3+release-3.119.2.2888c737ad016d584c74525e2d35db5097ea8576.2888c737ad016d584c74525e2d35db5097ea8576"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/MicroCom.Runtime.dll",
+      "assembly_identity": "MicroCom.Runtime, Version=0.11.6.0, Culture=neutral, PublicKeyToken=b30be05a5f7688e9",
+      "assembly_version": "0.11.6.0",
+      "file_version": "0.11.6.0",
+      "product_version": "0.11.6+76785efcafd91b5902fd19dd11145f6dd655b7b4"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.ApplicationInsights.dll",
+      "assembly_identity": "Microsoft.ApplicationInsights, Version=2.23.0.29, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "assembly_version": "2.23.0.29",
+      "file_version": "2.23.0.00029",
+      "product_version": "2.23.0+2faa7e8b157a431daa2e71785d68abd5fa817b53"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.Bcl.AsyncInterfaces.dll",
+      "assembly_identity": "Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51",
+      "assembly_version": "6.0.0.0",
+      "file_version": "6.0.21.52210",
+      "product_version": "6.0.0+4822e3c3aa77eb82b2fb33c9321f923cf11ddde6"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CommunicationUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.TestPlatform.CoreUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CoreUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CrossPlatEngine, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "assembly_identity": "Microsoft.TestPlatform.PlatformAbstractions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.TestPlatform.Utilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.Testing.Extensions.MSBuild.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.MSBuild, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.Testing.Extensions.Telemetry.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.Telemetry, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.TrxReport.Abstractions, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.Testing.Platform.dll",
+      "assembly_identity": "Microsoft.Testing.Platform, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "assembly_identity": "Microsoft.VisualStudio.CodeCoverage.Shim, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.625.52306",
+      "product_version": "18.0.6+7aa7b7947b278b8fd544a3e998a0f18778883ac5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Newtonsoft.Json.dll",
+      "assembly_identity": "Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed",
+      "assembly_version": "13.0.0.0",
+      "file_version": "13.0.3.27908",
+      "product_version": "13.0.3+0a2e291c0d9c0c7675d445703e51750363a549ef"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/ProCharts.Avalonia.dll",
+      "assembly_identity": "ProCharts.Avalonia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/ProCharts.Skia.dll",
+      "assembly_identity": "ProCharts.Skia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/ProCharts.dll",
+      "assembly_identity": "ProCharts, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/ProDataGrid.Charting.dll",
+      "assembly_identity": "ProDataGrid.Charting, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/ProDataGrid.FormulaEngine.Excel.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine.Excel, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/ProDataGrid.FormulaEngine.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/SkiaSharp.dll",
+      "assembly_identity": "SkiaSharp, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "3.119.0.0",
+      "file_version": "3.119.4.0",
+      "product_version": "3.119.4+release-3.119.4.f568ac94dd768ef9a2f593537cfde2dd0d348ef5.f568ac94dd768ef9a2f593537cfde2dd0d348ef5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/testhost.dll",
+      "assembly_identity": "testhost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.abstractions.dll",
+      "assembly_identity": "xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "2.0.0.0",
+      "file_version": "",
+      "product_version": "2.0.0.0"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.runner.visualstudio.testadapter.dll",
+      "assembly_identity": "xunit.runner.visualstudio.testadapter, Version=3.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "assembly_version": "3.1.5.0",
+      "file_version": "3.1.5",
+      "product_version": "3.1.5+1b188a7b0a"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.v3.assert.dll",
+      "assembly_identity": "xunit.v3.assert, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.v3.common.dll",
+      "assembly_identity": "xunit.v3.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.v3.core.dll",
+      "assembly_identity": "xunit.v3.core, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.v3.mtp-v1.dll",
+      "assembly_identity": "xunit.v3.mtp-v1, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.v3.runner.common.dll",
+      "assembly_identity": "xunit.v3.runner.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.v3.runner.inproc.console.dll",
+      "assembly_identity": "xunit.v3.runner.inproc.console, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/xunit.v3.runner.utility.netcore.dll",
+      "assembly_identity": "xunit.v3.runner.utility.netcore, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Base.dll",
+      "assembly_identity": "Avalonia.Base, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid.UnitTests, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Controls.DataGrid.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Controls.dll",
+      "assembly_identity": "Avalonia.Controls, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.DesignerSupport.dll",
+      "assembly_identity": "Avalonia.DesignerSupport, Version=0.7.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "0.7.0.0",
+      "file_version": "0.7.0.0",
+      "product_version": "0.7.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Dialogs.dll",
+      "assembly_identity": "Avalonia.Dialogs, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Fonts.Inter.dll",
+      "assembly_identity": "Avalonia.Fonts.Inter, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.HarfBuzz.dll",
+      "assembly_identity": "Avalonia.HarfBuzz, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Headless.XUnit.dll",
+      "assembly_identity": "Avalonia.Headless.XUnit, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Headless.dll",
+      "assembly_identity": "Avalonia.Headless, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Markup.Xaml.Loader.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml.Loader, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Markup.Xaml.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Markup.dll",
+      "assembly_identity": "Avalonia.Markup, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Metal.dll",
+      "assembly_identity": "Avalonia.Metal, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.MicroCom.dll",
+      "assembly_identity": "Avalonia.MicroCom, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.OpenGL.dll",
+      "assembly_identity": "Avalonia.OpenGL, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Remote.Protocol.dll",
+      "assembly_identity": "Avalonia.Remote.Protocol, Version=12.1.0.0, Culture=neutral, PublicKeyToken=7ecde292c616a9f3",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Skia.dll",
+      "assembly_identity": "Avalonia.Skia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Themes.Fluent.dll",
+      "assembly_identity": "Avalonia.Themes.Fluent, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Themes.Simple.dll",
+      "assembly_identity": "Avalonia.Themes.Simple, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.Vulkan.dll",
+      "assembly_identity": "Avalonia.Vulkan, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Avalonia.dll",
+      "assembly_identity": "Avalonia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/HarfBuzzSharp.dll",
+      "assembly_identity": "HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "1.0.0.0",
+      "file_version": "8.3.1.3",
+      "product_version": "8.3.1.3+release-3.119.2.2888c737ad016d584c74525e2d35db5097ea8576.2888c737ad016d584c74525e2d35db5097ea8576"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/MicroCom.Runtime.dll",
+      "assembly_identity": "MicroCom.Runtime, Version=0.11.6.0, Culture=neutral, PublicKeyToken=b30be05a5f7688e9",
+      "assembly_version": "0.11.6.0",
+      "file_version": "0.11.6.0",
+      "product_version": "0.11.6+76785efcafd91b5902fd19dd11145f6dd655b7b4"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.ApplicationInsights.dll",
+      "assembly_identity": "Microsoft.ApplicationInsights, Version=2.23.0.29, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "assembly_version": "2.23.0.29",
+      "file_version": "2.23.0.00029",
+      "product_version": "2.23.0+2faa7e8b157a431daa2e71785d68abd5fa817b53"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.Bcl.AsyncInterfaces.dll",
+      "assembly_identity": "Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51",
+      "assembly_version": "6.0.0.0",
+      "file_version": "6.0.21.52210",
+      "product_version": "6.0.0+4822e3c3aa77eb82b2fb33c9321f923cf11ddde6"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CommunicationUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.TestPlatform.CoreUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CoreUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CrossPlatEngine, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "assembly_identity": "Microsoft.TestPlatform.PlatformAbstractions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.TestPlatform.Utilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.Testing.Extensions.MSBuild.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.MSBuild, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.Testing.Extensions.Telemetry.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.Telemetry, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.TrxReport.Abstractions, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.Testing.Platform.dll",
+      "assembly_identity": "Microsoft.Testing.Platform, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "assembly_identity": "Microsoft.VisualStudio.CodeCoverage.Shim, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.625.52306",
+      "product_version": "18.0.6+7aa7b7947b278b8fd544a3e998a0f18778883ac5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/Newtonsoft.Json.dll",
+      "assembly_identity": "Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed",
+      "assembly_version": "13.0.0.0",
+      "file_version": "13.0.3.27908",
+      "product_version": "13.0.3+0a2e291c0d9c0c7675d445703e51750363a549ef"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/ProCharts.Avalonia.dll",
+      "assembly_identity": "ProCharts.Avalonia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/ProCharts.Skia.dll",
+      "assembly_identity": "ProCharts.Skia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/ProCharts.dll",
+      "assembly_identity": "ProCharts, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/ProDataGrid.Charting.dll",
+      "assembly_identity": "ProDataGrid.Charting, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/ProDataGrid.FormulaEngine.Excel.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine.Excel, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/ProDataGrid.FormulaEngine.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/SkiaSharp.dll",
+      "assembly_identity": "SkiaSharp, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "3.119.0.0",
+      "file_version": "3.119.4.0",
+      "product_version": "3.119.4+release-3.119.4.f568ac94dd768ef9a2f593537cfde2dd0d348ef5.f568ac94dd768ef9a2f593537cfde2dd0d348ef5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/testhost.dll",
+      "assembly_identity": "testhost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.abstractions.dll",
+      "assembly_identity": "xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "2.0.0.0",
+      "file_version": "",
+      "product_version": "2.0.0.0"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.runner.visualstudio.testadapter.dll",
+      "assembly_identity": "xunit.runner.visualstudio.testadapter, Version=3.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "assembly_version": "3.1.5.0",
+      "file_version": "3.1.5",
+      "product_version": "3.1.5+1b188a7b0a"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.v3.assert.dll",
+      "assembly_identity": "xunit.v3.assert, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.v3.common.dll",
+      "assembly_identity": "xunit.v3.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.v3.core.dll",
+      "assembly_identity": "xunit.v3.core, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.v3.mtp-v1.dll",
+      "assembly_identity": "xunit.v3.mtp-v1, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.v3.runner.common.dll",
+      "assembly_identity": "xunit.v3.runner.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.v3.runner.inproc.console.dll",
+      "assembly_identity": "xunit.v3.runner.inproc.console, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/C/xunit.v3.runner.utility.netcore.dll",
+      "assembly_identity": "xunit.v3.runner.utility.netcore, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Base.dll",
+      "assembly_identity": "Avalonia.Base, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid.UnitTests, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.dll",
+      "assembly_identity": "Avalonia.Controls, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.DesignerSupport.dll",
+      "assembly_identity": "Avalonia.DesignerSupport, Version=0.7.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "0.7.0.0",
+      "file_version": "0.7.0.0",
+      "product_version": "0.7.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Dialogs.dll",
+      "assembly_identity": "Avalonia.Dialogs, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Fonts.Inter.dll",
+      "assembly_identity": "Avalonia.Fonts.Inter, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.HarfBuzz.dll",
+      "assembly_identity": "Avalonia.HarfBuzz, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Headless.XUnit.dll",
+      "assembly_identity": "Avalonia.Headless.XUnit, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Headless.dll",
+      "assembly_identity": "Avalonia.Headless, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Markup.Xaml.Loader.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml.Loader, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Markup.Xaml.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Markup.dll",
+      "assembly_identity": "Avalonia.Markup, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Metal.dll",
+      "assembly_identity": "Avalonia.Metal, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.MicroCom.dll",
+      "assembly_identity": "Avalonia.MicroCom, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.OpenGL.dll",
+      "assembly_identity": "Avalonia.OpenGL, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Remote.Protocol.dll",
+      "assembly_identity": "Avalonia.Remote.Protocol, Version=12.1.0.0, Culture=neutral, PublicKeyToken=7ecde292c616a9f3",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Skia.dll",
+      "assembly_identity": "Avalonia.Skia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Themes.Fluent.dll",
+      "assembly_identity": "Avalonia.Themes.Fluent, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Themes.Simple.dll",
+      "assembly_identity": "Avalonia.Themes.Simple, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Vulkan.dll",
+      "assembly_identity": "Avalonia.Vulkan, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.dll",
+      "assembly_identity": "Avalonia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/HarfBuzzSharp.dll",
+      "assembly_identity": "HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "1.0.0.0",
+      "file_version": "8.3.1.3",
+      "product_version": "8.3.1.3+release-3.119.2.2888c737ad016d584c74525e2d35db5097ea8576.2888c737ad016d584c74525e2d35db5097ea8576"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/MicroCom.Runtime.dll",
+      "assembly_identity": "MicroCom.Runtime, Version=0.11.6.0, Culture=neutral, PublicKeyToken=b30be05a5f7688e9",
+      "assembly_version": "0.11.6.0",
+      "file_version": "0.11.6.0",
+      "product_version": "0.11.6+76785efcafd91b5902fd19dd11145f6dd655b7b4"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.ApplicationInsights.dll",
+      "assembly_identity": "Microsoft.ApplicationInsights, Version=2.23.0.29, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "assembly_version": "2.23.0.29",
+      "file_version": "2.23.0.00029",
+      "product_version": "2.23.0+2faa7e8b157a431daa2e71785d68abd5fa817b53"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.Bcl.AsyncInterfaces.dll",
+      "assembly_identity": "Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51",
+      "assembly_version": "6.0.0.0",
+      "file_version": "6.0.21.52210",
+      "product_version": "6.0.0+4822e3c3aa77eb82b2fb33c9321f923cf11ddde6"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CommunicationUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.TestPlatform.CoreUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CoreUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CrossPlatEngine, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "assembly_identity": "Microsoft.TestPlatform.PlatformAbstractions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.TestPlatform.Utilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.Testing.Extensions.MSBuild.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.MSBuild, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.Testing.Extensions.Telemetry.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.Telemetry, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.TrxReport.Abstractions, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.Testing.Platform.dll",
+      "assembly_identity": "Microsoft.Testing.Platform, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "assembly_identity": "Microsoft.VisualStudio.CodeCoverage.Shim, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.625.52306",
+      "product_version": "18.0.6+7aa7b7947b278b8fd544a3e998a0f18778883ac5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Newtonsoft.Json.dll",
+      "assembly_identity": "Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed",
+      "assembly_version": "13.0.0.0",
+      "file_version": "13.0.3.27908",
+      "product_version": "13.0.3+0a2e291c0d9c0c7675d445703e51750363a549ef"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/ProCharts.Avalonia.dll",
+      "assembly_identity": "ProCharts.Avalonia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/ProCharts.Skia.dll",
+      "assembly_identity": "ProCharts.Skia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/ProCharts.dll",
+      "assembly_identity": "ProCharts, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/ProDataGrid.Charting.dll",
+      "assembly_identity": "ProDataGrid.Charting, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/ProDataGrid.FormulaEngine.Excel.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine.Excel, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/ProDataGrid.FormulaEngine.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/SkiaSharp.dll",
+      "assembly_identity": "SkiaSharp, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "3.119.0.0",
+      "file_version": "3.119.4.0",
+      "product_version": "3.119.4+release-3.119.4.f568ac94dd768ef9a2f593537cfde2dd0d348ef5.f568ac94dd768ef9a2f593537cfde2dd0d348ef5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/testhost.dll",
+      "assembly_identity": "testhost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.abstractions.dll",
+      "assembly_identity": "xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "2.0.0.0",
+      "file_version": "",
+      "product_version": "2.0.0.0"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.runner.visualstudio.testadapter.dll",
+      "assembly_identity": "xunit.runner.visualstudio.testadapter, Version=3.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "assembly_version": "3.1.5.0",
+      "file_version": "3.1.5",
+      "product_version": "3.1.5+1b188a7b0a"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.v3.assert.dll",
+      "assembly_identity": "xunit.v3.assert, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.v3.common.dll",
+      "assembly_identity": "xunit.v3.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.v3.core.dll",
+      "assembly_identity": "xunit.v3.core, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.v3.mtp-v1.dll",
+      "assembly_identity": "xunit.v3.mtp-v1, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.v3.runner.common.dll",
+      "assembly_identity": "xunit.v3.runner.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.v3.runner.inproc.console.dll",
+      "assembly_identity": "xunit.v3.runner.inproc.console, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/xunit.v3.runner.utility.netcore.dll",
+      "assembly_identity": "xunit.v3.runner.utility.netcore, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Base.dll",
+      "assembly_identity": "Avalonia.Base, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid.UnitTests, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.dll",
+      "assembly_identity": "Avalonia.Controls.DataGrid, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.dll",
+      "assembly_identity": "Avalonia.Controls, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.DesignerSupport.dll",
+      "assembly_identity": "Avalonia.DesignerSupport, Version=0.7.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "0.7.0.0",
+      "file_version": "0.7.0.0",
+      "product_version": "0.7.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Dialogs.dll",
+      "assembly_identity": "Avalonia.Dialogs, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Fonts.Inter.dll",
+      "assembly_identity": "Avalonia.Fonts.Inter, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.HarfBuzz.dll",
+      "assembly_identity": "Avalonia.HarfBuzz, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Headless.XUnit.dll",
+      "assembly_identity": "Avalonia.Headless.XUnit, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Headless.dll",
+      "assembly_identity": "Avalonia.Headless, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Markup.Xaml.Loader.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml.Loader, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Markup.Xaml.dll",
+      "assembly_identity": "Avalonia.Markup.Xaml, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Markup.dll",
+      "assembly_identity": "Avalonia.Markup, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Metal.dll",
+      "assembly_identity": "Avalonia.Metal, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.MicroCom.dll",
+      "assembly_identity": "Avalonia.MicroCom, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.OpenGL.dll",
+      "assembly_identity": "Avalonia.OpenGL, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Remote.Protocol.dll",
+      "assembly_identity": "Avalonia.Remote.Protocol, Version=12.1.0.0, Culture=neutral, PublicKeyToken=7ecde292c616a9f3",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Skia.dll",
+      "assembly_identity": "Avalonia.Skia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Themes.Fluent.dll",
+      "assembly_identity": "Avalonia.Themes.Fluent, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Themes.Simple.dll",
+      "assembly_identity": "Avalonia.Themes.Simple, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Vulkan.dll",
+      "assembly_identity": "Avalonia.Vulkan, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.dll",
+      "assembly_identity": "Avalonia, Version=12.1.0.0, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.0",
+      "file_version": "12.1.0.0",
+      "product_version": "12.1.0+a21b9f573172f705a944dcc8aad7f036b9986f39"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/HarfBuzzSharp.dll",
+      "assembly_identity": "HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "1.0.0.0",
+      "file_version": "8.3.1.3",
+      "product_version": "8.3.1.3+release-3.119.2.2888c737ad016d584c74525e2d35db5097ea8576.2888c737ad016d584c74525e2d35db5097ea8576"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/MicroCom.Runtime.dll",
+      "assembly_identity": "MicroCom.Runtime, Version=0.11.6.0, Culture=neutral, PublicKeyToken=b30be05a5f7688e9",
+      "assembly_version": "0.11.6.0",
+      "file_version": "0.11.6.0",
+      "product_version": "0.11.6+76785efcafd91b5902fd19dd11145f6dd655b7b4"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.ApplicationInsights.dll",
+      "assembly_identity": "Microsoft.ApplicationInsights, Version=2.23.0.29, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "assembly_version": "2.23.0.29",
+      "file_version": "2.23.0.00029",
+      "product_version": "2.23.0+2faa7e8b157a431daa2e71785d68abd5fa817b53"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.Bcl.AsyncInterfaces.dll",
+      "assembly_identity": "Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51",
+      "assembly_version": "6.0.0.0",
+      "file_version": "6.0.21.52210",
+      "product_version": "6.0.0+4822e3c3aa77eb82b2fb33c9321f923cf11ddde6"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CommunicationUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.TestPlatform.CoreUtilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CoreUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "assembly_identity": "Microsoft.TestPlatform.CrossPlatEngine, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "assembly_identity": "Microsoft.TestPlatform.PlatformAbstractions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.TestPlatform.Utilities.dll",
+      "assembly_identity": "Microsoft.TestPlatform.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.Testing.Extensions.MSBuild.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.MSBuild, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.Testing.Extensions.Telemetry.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.Telemetry, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.Testing.Extensions.TrxReport.Abstractions.dll",
+      "assembly_identity": "Microsoft.Testing.Extensions.TrxReport.Abstractions, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.Testing.Platform.dll",
+      "assembly_identity": "Microsoft.Testing.Platform, Version=1.9.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "1.9.1.0",
+      "file_version": "1.900.125.56105",
+      "product_version": "1.9.1+cb5afc3bb9bb01ebd75b57f89e8358b914ee2a49"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "assembly_identity": "Microsoft.VisualStudio.CodeCoverage.Shim, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.625.52306",
+      "product_version": "18.0.6+7aa7b7947b278b8fd544a3e998a0f18778883ac5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "assembly_identity": "Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Newtonsoft.Json.dll",
+      "assembly_identity": "Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed",
+      "assembly_version": "13.0.0.0",
+      "file_version": "13.0.3.27908",
+      "product_version": "13.0.3+0a2e291c0d9c0c7675d445703e51750363a549ef"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/ProCharts.Avalonia.dll",
+      "assembly_identity": "ProCharts.Avalonia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/ProCharts.Skia.dll",
+      "assembly_identity": "ProCharts.Skia, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/ProCharts.dll",
+      "assembly_identity": "ProCharts, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/ProDataGrid.Charting.dll",
+      "assembly_identity": "ProDataGrid.Charting, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/ProDataGrid.FormulaEngine.Excel.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine.Excel, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/ProDataGrid.FormulaEngine.dll",
+      "assembly_identity": "ProDataGrid.FormulaEngine, Version=12.1.0.6, Culture=neutral, PublicKeyToken=c8d484a7012f9a8b",
+      "assembly_version": "12.1.0.6",
+      "file_version": "12.1.0.6",
+      "product_version": "12.1.0.6+d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/SkiaSharp.dll",
+      "assembly_identity": "SkiaSharp, Version=3.119.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+      "assembly_version": "3.119.0.0",
+      "file_version": "3.119.4.0",
+      "product_version": "3.119.4+release-3.119.4.f568ac94dd768ef9a2f593537cfde2dd0d348ef5.f568ac94dd768ef9a2f593537cfde2dd0d348ef5"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/testhost.dll",
+      "assembly_identity": "testhost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "assembly_version": "15.0.0.0",
+      "file_version": "18.0.125.55701",
+      "product_version": "18.0.1"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.abstractions.dll",
+      "assembly_identity": "xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "2.0.0.0",
+      "file_version": "",
+      "product_version": "2.0.0.0"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.runner.visualstudio.testadapter.dll",
+      "assembly_identity": "xunit.runner.visualstudio.testadapter, Version=3.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "assembly_version": "3.1.5.0",
+      "file_version": "3.1.5",
+      "product_version": "3.1.5+1b188a7b0a"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.v3.assert.dll",
+      "assembly_identity": "xunit.v3.assert, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.v3.common.dll",
+      "assembly_identity": "xunit.v3.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.v3.core.dll",
+      "assembly_identity": "xunit.v3.core, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.v3.mtp-v1.dll",
+      "assembly_identity": "xunit.v3.mtp-v1, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.v3.runner.common.dll",
+      "assembly_identity": "xunit.v3.runner.common, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.v3.runner.inproc.console.dll",
+      "assembly_identity": "xunit.v3.runner.inproc.console, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    },
+    {
+      "path": "/home/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/xunit.v3.runner.utility.netcore.dll",
+      "assembly_identity": "xunit.v3.runner.utility.netcore, Version=3.2.2.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c",
+      "assembly_version": "3.2.2.0",
+      "file_version": "3.2.2",
+      "product_version": "3.2.2+728c1dce01"
+    }
+  ]
+}

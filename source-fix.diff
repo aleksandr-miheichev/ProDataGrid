@@ -1,0 +1,41 @@
+diff --git a/src/Avalonia.Controls.DataGrid.UnitTests/DataGridReflectionTests.cs b/src/Avalonia.Controls.DataGrid.UnitTests/DataGridReflectionTests.cs
+index 33b29d6e..57abb4d7 100644
+--- a/src/Avalonia.Controls.DataGrid.UnitTests/DataGridReflectionTests.cs
++++ b/src/Avalonia.Controls.DataGrid.UnitTests/DataGridReflectionTests.cs
+@@ -132,6 +132,19 @@ public sealed class DataGridReflectionTests
+         Assert.Null(DataGridValueConverter.Instance.ConvertBack("", typeof(decimal?), null, CultureInfo.InvariantCulture));
+     }
+ 
++    [Theory]
++    [InlineData(false)]
++    [InlineData(true)]
++    public void String_conversion_preserves_null_and_the_original_reference(bool reflectionEnabled)
++    {
++        using var settings = new ReflectionSetting(reflectionEnabled);
++        var culture = CultureInfo.GetCultureInfo("tr-TR");
++        foreach (string? value in new string?[] { null, string.Empty, new string('x', 32), "I\u0130" })
++        {
++            Assert.Same(value, DataGridValueConverter.Instance.Convert(value, typeof(string), new object(), culture));
++        }
++    }
++
+     [Fact]
+     public void Disabled_reflection_requires_an_explicit_converter_for_custom_target_types()
+     {
+diff --git a/src/Avalonia.Controls.DataGrid/DataGridValueConverter.cs b/src/Avalonia.Controls.DataGrid/DataGridValueConverter.cs
+index 1ea90801..9896785e 100644
+--- a/src/Avalonia.Controls.DataGrid/DataGridValueConverter.cs
++++ b/src/Avalonia.Controls.DataGrid/DataGridValueConverter.cs
+@@ -40,6 +40,12 @@ namespace Avalonia.Controls
+ 
+         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+         {
++            // Null and string identity need neither compatibility reflection nor conversion.
++            if (targetType == typeof(string) && (value == null || value is string))
++            {
++                return value;
++            }
++
+             return DataGridReflectionOptions.IsEnabled
+                 ? DefaultValueConverter.Instance.Convert(value, targetType, parameter, culture)
+                 : ConvertWithoutReflection(value, targetType, culture);

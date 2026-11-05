@@ -1,0 +1,30 @@
+{
+  "artifact": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+  "harness_sha256": "755668ad8404f9184cb99a4a48567e9b148ef22459cba91916972180918973cb",
+  "runner_sha256": "b131016bdbe7a452ef83e143009b004745251d078f07e77a0fe391b17046d2bd",
+  "original_runner_sha256": "dd6e2b0b1809cf34baa75e3025cf19965a007caf07e268c2ca61d2dbc0ab9a8f",
+  "order": "ABBABAAB",
+  "skip_build": false,
+  "started_utc": "2026-11-05T08:04:49.418448+00:00",
+  "environment": {},
+  "revisions": {
+    "A": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+    "B": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9"
+  },
+  "binaries": {
+    "A": {
+      "assembly_sha256": "ef78a0f7b74350f9da84a945a7439f511a7e777d2ce67af3992b88a08154cb90",
+      "runtimeconfig_sha256": "a217d17be0661abf2717a26937c6e379c33542cb6f292fd3fc5a2d5113a9d6dc",
+      "deps_sha256": "64e8fca05a1528030f725350915fa7a73e7bc9b3183ae7534bc2c1ce3addd8d4",
+      "sdk": "10.0.403"
+    },
+    "B": {
+      "assembly_sha256": "b04b4a7b6d67b23be37a11f5513fb9769ea8c4ac278786ee828e6d7ccdd92014",
+      "runtimeconfig_sha256": "a217d17be0661abf2717a26937c6e379c33542cb6f292fd3fc5a2d5113a9d6dc",
+      "deps_sha256": "64e8fca05a1528030f725350915fa7a73e7bc9b3183ae7534bc2c1ce3addd8d4",
+      "sdk": "10.0.403"
+    }
+  },
+  "last_stage": "completed",
+  "ended_utc": "2026-11-05T08:09:16.973990+00:00"
+}

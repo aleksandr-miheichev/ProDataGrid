@@ -1,0 +1,3 @@
+{"name": "worktree-negative", "command": ["git", "worktree", "add", "--detach", "/Users/runner/work/_temp/perf399-native-original-42006138785-1/reflection-enabled", "596db0a6e401eb9c26b98e67de3ff6f247f0bed9"], "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout", "timeout_seconds": 600, "started_utc": "2026-11-05T09:54:44.064239+00:00"}
+Preparing worktree (detached HEAD 596db0a6)
+HEAD is now at 596db0a6 build: update SourceLink to patched stable 10.0.403

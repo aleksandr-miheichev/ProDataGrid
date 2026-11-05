@@ -1,0 +1,105 @@
+[
+  {
+    "name": "worktree-baseline",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-functional-recheck-42011256034-1/baseline",
+      "f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T10:31:51.031353+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T10:31:51.418834+00:00"
+  },
+  {
+    "name": "worktree-final",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-functional-recheck-42011256034-1/final",
+      "d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T10:31:51.419984+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T10:31:51.773420+00:00"
+  },
+  {
+    "name": "baseline-target",
+    "command": [
+      "dotnet",
+      "test",
+      "src/Avalonia.Controls.DataGrid.LeakTests/Avalonia.Controls.DataGrid.LeakTests.csproj",
+      "-c",
+      "Release",
+      "-p:CollectCoverage=false",
+      "--settings",
+      "build/ci.runsettings",
+      "--filter",
+      "FullyQualifiedName~DataGrid_ColumnDefinitionsSource_DoesNotLeak",
+      "--logger",
+      "trx",
+      "--results-directory",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/baseline-target-trx"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-functional-recheck-42011256034-1/baseline",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T10:31:52.931697+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T10:32:32.330611+00:00"
+  },
+  {
+    "name": "final-target",
+    "command": [
+      "dotnet",
+      "test",
+      "src/Avalonia.Controls.DataGrid.LeakTests/Avalonia.Controls.DataGrid.LeakTests.csproj",
+      "-c",
+      "Release",
+      "-p:CollectCoverage=false",
+      "--settings",
+      "build/ci.runsettings",
+      "--filter",
+      "FullyQualifiedName~DataGrid_ColumnDefinitionsSource_DoesNotLeak",
+      "--logger",
+      "trx",
+      "--results-directory",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/final-target-trx"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-functional-recheck-42011256034-1/final",
+    "timeout_seconds": 600,
+    "started_utc": "2026-11-05T10:32:33.861608+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T10:33:08.838587+00:00"
+  },
+  {
+    "name": "final-full-suite",
+    "command": [
+      "dotnet",
+      "test",
+      "Avalonia.Controls.DataGrid.slnx",
+      "-c",
+      "Release",
+      "-m:2",
+      "-p:CollectCoverage=false",
+      "--settings",
+      "build/ci.runsettings",
+      "--logger",
+      "trx",
+      "--results-directory",
+      "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/final-full-suite-trx"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-functional-recheck-42011256034-1/final",
+    "timeout_seconds": 1200,
+    "started_utc": "2026-11-05T10:33:09.837915+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T10:40:22.137929+00:00"
+  }
+]

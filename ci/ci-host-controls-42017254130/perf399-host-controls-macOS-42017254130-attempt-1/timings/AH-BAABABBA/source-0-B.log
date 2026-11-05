@@ -1,0 +1,9 @@
+{"name": "timings/AH-BAABABBA/source-0-B", "command": ["dotnet", "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll", "-class", "*ReviewPerformanceTests", "-parallel", "none"], "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H", "timeout_seconds": 240, "benchmark_environment": {"DOTNET_TieredCompilation": "0", "REVIEW_SCENARIO": "source", "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-B.jsonl"}, "started_utc": "2026-11-05T11:17:45.792744+00:00"}
+xUnit.net v3 In-Process Runner v3.2.2+728c1dce01 (64-bit .NET 10.0.14)
+[37m  Discovering: Avalonia.Controls.DataGrid.UnitTests
+[0m[37m  Discovered:  Avalonia.Controls.DataGrid.UnitTests
+[0m[37m  Starting:    Avalonia.Controls.DataGrid.UnitTests
+[0m[37m  Finished:    Avalonia.Controls.DataGrid.UnitTests (ID = 'a76db4162c281e9d672f13cb7e770ac6e3c219608aafdfac4a9623945f655069')
+[0m[37m=== TEST EXECUTION SUMMARY ===
+[0m[37m   Avalonia.Controls.DataGrid.UnitTests  Total: 1, Errors: 0, Failed: 0, Skipped: 0, Not Run: 0, Time: 6.483s
+[0m[0m

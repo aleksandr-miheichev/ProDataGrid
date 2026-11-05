@@ -1,0 +1,1 @@
+{"name": "source-generation-semantic-validation", "command": ["dotnet", "run", "-c", "Release", "--project", "tests/ProDataGrid.SourceGeneration.Benchmarks", "--", "--validate"], "cwd": "/Users/runner/work/_temp/perf399-41999728294-1/validation", "timeout_seconds": 600, "started_utc": "2026-11-05T09:17:27.617202+00:00"}

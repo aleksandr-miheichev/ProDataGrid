@@ -1,0 +1,54 @@
+{
+  "full-solution-tests": {
+    "status": "not_run",
+    "reason": "Supplementary binary factor controls only; earlier evidence stays separately scoped",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "source-generation-semantic-validation": {
+    "status": "not_run",
+    "reason": "Supplementary binary factor controls only; earlier evidence stays separately scoped",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "primary-ABBABAAB": {
+    "status": "not_run",
+    "reason": "Supplementary binary factor controls only; earlier evidence stays separately scoped",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "primary-BAABABBA": {
+    "status": "not_run",
+    "reason": "Supplementary binary factor controls only; earlier evidence stays separately scoped",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "same-source-control-ABBABAAB": {
+    "status": "not_run",
+    "reason": "Supplementary binary factor controls only; earlier evidence stays separately scoped",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "strict-native-aot": {
+    "status": "not_run",
+    "reason": "No native repeat; refer to successful exact-source native-only evidence",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729"
+  },
+  "reflection-enabled-negative-control": {
+    "status": "not_run",
+    "reason": "No native repeat; refer to successful exact-source native-only evidence",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729"
+  },
+  "provenance-prebuild-and-binary-proof": {
+    "status": "passed"
+  },
+  "supplementary-binary-factor-timings": {
+    "status": "passed"
+  },
+  "raw-evidence-and-input-validation": {
+    "status": "failed",
+    "error": "Not exactly one passing test: timings/AH-ABBABAAB/source-0-A; Not exactly one passing test: timings/AH-ABBABAAB/source-1-B; Not exactly one passing test: timings/AH-ABBABAAB/source-2-B; Not exactly one passing test: timings/AH-ABBABAAB/source-3-A; Not exactly one passing test: timings/AH-ABBABAAB/source-4-B; Not exactly one passing test: timings/AH-ABBABAAB/source-5-A; Not exactly one passing test: timings/AH-ABBABAAB/source-6-A; Not exactly one passing test: timings/AH-ABBABAAB/source-7-B; Not exactly one passing test: timings/AH-ABBABAAB/scroll-0-A; Not exactly one passing test: timings/AH-ABBABAAB/scroll-1-B; Not exactly one passing test: timings/AH-ABBABAAB/scroll-2-B; Not exactly one passing test: timings/AH-ABBABAAB/scroll-3-A; Not exactly one passing test: timings/AH-ABBABAAB/scroll-4-B; Not exactly one passing test: timings/AH-ABBABAAB/scroll-5-A; Not exactly one passing test: timings/AH-ABBABAAB/scroll-6-A; Not exactly one passing test: timings/AH-ABBABAAB/scroll-7-B; Not exactly one passing test: timings/AH-BAABABBA/source-0-B; Not exactly one passing test: timings/AH-BAABABBA/source-1-A; Not exactly one passing test: timings/AH-BAABABBA/source-2-A; Not exactly one passing test: timings/AH-BAABABBA/source-3-B; Not exactly one passing test: timings/AH-BAABABBA/source-4-A; Not exactly one passing test: timings/AH-BAABABBA/source-5-B; Not exactly one passing test: timings/AH-BAABABBA/source-6-B; Not exactly one passing test: timings/AH-BAABABBA/source-7-A; Not exactly one passing test: timings/AH-BAABABBA/scroll-0-B; Not exactly one passing test: timings/AH-BAABABBA/scroll-1-A; Not exactly one passing test: timings/AH-BAABABBA/scroll-2-A; Not exactly one passing test: timings/AH-BAABABBA/scroll-3-B; Not exactly one passing test: timings/AH-BAABABBA/scroll-4-A; Not exactly one passing test: timings/AH-BAABABBA/scroll-5-B; Not exactly one passing test: timings/AH-BAABABBA/scroll-6-B; Not exactly one passing test: timings/AH-BAABABBA/scroll-7-A; Not exactly one passing test: timings/AP-ABBABAAB/source-0-A; Not exactly one passing test: timings/AP-ABBABAAB/source-1-B; Not exactly one passing test: timings/AP-ABBABAAB/source-2-B; Not exactly one passing test: timings/AP-ABBABAAB/source-3-A; Not exactly one passing test: timings/AP-ABBABAAB/source-4-B; Not exactly one passing test: timings/AP-ABBABAAB/source-5-A; Not exactly one passing test: timings/AP-ABBABAAB/source-6-A; Not exactly one passing test: timings/AP-ABBABAAB/source-7-B; Not exactly one passing test: timings/AP-ABBABAAB/scroll-0-A; Not exactly one passing test: timings/AP-ABBABAAB/scroll-1-B; Not exactly one passing test: timings/AP-ABBABAAB/scroll-2-B; Not exactly one passing test: timings/AP-ABBABAAB/scroll-3-A; Not exactly one passing test: timings/AP-ABBABAAB/scroll-4-B; Not exactly one passing test: timings/AP-ABBABAAB/scroll-5-A; Not exactly one passing test: timings/AP-ABBABAAB/scroll-6-A; Not exactly one passing test: timings/AP-ABBABAAB/scroll-7-B; Not exactly one passing test: timings/AP-BAABABBA/source-0-B; Not exactly one passing test: timings/AP-BAABABBA/source-1-A; Not exactly one passing test: timings/AP-BAABABBA/source-2-A; Not exactly one passing test: timings/AP-BAABABBA/source-3-B; Not exactly one passing test: timings/AP-BAABABBA/source-4-A; Not exactly one passing test: timings/AP-BAABABBA/source-5-B; Not exactly one passing test: timings/AP-BAABABBA/source-6-B; Not exactly one passing test: timings/AP-BAABABBA/source-7-A; Not exactly one passing test: timings/AP-BAABABBA/scroll-0-B; Not exactly one passing test: timings/AP-BAABABBA/scroll-1-A; Not exactly one passing test: timings/AP-BAABABBA/scroll-2-A; Not exactly one passing test: timings/AP-BAABABBA/scroll-3-B; Not exactly one passing test: timings/AP-BAABABBA/scroll-4-A; Not exactly one passing test: timings/AP-BAABABBA/scroll-5-B; Not exactly one passing test: timings/AP-BAABABBA/scroll-6-B; Not exactly one passing test: timings/AP-BAABABBA/scroll-7-A"
+  }
+}

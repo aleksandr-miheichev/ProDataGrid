@@ -1,0 +1,416 @@
+name: PR399 final native-only revalidation
+
+on:
+  push:
+    branches: ['codex/verify-perf399-native-final-*']
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: 'Full source SHA: must be the sole parent of this CI-only commit'
+        type: string
+        required: true
+        default: 'd0a415f76adcc0a2a42998121e0c8353ca5650ab'
+
+permissions:
+  contents: read
+
+# Different pushes/attempts retain separate results; do not cancel an expensive run.
+concurrency:
+  group: perf399-native-final-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: ${{ matrix.name }} / native AOT only
+    if: >-
+      github.repository == 'aleksandr-miheichev/ProDataGrid' &&
+      github.event.repository.fork == true &&
+      github.event.repository.private == false
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-2025
+            rid: win-x64
+            arch: x64
+          - name: Linux
+            os: ubuntu-26.04
+            rid: linux-x64
+            arch: x64
+          - name: macOS
+            os: macos-26
+            rid: osx-arm64
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    env:
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+      PYTHONUNBUFFERED: '1'
+      REQUESTED_SOURCE: ${{ inputs.source_sha || '' }}
+      MATRIX_RUNNER: ${{ matrix.os }}
+      MATRIX_RID: ${{ matrix.rid }}
+      MATRIX_ARCH: ${{ matrix.arch }}
+
+    steps:
+      - name: Record invocation before setup
+        timeout-minutes: 1
+        shell: pwsh
+        run: |
+          $evidencePath = Join-Path $env:GITHUB_WORKSPACE 'evidence'
+          New-Item -ItemType Directory -Path $evidencePath -Force | Out-Null
+          $dotnetInstallPath = Join-Path $env:RUNNER_TEMP 'dotnet-perf399-native'
+          "DOTNET_INSTALL_DIR=$dotnetInstallPath" | Out-File -LiteralPath $env:GITHUB_ENV -Append -Encoding utf8
+          "DOTNET_ROOT=$dotnetInstallPath" | Out-File -LiteralPath $env:GITHUB_ENV -Append -Encoding utf8
+          [ordered]@{
+            repository = $env:GITHUB_REPOSITORY
+            workflow_sha = $env:GITHUB_SHA
+            ref = $env:GITHUB_REF
+            event = $env:GITHUB_EVENT_NAME
+            run_id = $env:GITHUB_RUN_ID
+            run_attempt = $env:GITHUB_RUN_ATTEMPT
+            runner = $env:MATRIX_RUNNER
+            rid = $env:MATRIX_RID
+            started_utc = [DateTime]::UtcNow.ToString('o')
+          } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $evidencePath 'invocation.json') -Encoding utf8
+
+      - name: Checkout the CI-only fork commit
+        timeout-minutes: 5
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aleksandr-miheichev/ProDataGrid
+          ref: ${{ github.sha }}
+          path: ci-checkout
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install the exact stable Python
+        timeout-minutes: 8
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+          architecture: ${{ matrix.arch }}
+          allow-prereleases: false
+          check-latest: false
+
+      - name: Install the exact stable SDK into an isolated directory
+        timeout-minutes: 10
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          dotnet-version: '10.0.403'
+          architecture: ${{ matrix.arch }}
+          skip-lts-prepass: true
+          check-latest: false
+          cache: false
+
+      - name: Revalidate native publish and actual native binary only
+        timeout-minutes: 50
+        shell: python
+        run: |
+          import datetime
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import platform
+          import re
+          import shutil
+          import signal
+          import subprocess
+          import sys
+          import traceback
+
+          workspace = Path(os.environ['GITHUB_WORKSPACE']).resolve()
+          evidence = workspace / 'evidence'
+          repo = workspace / 'ci-checkout'
+          root = Path(os.environ['RUNNER_TEMP']) / ('perf399-native-final-' + os.environ['GITHUB_RUN_ID'] + '-' + os.environ['GITHUB_RUN_ATTEMPT'])
+          root.mkdir(exist_ok=False)
+          expected_source = 'd0a415f76adcc0a2a42998121e0c8353ca5650ab'
+          prior_run_url = 'https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241'
+          active_phases = ('provenance-and-preflight', 'strict-native-aot', 'reflection-enabled-negative-control')
+          reused_phases = ('full-solution-tests', 'source-generation-semantic-validation', 'primary-ABBABAAB', 'primary-BAABABBA', 'same-source-control-ABBABAAB')
+          results = {name: {'status': 'not_run', 'reason': 'Native-only revalidation; reuse earlier exact-source evidence without rerunning this phase', 'source_sha': expected_source, 'evidence_run': prior_run_url} for name in reused_phases}
+          commands = []
+          abort_remaining = False
+          rid = os.environ['MATRIX_RID']
+          manifest_path = repo / '.github/ci-toolchain.json'
+
+          def write_json(path, value):
+              path.parent.mkdir(parents=True, exist_ok=True)
+              temporary = path.with_suffix(path.suffix + '.tmp')
+              temporary.write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
+              temporary.replace(path)
+
+          class CommandTimedOut(RuntimeError):
+              pass
+
+          def capture(command, cwd=repo):
+              global abort_remaining
+              command = [str(x) for x in command]
+              try:
+                  result = subprocess.run(command, cwd=cwd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=60)
+              except subprocess.TimeoutExpired as error:
+                  abort_remaining = True
+                  output = error.stdout or b''
+                  if isinstance(output, bytes):
+                      output = output.decode('utf-8', errors='replace')
+                  with (evidence / 'observations.jsonl').open('a', encoding='utf-8') as log:
+                      log.write(json.dumps({'command': command, 'cwd': str(cwd), 'exit_code': None, 'timed_out': True, 'timeout_seconds': 60, 'output': output}) + '\n')
+                  raise CommandTimedOut('Observation command exceeded 60 seconds: ' + repr(command)) from error
+              with (evidence / 'observations.jsonl').open('a', encoding='utf-8') as log:
+                  log.write(json.dumps({'command': command, 'cwd': str(cwd), 'exit_code': result.returncode, 'output': result.stdout}) + '\n')
+              result.check_returncode()
+              return result.stdout.strip()
+
+          def terminate_tree(process, log, record):
+              try:
+                  if os.name == 'nt':
+                      cleanup = ['taskkill', '/PID', str(process.pid), '/T', '/F']
+                      record['termination_command'] = cleanup
+                      cleanup_result = subprocess.run(cleanup, stdout=log, stderr=subprocess.STDOUT, timeout=30)
+                      record['termination_exit_code'] = cleanup_result.returncode
+                  else:
+                      record['termination_process_group'] = process.pid
+                      try:
+                          os.killpg(process.pid, signal.SIGTERM)
+                      except ProcessLookupError:
+                          pass
+                      try:
+                          process.wait(timeout=10)
+                      except subprocess.TimeoutExpired:
+                          pass
+                      # Kill the whole group even if its original parent already exited.
+                      try:
+                          os.killpg(process.pid, signal.SIGKILL)
+                      except ProcessLookupError:
+                          pass
+                  process.wait(timeout=10)
+                  record['termination_parent_exit_code'] = process.returncode
+              except Exception:
+                  record['termination_error'] = traceback.format_exc()
+                  log.write(record['termination_error'])
+
+          def run_logged(name, command, cwd=repo, timeout=600):
+              global abort_remaining
+              command = [str(x) for x in command]
+              record = {'name': name, 'command': command, 'cwd': str(cwd), 'timeout_seconds': timeout, 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+              commands.append(record)
+              write_json(evidence / 'commands.json', commands)
+              with (evidence / (name + '.log')).open('w', encoding='utf-8') as log:
+                  log.write(json.dumps(record) + '\n')
+                  log.flush()
+                  try:
+                      options = {'creationflags': subprocess.CREATE_NEW_PROCESS_GROUP} if os.name == 'nt' else {'start_new_session': True}
+                      process = subprocess.Popen(command, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, **options)
+                      try:
+                          record['exit_code'] = process.wait(timeout=timeout)
+                      except subprocess.TimeoutExpired as error:
+                          abort_remaining = True
+                          record['timed_out'] = True
+                          record['exit_code'] = None
+                          log.write(f'\nOuter command timeout after {timeout} seconds; aborting remaining phases.\n')
+                          log.flush()
+                          terminate_tree(process, log, record)
+                          raise CommandTimedOut(f'{name} exceeded {timeout} seconds; all later phases are Not run') from error
+                  except BaseException:
+                      traceback.print_exc(file=log)
+                      record['exit_code'] = None
+                      raise
+                  finally:
+                      record['finished_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                      write_json(evidence / 'commands.json', commands)
+              return record['exit_code']
+
+          def require_success(name, command, cwd=repo, timeout=600):
+              code = run_logged(name, command, cwd, timeout)
+              if code != 0:
+                  raise RuntimeError(f'{name} exited {code}; retained the original log')
+
+          def phase(name, operation):
+              global abort_remaining
+              if abort_remaining:
+                  results[name] = {'status': 'not_run', 'reason': 'A previous command timed out; do not risk overlapping surviving child processes'}
+                  write_json(evidence / 'phase-results.json', results)
+                  return False
+              results[name] = {'status': 'running'}
+              write_json(evidence / 'phase-results.json', results)
+              try:
+                  operation()
+                  results[name] = {'status': 'passed'}
+              except CommandTimedOut as error:
+                  abort_remaining = True
+                  results[name] = {'status': 'inconclusive', 'timed_out': True, 'error': str(error)}
+                  (evidence / (name + '-exception.log')).write_text(traceback.format_exc(), encoding='utf-8')
+                  print(name + ': ' + str(error), flush=True)
+              except Exception as error:
+                  results[name] = {'status': 'failed', 'error': str(error)}
+                  (evidence / (name + '-exception.log')).write_text(traceback.format_exc(), encoding='utf-8')
+                  print(name + ': ' + str(error), flush=True)
+              write_json(evidence / 'phase-results.json', results)
+              return results[name]['status'] == 'passed'
+
+          def digest(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          def sdk_record(path):
+              return {'path': str(path), 'revision': capture(['git', 'rev-parse', 'HEAD'], path), 'sdk': capture(['dotnet', '--version'], path), 'runtimes': capture(['dotnet', '--list-runtimes'], path), 'dotnet_info': capture(['dotnet', '--info'], path)}
+
+          def verify_source_tree(path):
+              changed = capture(['git', 'diff', '--name-only', 'HEAD'], path)
+              if changed:
+                  raise RuntimeError('Tracked product files changed during validation: ' + changed)
+
+          def publish_command(output, reflection):
+              return ['dotnet', 'publish', 'tests/ProDataGrid.SourceGeneration.AotSmoke/ProDataGrid.SourceGeneration.AotSmoke.csproj', '-c', 'Release', '-r', rid, '--self-contained', 'true', '-p:TrimmerSingleWarn=false', '-p:RuntimeFrameworkVersion=10.0.14', '-p:ProDataGridReflectionEnabled=' + str(reflection).lower(), '-o', output]
+
+          def assess_native_publish(exit_code, text):
+              match = re.search(r'^[ \t]*Generating native code(?:\.\.\.)?[ \t]*\r?$', text, re.IGNORECASE | re.MULTILINE)
+              marker = match.start() if match else -1
+              before = text[:marker] if marker >= 0 else text
+              native = text[marker:] if marker >= 0 else ''
+              il_pattern = r'\b(?:warning|error)\s+IL\d+\b[^\r\n]*'
+              pre_il = re.findall(il_pattern, before, re.IGNORECASE)
+              native_il = re.findall(il_pattern, native, re.IGNORECASE)
+              pre_diagnostics = [line for line in before.splitlines() if re.search(r'\b(?:warning|error)\s+[A-Za-z]+\d+\b', line, re.IGNORECASE)]
+              issues = []
+              if exit_code != 0:
+                  issues.append('Publish must complete with exit code 0')
+              if marker < 0:
+                  issues.append('Publish never reached Generating native code')
+              if native_il:
+                  issues.append('Native generation emitted an IL warning or error')
+              return {'accepted': not issues, 'publish_exit_code': exit_code, 'native_generation_reached': marker >= 0, 'marker_character_offset': marker, 'pre_native_analyzer_diagnostics': pre_diagnostics, 'pre_native_il_diagnostics': pre_il, 'pre_native_il_diagnostic_count': len(pre_il), 'native_il_diagnostics': native_il, 'native_il_diagnostic_count': len(native_il), 'issues': issues}
+
+          def assess_reflection_negative(exit_code, text):
+              partition = assess_native_publish(exit_code, text)
+              marker = partition['marker_character_offset']
+              diagnostics = re.findall(r'\berror\s+IL(?:2026|2070|2075|3050)\b[^\r\n]*', text[marker:] if marker >= 0 else '', re.IGNORECASE)
+              return {'accepted': exit_code not in (None, 0) and marker >= 0 and bool(diagnostics), 'exit_code': exit_code, 'native_generation_reached': marker >= 0, 'genuine_il_errors_after_native_generation': diagnostics, 'pre_native_analyzer_diagnostics': partition['pre_native_analyzer_diagnostics'], 'pre_native_il_diagnostic_count': partition['pre_native_il_diagnostic_count'], 'native_il_diagnostic_count': partition['native_il_diagnostic_count'], 'expected': 'Nonzero exit with IL2026/IL2070/IL2075/IL3050 after the first standalone Generating native code marker'}
+
+          def native_log_validator_selftests():
+              compiler_warnings = '\n'.join('Compiler source.cs(1): warning IL2026: pre-native analyzer diagnostic ' + str(i) for i in range(75))
+              clean_native = 'Generating native code\nNative generation complete.\n'
+              positive_cases = [
+                  ('clean_native_exit_zero', 0, clean_native, True, 0, 0),
+                  ('all_75_pre_native_analyzer_warnings_recorded_native_clean', 0, compiler_warnings + '\n' + clean_native, True, 75, 0),
+                  ('native_warning_rejected', 0, compiler_warnings + '\nGenerating native code\nILC : warning IL3050: native diagnostic\n', False, 75, 1),
+                  ('native_error_rejected_even_with_exit_zero', 0, 'Generating native code\nILC : error IL2026: native diagnostic\n', False, 0, 1),
+                  ('missing_native_marker_rejected', 0, compiler_warnings, False, 75, 0),
+                  ('nonzero_publish_rejected_even_with_clean_native_log', 1, clean_native, False, 0, 0),
+                  ('interrupted_publish_rejected', None, clean_native, False, 0, 0),
+                  ('first_marker_keeps_warning_before_repeated_marker', 0, 'Generating native code\nILC : warning IL3050: first native phase\nGenerating native code\nNative generation complete.\n', False, 0, 1),
+                  ('analyzer_message_mention_is_not_a_marker', 0, 'Compiler : warning IL2026: text mentions Generating native code but no native phase ran\n', False, 1, 0),
+              ]
+              records = []
+              for name, exit_code, text, accepted, pre_count, native_count in positive_cases:
+                  actual = assess_native_publish(exit_code, text)
+                  passed = actual['accepted'] == accepted and actual['pre_native_il_diagnostic_count'] == pre_count and actual['native_il_diagnostic_count'] == native_count
+                  records.append({'kind': 'positive', 'case': name, 'status': 'passed' if passed else 'failed', 'expected_accepted': accepted, 'actual': actual})
+              negative_cases = [
+                  ('negative_real_post_marker_il_error_accepted', 1, 'Generating native code\nILC : error IL2026: reflection is enabled\n', True),
+                  ('negative_pre_marker_il_error_only_rejected', 1, 'Compiler : error IL2026: pre-native analyzer\nGenerating native code\nNative generation complete.\n', False),
+                  ('negative_exit_zero_rejected_even_with_native_error', 0, 'Generating native code\nILC : error IL2026: native diagnostic\n', False),
+                  ('negative_missing_marker_rejected', 1, 'Compiler : error IL3050: no native phase\n', False),
+              ]
+              for name, exit_code, text, accepted in negative_cases:
+                  actual = assess_reflection_negative(exit_code, text)
+                  records.append({'kind': 'negative', 'case': name, 'status': 'passed' if actual['accepted'] == accepted else 'failed', 'expected_accepted': accepted, 'actual': actual})
+              assert all(record['status'] == 'passed' for record in records), records
+              return {'status': 'passed', 'case_count': len(records), 'cases': records}
+
+          def prepare():
+              global source, negative, positive
+              assert sys.version_info[:3] == (3, 15, 2), sys.version
+              manifest = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
+              shutil.copy2(manifest_path, evidence / 'toolchain-manifest.json')
+              assert manifest['validation_mode'] == 'native-only', 'This follow-up must not repeat full-suite or performance phases'
+              assert manifest['source']['recorded_candidate_sha'] == expected_source
+              assert manifest['reused_evidence']['source_sha'] == expected_source
+              assert manifest['reused_evidence']['run_url'] == prior_run_url
+              head = capture(['git', 'rev-parse', 'HEAD'])
+              assert head == os.environ['GITHUB_SHA'], 'Workflow checkout does not match the triggering SHA'
+              parents = capture(['git', 'rev-list', '--parents', '-n', '1', head]).split()
+              assert len(parents) == 2, 'The CI-only commit must have exactly one parent'
+              source = os.environ['REQUESTED_SOURCE'] if os.environ['GITHUB_EVENT_NAME'] == 'workflow_dispatch' else parents[1]
+              assert re.fullmatch('[0-9a-f]{40}', source), 'Use an exact 40-character source SHA'
+              assert source == parents[1] == expected_source, 'The source input, CI-only direct parent and pinned variant source must all match'
+              assert capture(['git', 'rev-parse', source + '^{commit}']) == source
+              changed = capture(['git', 'diff', '--name-only', source, head]).splitlines()
+              allowed = {'.github/workflows/ci-validation.yml', '.github/ci-toolchain.json'}
+              assert set(changed) == allowed, 'The CI-only commit must change exactly the two CI files and no product files: ' + repr(changed)
+              assert set(manifest['install_paths'].values()) == allowed
+              write_json(evidence / 'native-log-validator-selftests.json', native_log_validator_selftests())
+              provenance = {'validation_mode': 'native-only', 'variant': 'final', 'workflow_sha': head, 'source_sha': source, 'ci_only_paths': changed, 'source_resolution': 'explicit input' if os.environ['GITHUB_EVENT_NAME'] == 'workflow_dispatch' else 'sole direct parent', 'reused_evidence': manifest['reused_evidence'], 'reused_phase_status': 'Not run in this follow-up; earlier evidence remains separately attributed', 'manifest_sha256': digest(manifest_path), 'environment': {'python': sys.version, 'python_executable': sys.executable, 'platform': platform.platform(), 'uname': platform.uname()._asdict(), 'logical_cpus': os.cpu_count(), 'runner_label': os.environ['MATRIX_RUNNER'], 'rid': rid, 'runner_arch': os.environ.get('RUNNER_ARCH'), 'image_os': os.environ.get('ImageOS'), 'image_version': os.environ.get('ImageVersion'), 'dotnet_root': os.environ.get('DOTNET_ROOT')}, 'retained_work_root': str(root), 'acceptance_scope': 'Native-only phase-boundary validator correction; no performance acceptance or numerical allowance is introduced'}
+              write_json(evidence / 'provenance.json', provenance)
+              positive, negative = root / 'strict-aot', root / 'reflection-enabled'
+              for name, path in [('positive', positive), ('negative', negative)]:
+                  require_success('worktree-' + name, ['git', 'worktree', 'add', '--detach', path, source])
+              selected = [sdk_record(path) for path in (positive, negative)]
+              write_json(evidence / 'preflight-sdk.json', selected)
+              for item in selected:
+                  assert item['revision'] == expected_source, item
+                  assert item['sdk'] == '10.0.403', item
+                  assert re.search(r'^Microsoft\.NETCore\.App 10\.0\.14 ', item['runtimes'], re.MULTILINE), item
+              assert len(capture(['dotnet', '--list-sdks'], positive).splitlines()) == 1, 'The isolated install unexpectedly contains additional SDKs'
+
+          def strict_aot():
+              output = root / 'strict-aot-publish'
+              code = None
+              try:
+                  code = run_logged('strict-aot-publish', publish_command(output, False), positive, timeout=900)
+              finally:
+                  text = (evidence / 'strict-aot-publish.log').read_text(encoding='utf-8', errors='replace')
+                  assessment = assess_native_publish(code, text)
+                  write_json(evidence / 'strict-aot-publish-assessment.json', assessment)
+                  marker = assessment['marker_character_offset']
+                  (evidence / 'strict-aot-pre-native-compiler-analyzer.log').write_text(text[:marker] if marker >= 0 else text, encoding='utf-8')
+                  (evidence / 'strict-aot-native-generation.log').write_text(text[marker:] if marker >= 0 else '', encoding='utf-8')
+              assert code == 0, f'Strict publish exited {code}; all diagnostics retained without suppression'
+              assert assessment['accepted'], '; '.join(assessment['issues'])
+              binary = output / ('ProDataGrid.SourceGeneration.AotSmoke.exe' if os.name == 'nt' else 'ProDataGrid.SourceGeneration.AotSmoke')
+              assert binary.is_file(), 'Native executable was not produced'
+              write_json(evidence / 'strict-aot-binary.json', {'path': str(binary), 'sha256': digest(binary), 'source_sha': source, 'rid': rid, 'sdk': sdk_record(positive), 'publish_gate': assessment})
+              require_success('strict-aot-run-native-binary', [binary], positive, timeout=120)
+              verify_source_tree(positive)
+
+          def reflection_negative():
+              code = None
+              try:
+                  code = run_logged('reflection-enabled-negative-publish', publish_command(root / 'reflection-enabled-publish', True), negative, timeout=900)
+              finally:
+                  text = (evidence / 'reflection-enabled-negative-publish.log').read_text(encoding='utf-8', errors='replace')
+                  assessment = assess_reflection_negative(code, text)
+                  write_json(evidence / 'reflection-negative-result.json', assessment)
+              assert code not in (None, 0) and assessment['native_generation_reached'] and assessment['genuine_il_errors_after_native_generation'], 'Negative control must fail for a genuine reflection IL error after native generation'
+              assessment['sdk'] = sdk_record(negative)
+              write_json(evidence / 'reflection-negative-result.json', assessment)
+              verify_source_tree(negative)
+
+          write_json(evidence / 'phase-results.json', results)
+          if phase('provenance-and-preflight', prepare):
+              phase('strict-native-aot', strict_aot)
+              phase('reflection-enabled-negative-control', reflection_negative)
+          else:
+              for name in active_phases[1:]:
+                  results[name] = {'status': 'not_run', 'reason': 'Native-only source/toolchain preflight did not pass'}
+              write_json(evidence / 'phase-results.json', results)
+          print(json.dumps(results, indent=2), flush=True)
+          print('Full-suite, semantic validation and timing phases are Not run here; refer to the earlier exact-source run.', flush=True)
+          print('No generated worktree, output directory or failed attempt was deleted.', flush=True)
+          sys.exit(0 if all(results.get(name, {}).get('status') == 'passed' for name in active_phases) else 1)
+
+      - name: Preserve every native log and assessment, including failures
+        timeout-minutes: 10
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: perf399-native-final-${{ matrix.name }}-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: |
+            evidence/*.log
+            evidence/*.json
+            evidence/*.jsonl
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6

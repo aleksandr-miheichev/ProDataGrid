@@ -1,0 +1,189 @@
+{
+  "exit_code": 0,
+  "assessment": {
+    "status": "passed",
+    "expected_total": 6017,
+    "aggregate_counters": {
+      "total": 6017,
+      "executed": 6017,
+      "passed": 6017,
+      "failed": 0,
+      "notExecuted": 0,
+      "inconclusive": 0
+    },
+    "issues": []
+  },
+  "suites": [
+    {
+      "file": "full-suite-trx\\runneradmin_runnervmhao91_2026-11-05_09_10_05_net10.0.trx",
+      "counters": {
+        "total": "2000",
+        "executed": "2000",
+        "passed": "2000",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "result_outcomes": {
+        "Passed": 2000
+      }
+    },
+    {
+      "file": "full-suite-trx\\runneradmin_runnervmhao91_2026-11-05_09_10_57_net10.0.trx",
+      "counters": {
+        "total": "190",
+        "executed": "190",
+        "passed": "190",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "result_outcomes": {
+        "Passed": 190
+      }
+    },
+    {
+      "file": "full-suite-trx\\runneradmin_runnervmhao91_2026-11-05_09_11_59_net10.0.trx",
+      "counters": {
+        "total": "79",
+        "executed": "79",
+        "passed": "79",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "result_outcomes": {
+        "Passed": 79
+      }
+    },
+    {
+      "file": "full-suite-trx\\runneradmin_runnervmhao91_2026-11-05_09_12_28_net10.0.trx",
+      "counters": {
+        "total": "53",
+        "executed": "53",
+        "passed": "53",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "result_outcomes": {
+        "Passed": 53
+      }
+    },
+    {
+      "file": "full-suite-trx\\runneradmin_runnervmhao91_2026-11-05_09_12_36_net10.0.trx",
+      "counters": {
+        "total": "38",
+        "executed": "38",
+        "passed": "38",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "result_outcomes": {
+        "Passed": 38
+      }
+    },
+    {
+      "file": "full-suite-trx\\runneradmin_runnervmhao91_2026-11-05_09_12_50_net10.0.trx",
+      "counters": {
+        "total": "3265",
+        "executed": "3265",
+        "passed": "3265",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "result_outcomes": {
+        "Passed": 3265
+      }
+    },
+    {
+      "file": "full-suite-trx\\runneradmin_runnervmhao91_2026-11-05_09_14_40_net10.0.trx",
+      "counters": {
+        "total": "392",
+        "executed": "392",
+        "passed": "392",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "result_outcomes": {
+        "Passed": 392
+      }
+    }
+  ],
+  "filter": null,
+  "settings": "build/ci.runsettings",
+  "known_failure_policy": "Report Linux LeakTests NRE as a failure; never filter or skip it"
+}

@@ -1,0 +1,28 @@
+{
+  "provenance-and-preflight": {
+    "status": "passed"
+  },
+  "full-solution-tests": {
+    "status": "failed",
+    "error": "Full suite exited 1; all TRX and original failures retained"
+  },
+  "source-generation-semantic-validation": {
+    "status": "passed"
+  },
+  "strict-native-aot": {
+    "status": "failed",
+    "error": "Strict publish emitted an IL diagnostic"
+  },
+  "reflection-enabled-negative-control": {
+    "status": "passed"
+  },
+  "primary-ABBABAAB": {
+    "status": "passed"
+  },
+  "primary-BAABABBA": {
+    "status": "passed"
+  },
+  "same-source-control-ABBABAAB": {
+    "status": "passed"
+  }
+}

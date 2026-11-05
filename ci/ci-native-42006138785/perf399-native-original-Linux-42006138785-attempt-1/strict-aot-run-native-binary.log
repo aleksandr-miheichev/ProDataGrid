@@ -1,0 +1,2 @@
+{"name": "strict-aot-run-native-binary", "command": ["/home/runner/work/_temp/perf399-native-original-42006138785-1/strict-aot-publish/ProDataGrid.SourceGeneration.AotSmoke"], "cwd": "/home/runner/work/_temp/perf399-native-original-42006138785-1/strict-aot", "timeout_seconds": 120, "started_utc": "2026-11-05T09:55:07.149906+00:00"}
+NativeAOT smoke passed: reflection disabled; typed sorting, setters, selection, writable/readonly capabilities, Slider/TimePicker/formula columns, generated editing and views.

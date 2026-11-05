@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/runner/work/_temp/1bf5f18f-3293-4134-97f8-c39a46405594.py", line 133, in phase
+    operation()
+    ~~~~~~~~~^^
+  File "/Users/runner/work/_temp/1bf5f18f-3293-4134-97f8-c39a46405594.py", line 267, in strict_aot
+    assert not re.search(r'\b(?:warning|error)\s+IL\d+\b', log, re.IGNORECASE), 'Strict publish emitted an IL diagnostic'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Strict publish emitted an IL diagnostic

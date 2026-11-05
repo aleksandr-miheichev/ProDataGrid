@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "analysisDate": "2026-11-05",
+  "status": "passed",
+  "checked": [
+    "Four trace identities and SHA256 values",
+    "Raw/ETLX allocation tick equality",
+    "Zero reported event loss and no truncation",
+    "All ticks have named call stacks",
+    "Complete disjoint structural stack categories",
+    "Corrected unresolved Pump phase labels",
+    "All derived JSON SHA256 values"
+  ],
+  "productWorkloadExecuted": false,
+  "timingMeasurementsExecuted": false,
+  "profileCollectionExecuted": false,
+  "validationScope": "Existing traces and derived outputs only; no timing or retained-memory acceptance claim."
+}

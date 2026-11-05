@@ -1,0 +1,3 @@
+{"name": "worktree-positive", "command": ["git", "worktree", "add", "--detach", "D:\\a\\_temp\\perf399-native-final-42006151729-1\\strict-aot", "d0a415f76adcc0a2a42998121e0c8353ca5650ab"], "cwd": "D:\\a\\ProDataGrid\\ProDataGrid\\ci-checkout", "timeout_seconds": 600, "started_utc": "2026-11-05T09:54:24.409472+00:00"}
+Preparing worktree (detached HEAD d0a415f7)
+HEAD is now at d0a415f7 perf: avoid switch lookups for null and string conversions

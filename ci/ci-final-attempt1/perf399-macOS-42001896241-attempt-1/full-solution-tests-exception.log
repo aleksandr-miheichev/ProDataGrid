@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/runner/work/_temp/e144a9d4-a527-4c1e-90dd-b61e5aa584d1.py", line 133, in phase
+    operation()
+    ~~~~~~~~~^^
+  File "/Users/runner/work/_temp/e144a9d4-a527-4c1e-90dd-b61e5aa584d1.py", line 251, in full_tests
+    assert code == 0, f'Full suite exited {code}; all TRX and original failures retained'
+           ^^^^^^^^^
+AssertionError: Full suite exited 1; all TRX and original failures retained

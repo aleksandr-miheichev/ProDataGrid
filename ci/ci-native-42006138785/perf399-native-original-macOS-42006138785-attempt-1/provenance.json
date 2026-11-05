@@ -1,0 +1,56 @@
+{
+  "validation_mode": "native-only",
+  "variant": "original",
+  "workflow_sha": "251f5debd908400683b850b5ae3824caf5663af7",
+  "source_sha": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+  "ci_only_paths": [
+    ".github/ci-toolchain.json",
+    ".github/workflows/ci-validation.yml"
+  ],
+  "source_resolution": "sole direct parent",
+  "reused_evidence": {
+    "run_id": 41999728294,
+    "run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/41999728294",
+    "source_sha": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+    "workflow_sha": "b24a392ad2fe20cca0f42973609d7601d308c07f",
+    "expected_total_tests": 6017,
+    "run_status_at_preparation": "completed",
+    "workflow_conclusion_at_preparation": "failure",
+    "phases": [
+      "full-solution-tests",
+      "source-generation-semantic-validation",
+      "primary-ABBABAAB",
+      "primary-BAABABBA",
+      "same-source-control-ABBABAAB"
+    ],
+    "reuse_policy": "Every listed phase is Not run in this follow-up, never passed by inheritance. Keep earlier artifacts and statuses separately attributed to this exact source. Verify earlier run completion and each phase before treating reused evidence as complete.",
+    "maintainer_harness_commit": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+    "performance_policy": "No repeated timings, numerical allowance, cherry-picking or new performance-acceptance claim. This follow-up changes the native IL-log phase boundary only.",
+    "source_identity_verified_via": "https://api.github.com/repos/aleksandr-miheichev/ProDataGrid/commits/b24a392ad2fe20cca0f42973609d7601d308c07f",
+    "verified_sole_parent_sha": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9"
+  },
+  "reused_phase_status": "Not run in this follow-up; earlier evidence remains separately attributed",
+  "manifest_sha256": "577f70e8df1bc0717c2f937803c2d94f47cce754f5189928df470de24fca43d0",
+  "environment": {
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "python_executable": "/Library/Frameworks/Python.framework/Versions/3.15/bin/python",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "uname": {
+      "system": "Darwin",
+      "node": "iad20-fj924-4fd89a0e-9e85-4555-85c3-3e3ba37622df-12CB4D95C80D.local",
+      "release": "25.6.0",
+      "version": "Darwin Kernel Version 25.6.0: Fri Jul 31 19:16:43 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_VMAPPLE",
+      "machine": "arm64",
+      "processor": "arm"
+    },
+    "logical_cpus": 3,
+    "runner_label": "macos-26",
+    "rid": "osx-arm64",
+    "runner_arch": "ARM64",
+    "image_os": "macos26",
+    "image_version": "20261026.0455.2",
+    "dotnet_root": "/Users/runner/work/_temp/dotnet-perf399-native"
+  },
+  "retained_work_root": "/Users/runner/work/_temp/perf399-native-original-42006138785-1",
+  "acceptance_scope": "Native-only phase-boundary validator correction; no performance acceptance or numerical allowance is introduced"
+}

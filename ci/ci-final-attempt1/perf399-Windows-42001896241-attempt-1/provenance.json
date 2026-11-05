@@ -1,0 +1,40 @@
+{
+  "workflow_sha": "d16d7e4759e6f45ee494d75d5df171a788d58f34",
+  "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "recorded_initial_candidate_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+  "ci_only_paths": [
+    ".github/ci-toolchain.json",
+    ".github/workflows/ci-validation.yml"
+  ],
+  "source_resolution": "sole direct parent",
+  "harness_commit": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+  "harness_sha256": {
+    "tools\\pr-review\\run-comparison.py": "dd6e2b0b1809cf34baa75e3025cf19965a007caf07e268c2ca61d2dbc0ab9a8f",
+    "tools\\pr-review\\ReviewPerformanceTests.cs": "755668ad8404f9184cb99a4a48567e9b148ef22459cba91916972180918973cb"
+  },
+  "expected_total_tests": 6019,
+  "environment": {
+    "python": "3.15.2 (tags/v3.15.2:5e58eaa, Oct 25 2026, 17:27:03) [MSC v.1951 64 bit (AMD64)]",
+    "python_executable": "C:\\hostedtoolcache\\windows\\Python\\3.15.2\\x64\\python.EXE",
+    "platform": "Windows-2025Server-10.0.26100-SP0",
+    "uname": {
+      "system": "Windows",
+      "node": "runnervmhao91",
+      "release": "2025Server",
+      "version": "10.0.26100",
+      "machine": "AMD64",
+      "processor": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+    },
+    "logical_cpus": 4,
+    "runner_label": "windows-2025",
+    "rid": "win-x64",
+    "runner_arch": "X64",
+    "image_os": "win25-vs2026",
+    "image_version": "20261030.294.1",
+    "dotnet_root": "D:\\a\\_temp\\dotnet-perf399"
+  },
+  "retained_work_root": "D:\\a\\_temp\\perf399-42001896241-1",
+  "live_comparison_output_root": "D:\\a\\ProDataGrid\\ProDataGrid\\evidence\\timings",
+  "performance_acceptance": "Raw evidence only; no arbitrary regression allowance or automatic acceptance"
+}

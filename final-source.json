@@ -1,0 +1,11 @@
+{
+  "source": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "parent": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+  "files": [
+    "src/Avalonia.Controls.DataGrid.UnitTests/DataGridReflectionTests.cs",
+    "src/Avalonia.Controls.DataGrid/DataGridValueConverter.cs"
+  ],
+  "datagridTests": 3267,
+  "nativePositive": "executed",
+  "nativeNegative": "genuine native IL errors"
+}

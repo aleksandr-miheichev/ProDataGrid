@@ -1,0 +1,3 @@
+{"name": "worktree-negative", "command": ["git", "worktree", "add", "--detach", "/Users/runner/work/_temp/perf399-native-final-42006151729-1/reflection-enabled", "d0a415f76adcc0a2a42998121e0c8353ca5650ab"], "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout", "timeout_seconds": 600, "started_utc": "2026-11-05T09:55:10.096704+00:00"}
+Preparing worktree (detached HEAD d0a415f7)
+HEAD is now at d0a415f7 perf: avoid switch lookups for null and string conversions

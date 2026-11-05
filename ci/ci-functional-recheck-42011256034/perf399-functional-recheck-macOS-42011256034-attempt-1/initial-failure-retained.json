@@ -1,0 +1,21 @@
+{
+  "run_id": 42001896241,
+  "run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+  "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "workflow_sha": "d16d7e4759e6f45ee494d75d5df171a788d58f34",
+  "runner": "macos-26",
+  "architecture": "arm64",
+  "expected_total": 6019,
+  "passed": 6018,
+  "failed": 1,
+  "test": "LeakTests.DataGrid_ColumnDefinitionsSource_DoesNotLeak",
+  "observed_exception": "System.NullReferenceException",
+  "observed_location": "Avalonia.Headless.HeadlessUnitTestSession.Dispose; LeakTestSession.cs:46, before the retention assertion",
+  "observed_family": "Existing Avalonia12.1.0 headless teardown failure family; this workflow does not change external Avalonia",
+  "artifact_id": 13403574345,
+  "artifact_name": "perf399-macOS-42001896241-attempt-1",
+  "artifact_api": "https://api.github.com/repos/aleksandr-miheichev/ProDataGrid/actions/artifacts/13403574345",
+  "artifact_expired_at_preparation": false,
+  "preservation_policy": "Keep the initial failed run, downloaded logs/TRX and raw observations unchanged. This is one additional bounded verification, never replacement or erasure of the failure.",
+  "successful_recheck_interpretation": "A successful retry does not prove the underlying external teardown race is fixed."
+}

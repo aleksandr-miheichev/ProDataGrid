@@ -1,0 +1,273 @@
+{
+  "schema_version": 4,
+  "verified_on": "2026-11-05",
+  "repository": "aleksandr-miheichev/ProDataGrid",
+  "upstream_repository": "wieslawsoltes/ProDataGrid",
+  "install_paths": {
+    "workflow": ".github/workflows/ci-validation.yml",
+    "manifest": ".github/ci-toolchain.json"
+  },
+  "dotnet": {
+    "sdk": "10.0.403",
+    "runtime": "10.0.14",
+    "channel": "10.0",
+    "isolated_install": true,
+    "skip_lts_prepass": true,
+    "source_global_json_policy": "Do not edit tracked global.json. The existing 10.0.100/latestFeature policy selects 10.0.403 from the isolated installation. Verify the actual selected SDK in every exact-revision worktree.",
+    "official_metadata": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json"
+  },
+  "python": {
+    "version": "3.15.2",
+    "allow_prereleases": false,
+    "official_release": "https://www.python.org/downloads/release/python-3152/",
+    "hosted_distribution": "https://github.com/actions/python-versions/releases/tag/3.15.2-40340363276",
+    "manifest": "https://github.com/actions/python-versions/blob/main/versions-manifest.json",
+    "verified_platforms": [
+      "linux-26.04-x64",
+      "win32-x64",
+      "darwin-arm64"
+    ]
+  },
+  "actions": {
+    "actions/checkout": {
+      "version": "v7.0.1",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "release": "https://github.com/actions/checkout/releases/tag/v7.0.1"
+    },
+    "actions/setup-dotnet": {
+      "version": "v6.1.0",
+      "sha": "0f4a354dd5547a28c70b7853dbd95d5b67886e73",
+      "release": "https://github.com/actions/setup-dotnet/releases/tag/v6.1.0"
+    },
+    "actions/setup-python": {
+      "version": "v7.1.0",
+      "sha": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "release": "https://github.com/actions/setup-python/releases/tag/v7.1.0"
+    },
+    "actions/upload-artifact": {
+      "version": "v7.0.2",
+      "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "release": "https://github.com/actions/upload-artifact/releases/tag/v7.0.2"
+    }
+  },
+  "runner_reference": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+  "permissions": {
+    "contents": "read"
+  },
+  "local_validation": {
+    "python": "D:/Python 15/python.exe (3.15.2)",
+    "pyyaml": "6.0.3",
+    "actionlint": "D:/claude-projects/tools/actionlint/actionlint.exe (1.7.12)",
+    "checks": "YAML/JSON/Python/PowerShell statics; exact binary overlay/deps, one-test/sample counts and timeout fixtures; two bounded pair/orders only; no local product execution.",
+    "actionlint_arguments": [
+      "-shellcheck=",
+      "-ignore",
+      "label \"ubuntu-26\\.04\" is unknown"
+    ],
+    "known_linter_catalog_mismatch": "Unfiltered actionlint 1.7.12 rejects only ubuntu-26.04, which the current official GitHub standard/free runner reference lists without a preview marker. The narrow ignore handles this catalog drift; no workflow-expression or other lint diagnostic is ignored.",
+    "product_executions": "Not run locally: no product build/test, supplementary timing, native publish/run or profiling.",
+    "ci_execution": "Not run: preparation does not publish a branch, create a PR, dispatch Actions or alter credentials/repository policy.",
+    "local_shell_route": "WindowsPowerShell5.1 plus existing Python3.15.2: MXC rejected packaged PowerShell7 before execution. No global tools or policies changed. Both workflow PowerShell blocks parsed with the native5.1 parser; CI uses existing hosted pwsh.",
+    "fixture_results": {
+      "status": "passed",
+      "binary_deps_xunit_vector_cases": [
+        {
+          "case": "H_exact_overlay",
+          "status": "passed"
+        },
+        {
+          "case": "P_exact_overlay",
+          "status": "passed"
+        },
+        {
+          "case": "nonhost_mutation_rejected",
+          "status": "passed"
+        },
+        {
+          "case": "wrong_host_donor_rejected",
+          "status": "passed"
+        },
+        {
+          "case": "deps_equal",
+          "status": "passed"
+        },
+        {
+          "case": "deps_change_rejected",
+          "status": "passed"
+        },
+        {
+          "case": "runtimeconfig_change_rejected",
+          "status": "passed"
+        },
+        {
+          "case": "exact1_comma_decimal",
+          "status": "passed"
+        },
+        {
+          "case": "exact1_dot_decimal",
+          "status": "passed"
+        },
+        {
+          "case": "nonzero_cli_rejected",
+          "status": "passed"
+        },
+        {
+          "case": "skip_rejected",
+          "status": "passed"
+        },
+        {
+          "case": "24samples_nonzero_selection_valid",
+          "status": "passed"
+        },
+        {
+          "case": "truncated_vector_rejected",
+          "status": "passed"
+        }
+      ],
+      "simulated_timing_processes": 64,
+      "fresh_batch_directories": 4,
+      "semantic_metadata_equality_gate": "passed, including nonzero selection and mismatched/incomplete rejection",
+      "timeout_abort": "passed; later callable never invoked",
+      "no_external_metadata_commands_in_timing_loop": "passed; exact direct CLI only",
+      "product_execution": "Not run"
+    },
+    "static_results": {
+      "yaml_json_python_powershell": "passed",
+      "actions_sources_matrix_upload_deadlines": "passed",
+      "actionlint": "passed with sole documented ubuntu26.04 catalog exception",
+      "reserve_minutes": 6,
+      "original_python_runner_invoked": false
+    }
+  },
+  "validation_mode": "supplementary-binary-factor-controls",
+  "source": {
+    "recorded_candidate_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+    "harness_commit": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+    "harness_path": "tools/pr-review/ReviewPerformanceTests.cs",
+    "harness_blob_sha": "050b43b33fe7d6a841db2f94f13662356c377d31",
+    "source_resolution": "Input, sole direct parent of exact two-file CI-only commit and recorded final source must match. Separate A/C worktrees use baseline/final; only unchanged untracked harness is injected.",
+    "branch_pattern": "codex/verify-perf399-host-controls-*"
+  },
+  "components": {
+    "A": "Baseline complete runtime tree and baseline unit DLL/PDB",
+    "C": "Final complete runtime tree and final unit DLL/PDB; build origin only, not timed",
+    "H": "Copy A; replace only unit DLL/PDB from C",
+    "P": "Copy C; replace only unit DLL/PDB from A",
+    "allowed_overlay_paths": [
+      "Avalonia.Controls.DataGrid.UnitTests.dll",
+      "Avalonia.Controls.DataGrid.UnitTests.pdb"
+    ],
+    "mandatory_identical_A_C_manifests": [
+      "Avalonia.Controls.DataGrid.UnitTests.deps.json",
+      "Avalonia.Controls.DataGrid.UnitTests.runtimeconfig.json"
+    ],
+    "proof": "Hash every regular file recursively; A/C runtime copies match build origins. H against A, P against C, only exact DLL/PDB donor copies allowed. Unrelated A/C files may differ. Reinventory after timing. Reject unsupported symlinks."
+  },
+  "measurement": {
+    "comparisons": [
+      "A/H",
+      "A/P"
+    ],
+    "orders": [
+      "ABBABAAB",
+      "BAABABBA"
+    ],
+    "scenario_order": [
+      "source",
+      "scroll"
+    ],
+    "processes_per_scenario_per_order": 8,
+    "processes_per_side_per_scenario": 4,
+    "processes_per_OS": 64,
+    "warmups_per_process": 6,
+    "samples_per_process": 24,
+    "rows_per_process": 10000,
+    "tiered_compilation": false,
+    "direct_command": [
+      "dotnet",
+      "<runtime>/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "protocol_identity": "Unchanged frozen C# harness, custom supplementary binary-factor orchestration. Original run-comparison.py is not invoked or claimed to run.",
+    "cwd_policy": "Own sibling prebuilt runtime-bin container at uniform path depth, explicitly recorded; supplementary copy context, not original primary source-worktree cwd.",
+    "exclusivity": "Both builds, copies, inventories, assembly inspection and SDK queries finish before four timing batches. During them launch only exact direct processes: no unrelated external command/build/test/profiler or between-batch query. Validate all raw records afterward.",
+    "exact_test_gate": "CLIexit0 and one xUnit Total1/Errors0/Failed0/Skipped0/NotRun0 summary; raw output independently requires four records per side, one per process, all24 time/allocation samples. Ignore culture-specific Time text.",
+    "raw_policy": "Fresh directory for each comparison/order; retain original A/B labels with B=H/P mapping, all failures/vectors/logs. No deletion, numerical threshold, retry or original-primary acceptance. Timeout aborts later product phases.",
+    "semantic_metadata_gate": "Require nonnegative integer selected/selectedCells and identical count/selected/selectedCells/virtualSurface across all8 A/B processes of each comparison/scenario. Do not assume zero selection or infer actual realization equality."
+  },
+  "interpretation": {
+    "A_vs_H": "Host DLL/PDB replacement effect with non-host baseline bytes fixed.",
+    "A_vs_P": "Final non-host runtime-set effect with baseline host DLL/PDB fixed; multiple source-built binaries may differ.",
+    "limits": "C is not timed contemporaneously. No additive decomposition of A/C, exclusion of interactions, proven root cause or automatic primary acceptance. Equal reported metadata does not prove identical actual realization or equal hot-path work.",
+    "acceptance": "Supplementary causal-diagnosis evidence only; no numerical allowance, threshold, cherry-picking or replacement of primary evidence.",
+    "parent_supplied_motivation": "Windows source-to-array H+1373/+691B vs P-86/+10B; scroll H+757/+13796B vs P-75/+2734B. Repeated Linux primary scroll positives near+9KB/+4KB with near-zero A/A remain unresolved. These motivate control, are not rerun here and do not prove causality."
+  },
+  "reused_evidence": {
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "full_source_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241",
+    "full_source_scope": "Original failure retained, including Mac6018pass+1fail; primary/semantic successes stay separately scoped.",
+    "functional_recheck_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42011256034",
+    "functional_recheck_workflow_sha": "96cca078145b3a78d07c7adad3ce9e8dd79c810a",
+    "functional_recheck_status_at_preparation": "success: baseline1pass/final1pass/unfilteredfinal6019pass; initial failure retained; no external race-fix claim",
+    "native_run_url": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729",
+    "native_scope": "Earlier successful exact-source native-only actual executions on all three OS, not repeated.",
+    "not_run_in_this_workflow": [
+      "full-solution-tests",
+      "source-generation-semantic-validation",
+      "primary-ABBABAAB",
+      "primary-BAABABBA",
+      "same-source-control-ABBABAAB",
+      "strict-native-aot",
+      "reflection-enabled-negative-control"
+    ],
+    "reuse_policy": "All listed phases explicitly Not run with links, never relabeled passed. Keep original failures and primary positive estimates."
+  },
+  "runners": [
+    {
+      "label": "ubuntu-26.04",
+      "rid": "linux-x64",
+      "architecture": "x64"
+    },
+    {
+      "label": "macos-26",
+      "rid": "osx-arm64",
+      "architecture": "arm64"
+    }
+  ],
+  "timeouts": {
+    "job_minutes": 180,
+    "setup_step_minutes": {
+      "invocation": 1,
+      "fork_checkout": 5,
+      "harness_checkout": 5,
+      "python": 8,
+      "dotnet": 10
+    },
+    "orchestration_step_minutes": 135,
+    "upload_step_minutes": 10,
+    "reserve_minutes": 6,
+    "command_seconds": {
+      "observation": 60,
+      "default": 600,
+      "each_prebuild": 1200,
+      "each_timed_process": 240
+    },
+    "policy": "Raw output live under staging; attempt process-tree/group termination then abort later product phases after timeout even if cleanup uncertain. Step leaves always-upload time."
+  },
+  "retention": {
+    "artifact_days": 30,
+    "upload": "Immediate root and timing-batch logs/JSON/JSONL only; no recursive runtime/source/build/Git/CodeGraph upload.",
+    "live_results": "Process logs and original append-only raw JSONL already uploadable on timeout; no post-run copy.",
+    "inputs": "Preserve A/C worktrees/build origins and all A/C/H/P runtime bins until VM decommissioning; no cleanup/recycling."
+  },
+  "assembly_metadata": {
+    "method": "Before timing inspect actual top-level DLL AssemblyName identities and file/product versions with existing PowerShell, recording inspector versions separately. SHA256 proves byte identity; version strings do not.",
+    "reference": "https://github.com/dotnet/docs/blob/main/docs/standard/assembly/find-fully-qualified-name.md",
+    "coverage": "Official general API docs, not SDK-versioned coverage; actual SDK10.0.403/runtime10.0.14 verified per worktree."
+  },
+  "manual_dispatch_note": "workflow_dispatch requires default-branch file. Host-controls push body replaces the same two CI paths directly on d0; no full/native workflow alongside it."
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "path": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/primary-BAABABBA/A",
+    "revision": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+    "sdk": "10.0.403",
+    "runtimes": "Microsoft.AspNetCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.AspNetCore.App]\nMicrosoft.NETCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.NETCore.App]",
+    "dotnet_info": ".NET SDK:\n Version:           10.0.403\n Commit:            5a2162bea6\n Workload version:  10.0.400-manifests.a00bebb6\n MSBuild version:   18.9.15+5a2162bea\n\nRuntime Environment:\n OS Name:     Mac OS X\n OS Version:  26.6\n OS Platform: Darwin\n RID:         osx-arm64\n Base Path:   /Users/runner/work/_temp/dotnet-perf399/sdk/10.0.403/\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.14\n  Architecture: arm64\n  Commit:       0427b9abbe\n\n.NET SDKs installed:\n  10.0.403 [/Users/runner/work/_temp/dotnet-perf399/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_CLI_TELEMETRY_OPTOUT              [1]\n  DOTNET_INSTALL_DIR                       [/Users/runner/work/_temp/dotnet-perf399]\n  DOTNET_MULTILEVEL_LOOKUP                 [0]\n  DOTNET_NOLOGO                            [1]\n  DOTNET_ROOT                              [/Users/runner/work/_temp/dotnet-perf399]\n  DOTNET_SKIP_FIRST_TIME_EXPERIENCE        [1]\n\nglobal.json file:\n  /Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/primary-BAABABBA/A/global.json\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download",
+    "binary_sha256": {
+      "Avalonia.Controls.DataGrid.UnitTests.dll": "fd35d0155ccfcbcba71ccfb990fff965da8a384665c4e6fb56a6a8c82ce6cf62",
+      "Avalonia.Controls.DataGrid.dll": "65c2077be1e388ccaf962a76766926821a2237422a90eded984dfce67e1b36cb"
+    },
+    "copied_harness_sha256": "04e15302ee8b4ba1736872cda826a0cdc515a35f621cd06fc19afa70f7ab7f58",
+    "status": "?? src/Avalonia.Controls.DataGrid.UnitTests/ReviewPerformanceTests.cs"
+  },
+  {
+    "path": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/primary-BAABABBA/B",
+    "revision": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+    "sdk": "10.0.403",
+    "runtimes": "Microsoft.AspNetCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.AspNetCore.App]\nMicrosoft.NETCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.NETCore.App]",
+    "dotnet_info": ".NET SDK:\n Version:           10.0.403\n Commit:            5a2162bea6\n Workload version:  10.0.400-manifests.a00bebb6\n MSBuild version:   18.9.15+5a2162bea\n\nRuntime Environment:\n OS Name:     Mac OS X\n OS Version:  26.6\n OS Platform: Darwin\n RID:         osx-arm64\n Base Path:   /Users/runner/work/_temp/dotnet-perf399/sdk/10.0.403/\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.14\n  Architecture: arm64\n  Commit:       0427b9abbe\n\n.NET SDKs installed:\n  10.0.403 [/Users/runner/work/_temp/dotnet-perf399/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.14 [/Users/runner/work/_temp/dotnet-perf399/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_CLI_TELEMETRY_OPTOUT              [1]\n  DOTNET_INSTALL_DIR                       [/Users/runner/work/_temp/dotnet-perf399]\n  DOTNET_MULTILEVEL_LOOKUP                 [0]\n  DOTNET_NOLOGO                            [1]\n  DOTNET_ROOT                              [/Users/runner/work/_temp/dotnet-perf399]\n  DOTNET_SKIP_FIRST_TIME_EXPERIENCE        [1]\n\nglobal.json file:\n  /Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/primary-BAABABBA/B/global.json\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download",
+    "binary_sha256": {
+      "Avalonia.Controls.DataGrid.UnitTests.dll": "35eee8077629f69c8a5774d76ea1642c94f49670a1d8aaec231b4f6d97aa9f4a",
+      "Avalonia.Controls.DataGrid.dll": "f217f0afde296dca8982b612167562c79c66ad9b20c470aa084b963deb567b20"
+    },
+    "copied_harness_sha256": "04e15302ee8b4ba1736872cda826a0cdc515a35f621cd06fc19afa70f7ab7f58",
+    "status": "?? src/Avalonia.Controls.DataGrid.UnitTests/ReviewPerformanceTests.cs"
+  }
+]

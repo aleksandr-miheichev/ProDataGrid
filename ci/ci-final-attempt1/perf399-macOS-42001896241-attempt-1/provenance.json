@@ -1,0 +1,40 @@
+{
+  "workflow_sha": "d16d7e4759e6f45ee494d75d5df171a788d58f34",
+  "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "recorded_initial_candidate_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+  "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+  "ci_only_paths": [
+    ".github/ci-toolchain.json",
+    ".github/workflows/ci-validation.yml"
+  ],
+  "source_resolution": "sole direct parent",
+  "harness_commit": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+  "harness_sha256": {
+    "tools/pr-review/run-comparison.py": "e5d2a6dbbaeb0e5b711e6c5fe6e3c2d513ddd233882a75d7f334d10c046f656b",
+    "tools/pr-review/ReviewPerformanceTests.cs": "04e15302ee8b4ba1736872cda826a0cdc515a35f621cd06fc19afa70f7ab7f58"
+  },
+  "expected_total_tests": 6019,
+  "environment": {
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "python_executable": "/Library/Frameworks/Python.framework/Versions/3.15/bin/python",
+    "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+    "uname": {
+      "system": "Darwin",
+      "node": "iad20-eo1214-7f932d71-013b-4414-a2ff-97104f270ee3-B293A7AC1612.local",
+      "release": "25.6.0",
+      "version": "Darwin Kernel Version 25.6.0: Mon Oct 12 00:39:04 PDT 2026; root:xnu-12377.161.15.701.48~2/RELEASE_ARM64_VMAPPLE",
+      "machine": "arm64",
+      "processor": "arm"
+    },
+    "logical_cpus": 3,
+    "runner_label": "macos-26",
+    "rid": "osx-arm64",
+    "runner_arch": "ARM64",
+    "image_os": "macos26",
+    "image_version": "20261102.0473.1",
+    "dotnet_root": "/Users/runner/work/_temp/dotnet-perf399"
+  },
+  "retained_work_root": "/Users/runner/work/_temp/perf399-42001896241-1",
+  "live_comparison_output_root": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings",
+  "performance_acceptance": "Raw evidence only; no arbitrary regression allowance or automatic acceptance"
+}

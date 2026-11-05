@@ -1,0 +1,15 @@
+{
+  "os": {
+    "Caption": "Майкрософт Windows 11 Pro",
+    "Version": "10.0.28000",
+    "BuildNumber": "28000",
+    "TotalVisibleMemorySize": 16652356
+  },
+  "cpu": {
+    "Name": "Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz",
+    "NumberOfCores": 4,
+    "NumberOfLogicalProcessors": 8,
+    "MaxClockSpeed": 4001
+  },
+  "recordedUtc": "2026-11-05T08:03:45.5534320Z"
+}

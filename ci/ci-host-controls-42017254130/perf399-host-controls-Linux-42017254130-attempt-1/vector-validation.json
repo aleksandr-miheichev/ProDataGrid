@@ -1,0 +1,648 @@
+{
+  "checks": [
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/source-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/source-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/source-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/source-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/source-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/source-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/source-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/source-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/scroll-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/scroll-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/scroll-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-ABBABAAB/scroll-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/scroll-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/scroll-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/scroll-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-ABBABAAB/scroll-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/source-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/source-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/source-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/source-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/source-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/source-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/source-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/source-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/scroll-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/scroll-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/scroll-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AH-BAABABBA/scroll-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/scroll-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/scroll-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/scroll-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AH-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AH-BAABABBA/scroll-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/source-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/source-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/source-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/source-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/source-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/source-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/source-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/source-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/scroll-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/scroll-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/scroll-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-ABBABAAB/scroll-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/scroll-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/scroll-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/scroll-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-ABBABAAB",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-ABBABAAB/scroll-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/source-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/source-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/source-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/source-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/source-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/source-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/source-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "source",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/source-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/scroll-A.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/scroll-A.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/scroll-A.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "A",
+      "raw_file": "timings/AP-BAABABBA/scroll-A.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/scroll-B.jsonl",
+      "line": 1,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/scroll-B.jsonl",
+      "line": 2,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/scroll-B.jsonl",
+      "line": 3,
+      "accepted": true,
+      "issues": []
+    },
+    {
+      "batch": "AP-BAABABBA",
+      "scenario": "scroll",
+      "side": "B",
+      "raw_file": "timings/AP-BAABABBA/scroll-B.jsonl",
+      "line": 4,
+      "accepted": true,
+      "issues": []
+    }
+  ],
+  "expected_raw_records": 64,
+  "observed_raw_records": 64,
+  "issues": [
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-0-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-1-B",
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-2-B",
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-3-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-4-B",
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-5-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-6-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/source-7-B",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-0-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-1-B",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-2-B",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-3-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-4-B",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-5-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-6-A",
+    "Not exactly one passing test: timings/AH-ABBABAAB/scroll-7-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-0-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-1-A",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-2-A",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-3-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-4-A",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-5-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-6-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/source-7-A",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-0-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-1-A",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-2-A",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-3-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-4-A",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-5-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-6-B",
+    "Not exactly one passing test: timings/AH-BAABABBA/scroll-7-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-0-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-1-B",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-2-B",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-3-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-4-B",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-5-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-6-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/source-7-B",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-0-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-1-B",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-2-B",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-3-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-4-B",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-5-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-6-A",
+    "Not exactly one passing test: timings/AP-ABBABAAB/scroll-7-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-0-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-1-A",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-2-A",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-3-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-4-A",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-5-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-6-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/source-7-A",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-0-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-1-A",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-2-A",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-3-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-4-A",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-5-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-6-B",
+    "Not exactly one passing test: timings/AP-BAABABBA/scroll-7-A"
+  ]
+}

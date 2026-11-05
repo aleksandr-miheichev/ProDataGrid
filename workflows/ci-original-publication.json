@@ -1,0 +1,10 @@
+{
+  "branch": "codex/verify-perf399-original-596db0a-20261105",
+  "ciSha": "b24a392ad2fe20cca0f42973609d7601d308c07f",
+  "sourceSha": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+  "tree": "1fedc214877db4b9ba429ca5153a78eed0d7e799",
+  "changedFiles": [
+    ".github/ci-toolchain.json",
+    ".github/workflows/ci-validation.yml"
+  ]
+}

@@ -1,0 +1,3 @@
+{"name": "worktree-C", "command": ["git", "worktree", "add", "--detach", "/home/runner/work/_temp/perf399-host-controls-42017254130-1/source-C", "d0a415f76adcc0a2a42998121e0c8353ca5650ab"], "cwd": "/home/runner/work/ProDataGrid/ProDataGrid/ci-checkout", "timeout_seconds": 600, "benchmark_environment": {}, "started_utc": "2026-11-05T11:14:23.815780+00:00"}
+Preparing worktree (detached HEAD d0a415f7)
+HEAD is now at d0a415f7 perf: avoid switch lookups for null and string conversions

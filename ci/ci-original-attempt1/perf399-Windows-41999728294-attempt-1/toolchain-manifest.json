@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-11-05",
+  "repository": "aleksandr-miheichev/ProDataGrid",
+  "upstream_repository": "wieslawsoltes/ProDataGrid",
+  "install_paths": {
+    "workflow": ".github/workflows/ci-validation.yml",
+    "manifest": ".github/ci-toolchain.json"
+  },
+  "source": {
+    "recorded_candidate_sha": "596db0a6e401eb9c26b98e67de3ff6f247f0bed9",
+    "baseline_sha": "f92035975ac5ab6c0cdede8228952bcd8f618a2e",
+    "push_resolution": "Use the sole direct parent of the CI-only commit and record it. Reject any CI-only diff outside the two install_paths.",
+    "dispatch_resolution": "The full source_sha input must equal that same direct parent; update the default input if the final source changes. The recorded_candidate_sha identifies the initial reviewed snapshot and is not an automatic push override.",
+    "expected_total_tests": 6017,
+    "test_count_policy": "Exactly 6017 total/executed/passed cases for the original 596db0a6 source, with zero skipped, failed, inconclusive or other non-passing counters. Require actual UnitTestResult outcomes and all execution counters. Update expected_total_tests for each final source snapshot; two added cases are anticipated to require 6019 after validation.",
+    "test_settings": "build/ci.runsettings (explicit MaxCpuCount=1 for process-global Avalonia headless initialization)"
+  },
+  "maintainer_harness": {
+    "commit": "5b6504c697040b8ae76ff36e340dd9610a326e3b",
+    "runner_path": "tools/pr-review/run-comparison.py",
+    "runner_blob_sha": "89f89b17d71d6aa234f44d1ea7d49daf51f4ce21",
+    "test_path": "tools/pr-review/ReviewPerformanceTests.cs",
+    "test_blob_sha": "050b43b33fe7d6a841db2f94f13662356c377d31",
+    "orders": ["ABBABAAB", "BAABABBA"],
+    "scenarios": ["source", "scroll"],
+    "control": { "base": "candidate", "candidate": "candidate", "order": "ABBABAAB" },
+    "warmups_per_process": 6,
+    "samples_per_process": 24,
+    "processes_per_scenario_per_order": 8,
+    "tiered_compilation": false,
+    "performance_policy": "Retain all raw samples, both orders, failures and the A/A control. No numeric regression allowance, cherry-picking, profiler, external timing loop or automatic performance-acceptance claim. Shared-runner timings require review of the raw results."
+  },
+  "dotnet": {
+    "sdk": "10.0.403",
+    "runtime": "10.0.14",
+    "channel": "10.0",
+    "isolated_install": true,
+    "skip_lts_prepass": true,
+    "source_global_json_policy": "Do not edit tracked global.json. The existing 10.0.100/latestFeature policy selects 10.0.403 from the isolated installation. Verify the actual selected SDK in every exact-revision worktree.",
+    "official_metadata": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json"
+  },
+  "python": {
+    "version": "3.15.2",
+    "allow_prereleases": false,
+    "official_release": "https://www.python.org/downloads/release/python-3152/",
+    "hosted_distribution": "https://github.com/actions/python-versions/releases/tag/3.15.2-40340363276",
+    "manifest": "https://github.com/actions/python-versions/blob/main/versions-manifest.json",
+    "verified_platforms": ["linux-26.04-x64", "win32-x64", "darwin-arm64"]
+  },
+  "actions": {
+    "actions/checkout": { "version": "v7.0.1", "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1", "release": "https://github.com/actions/checkout/releases/tag/v7.0.1" },
+    "actions/setup-dotnet": { "version": "v6.1.0", "sha": "0f4a354dd5547a28c70b7853dbd95d5b67886e73", "release": "https://github.com/actions/setup-dotnet/releases/tag/v6.1.0" },
+    "actions/setup-python": { "version": "v7.1.0", "sha": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0", "release": "https://github.com/actions/setup-python/releases/tag/v7.1.0" },
+    "actions/upload-artifact": { "version": "v7.0.2", "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9", "release": "https://github.com/actions/upload-artifact/releases/tag/v7.0.2" }
+  },
+  "runners": [
+    { "label": "windows-2025", "rid": "win-x64", "architecture": "x64" },
+    { "label": "ubuntu-26.04", "rid": "linux-x64", "architecture": "x64" },
+    { "label": "macos-26", "rid": "osx-arm64", "architecture": "arm64" }
+  ],
+  "runner_reference": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+  "permissions": { "contents": "read" },
+  "timeouts": {
+    "job_minutes": 180,
+    "setup_step_minutes": { "invocation": 1, "fork_checkout": 5, "harness_checkout": 5, "python": 8, "dotnet": 10 },
+    "orchestration_step_minutes": 135,
+    "upload_step_minutes": 10,
+    "minimum_job_headroom_minutes_after_all_step_limits": 6,
+    "command_seconds": { "observation": 60, "default": 600, "full_tests": 1200, "strict_aot_publish": 900, "reflection_negative_publish": 900, "native_binary": 120, "each_comparison": 1200 },
+    "timeout_policy": "Record partial logs and attempted process-tree/group termination. Abort every later product phase after any timeout, even if cleanup is uncertain. Never overlap the next comparison with a surviving child. The bounded orchestration step ends before the job deadline, leaving always-upload time."
+  },
+  "retention": {
+    "artifact_days": 30,
+    "upload": "Only immediate files at the explicit root/TRX/comparison upload levels: logs, JSON/JSONL and TRX, plus the immutable runner's exact dotnet-info.txt log. No recursive glob. Never upload Git metadata, CodeGraph indexes, complete worktrees or build trees.",
+    "live_timing_output": "The unmodified runner writes directly to evidence/timings/<unique-comparison-label>. Direct A/B build logs and raw JSONL are already at the upload location before a process/step timeout; preserving them never depends on a post-subprocess copy or metadata pass. Nested A/B worktrees and build trees do not match the immediate-file upload patterns.",
+    "worktrees": "Do not delete or recycle an output directory during the job. Hosted VMs are ephemeral; only uploaded evidence survives VM decommissioning.",
+    "failures": "Keep each failed attempt and its exact command, exit code and logs. The known Linux LeakTests NullReferenceException remains a reported failure; do not filter or skip it."
+  },
+  "manual_dispatch_note": "GitHub requires workflow_dispatch to exist on the default branch. The codex/verify-perf399-* push trigger works without changing the fork default branch or repository policy.",
+  "local_validation": {
+    "python": "D:/Python 15/python.exe (3.15.2)",
+    "pyyaml": "6.0.3",
+    "actionlint": "D:/claude-projects/tools/actionlint/actionlint.exe (1.7.12)",
+    "checks": "Parse YAML and JSON; compile the embedded orchestration without executing it; exercise its extracted pure TRX-counter validator on synthetic evidence; parse the PowerShell block with the native parser; verify action pins, manifest, bounded step deadlines and immediate-file artifact patterns.",
+    "actionlint_arguments": ["-shellcheck=", "-ignore", "label \"ubuntu-26\\.04\" is unknown"],
+    "known_linter_catalog_mismatch": "Unfiltered actionlint 1.7.12 rejects only ubuntu-26.04, which the current official GitHub standard/free runner reference lists without a preview marker. The narrow ignore handles this catalog drift; no workflow-expression or other lint diagnostic is ignored.",
+    "product_executions": "Not run: no local product build, test, NativeAOT publish, benchmark or profiling is authorized by preparation of these two documents.",
+    "ci_execution": "Not run: preparation does not publish a branch, create a PR, dispatch Actions or alter credentials/repository policy."
+  }
+}

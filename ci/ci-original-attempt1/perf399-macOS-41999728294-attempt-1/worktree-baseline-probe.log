@@ -1,0 +1,3 @@
+{"name": "worktree-baseline-probe", "command": ["git", "worktree", "add", "--detach", "/Users/runner/work/_temp/perf399-41999728294-1/baseline-sdk-probe", "f92035975ac5ab6c0cdede8228952bcd8f618a2e"], "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout", "timeout_seconds": 600, "started_utc": "2026-11-05T09:08:24.332316+00:00"}
+Preparing worktree (detached HEAD f9203597)
+HEAD is now at f9203597 Merge live chart-coordinate windows and final integration validation (#392)

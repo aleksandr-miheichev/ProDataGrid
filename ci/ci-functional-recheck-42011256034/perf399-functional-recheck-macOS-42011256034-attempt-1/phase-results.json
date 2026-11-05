@@ -1,0 +1,50 @@
+{
+  "source-generation-semantic-validation": {
+    "status": "not_run",
+    "reason": "Bounded functional recheck; reuse earlier exact-source evidence without repeating this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "primary-ABBABAAB": {
+    "status": "not_run",
+    "reason": "Bounded functional recheck; reuse earlier exact-source evidence without repeating this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "primary-BAABABBA": {
+    "status": "not_run",
+    "reason": "Bounded functional recheck; reuse earlier exact-source evidence without repeating this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "same-source-control-ABBABAAB": {
+    "status": "not_run",
+    "reason": "Bounded functional recheck; reuse earlier exact-source evidence without repeating this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "strict-native-aot": {
+    "status": "not_run",
+    "reason": "Functional recheck only; reuse the successful exact-source native-only run",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729"
+  },
+  "reflection-enabled-negative-control": {
+    "status": "not_run",
+    "reason": "Functional recheck only; reuse the successful exact-source native-only run",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42006151729"
+  },
+  "provenance-and-preflight": {
+    "status": "passed"
+  },
+  "baseline-targeted-leak-case": {
+    "status": "passed"
+  },
+  "final-targeted-leak-case": {
+    "status": "passed"
+  },
+  "final-full-solution-tests": {
+    "status": "passed"
+  }
+}

@@ -1,0 +1,11 @@
+C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\worktrees\A\src\Avalonia.Controls.DataGrid\Avalonia.Controls.DataGrid.csproj : warning NU1902: Package 'Microsoft.Build.Tasks.Git' 10.0.102 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-23fw-v26w-5fgq [C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\worktrees\A\src\Avalonia.Controls.DataGrid.UnitTests\Avalonia.Controls.DataGrid.UnitTests.csproj]
+C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\worktrees\A\src\Avalonia.Controls.DataGrid\Avalonia.Controls.DataGrid.csproj : warning NU1902: Package 'Microsoft.Build.Tasks.Git' 10.0.102 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-23fw-v26w-5fgq [TargetFramework=net10.0]
+
+Build succeeded.
+
+C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\worktrees\A\src\Avalonia.Controls.DataGrid\Avalonia.Controls.DataGrid.csproj : warning NU1902: Package 'Microsoft.Build.Tasks.Git' 10.0.102 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-23fw-v26w-5fgq [C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\worktrees\A\src\Avalonia.Controls.DataGrid.UnitTests\Avalonia.Controls.DataGrid.UnitTests.csproj]
+C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\worktrees\A\src\Avalonia.Controls.DataGrid\Avalonia.Controls.DataGrid.csproj : warning NU1902: Package 'Microsoft.Build.Tasks.Git' 10.0.102 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-23fw-v26w-5fgq [TargetFramework=net10.0]
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:08.18

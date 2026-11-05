@@ -1,0 +1,9 @@
+
+$rows = @(foreach ($path in @($env:HOST_CONTROL_ASSEMBLY_PATHS | ConvertFrom-Json)) {
+ try {
+  $identity=[System.Reflection.AssemblyName]::GetAssemblyName($path)
+  $file=[System.Diagnostics.FileVersionInfo]::GetVersionInfo($path)
+  [ordered]@{path=$path; assembly_identity=$identity.FullName; assembly_version=$identity.Version.ToString(); file_version=$file.FileVersion; product_version=$file.ProductVersion}
+ } catch { [ordered]@{path=$path; metadata_error=$_.Exception.ToString()} }
+})
+[ordered]@{inspector_powershell=$PSVersionTable.PSVersion.ToString(); inspector_dotnet=[System.Environment]::Version.ToString(); assemblies=$rows} | ConvertTo-Json -Depth 6

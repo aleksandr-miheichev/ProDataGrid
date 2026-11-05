@@ -1,0 +1,26 @@
+{
+  "H_vs_A": {
+    "status": "passed",
+    "changed_paths": [
+      "Avalonia.Controls.DataGrid.UnitTests.dll",
+      "Avalonia.Controls.DataGrid.UnitTests.pdb"
+    ],
+    "allowed_copy_operations": [
+      "Avalonia.Controls.DataGrid.UnitTests.dll",
+      "Avalonia.Controls.DataGrid.UnitTests.pdb"
+    ],
+    "issues": []
+  },
+  "P_vs_C": {
+    "status": "passed",
+    "changed_paths": [
+      "Avalonia.Controls.DataGrid.UnitTests.dll",
+      "Avalonia.Controls.DataGrid.UnitTests.pdb"
+    ],
+    "allowed_copy_operations": [
+      "Avalonia.Controls.DataGrid.UnitTests.dll",
+      "Avalonia.Controls.DataGrid.UnitTests.pdb"
+    ],
+    "issues": []
+  }
+}

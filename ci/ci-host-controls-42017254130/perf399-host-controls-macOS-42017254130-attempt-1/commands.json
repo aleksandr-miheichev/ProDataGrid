@@ -1,0 +1,1418 @@
+[
+  {
+    "name": "worktree-A",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/source-A",
+      "f92035975ac5ab6c0cdede8228952bcd8f618a2e"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "benchmark_environment": {},
+    "started_utc": "2026-11-05T11:14:53.305010+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:14:53.778569+00:00"
+  },
+  {
+    "name": "worktree-C",
+    "command": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/source-C",
+      "d0a415f76adcc0a2a42998121e0c8353ca5650ab"
+    ],
+    "cwd": "/Users/runner/work/ProDataGrid/ProDataGrid/ci-checkout",
+    "timeout_seconds": 600,
+    "benchmark_environment": {},
+    "started_utc": "2026-11-05T11:14:53.780254+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:14:54.171757+00:00"
+  },
+  {
+    "name": "unit-build-A",
+    "command": [
+      "dotnet",
+      "build",
+      "src/Avalonia.Controls.DataGrid.UnitTests",
+      "-c",
+      "Release",
+      "-p:CollectCoverage=false",
+      "--verbosity",
+      "quiet"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/source-A",
+    "timeout_seconds": 1200,
+    "benchmark_environment": {},
+    "started_utc": "2026-11-05T11:14:55.383674+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:15:34.435921+00:00"
+  },
+  {
+    "name": "unit-build-C",
+    "command": [
+      "dotnet",
+      "build",
+      "src/Avalonia.Controls.DataGrid.UnitTests",
+      "-c",
+      "Release",
+      "-p:CollectCoverage=false",
+      "--verbosity",
+      "quiet"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/source-C",
+    "timeout_seconds": 1200,
+    "benchmark_environment": {},
+    "started_utc": "2026-11-05T11:15:35.129991+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:16:15.810283+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-0-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:16:25.773644+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:16:34.021751+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-1-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:16:34.024301+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:16:42.601150+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-2-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:16:42.603154+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:16:49.798601+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-3-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:16:49.800229+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:16:56.414813+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-4-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:16:56.416220+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:03.417685+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-5-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:03.419540+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:10.765203+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-6-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:10.766326+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:17.908132+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/source-7-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:17.909431+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:24.793404+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-0-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:24.794510+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:27.668564+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-1-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:27.671436+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:30.481710+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-2-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:30.482877+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:33.265756+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-3-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:33.266903+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:35.965035+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-4-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:35.966345+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:38.597178+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-5-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:38.598458+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:40.944599+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-6-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:40.945981+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:43.349895+00:00"
+  },
+  {
+    "name": "timings/AH-ABBABAAB/scroll-7-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:43.351112+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:45.791675+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-0-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:45.792744+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:52.619710+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-1-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:52.621014+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:17:59.156165+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-2-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:17:59.160405+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:06.620488+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-3-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:06.622321+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:15.123794+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-4-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:15.125283+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:22.925222+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-5-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:22.927265+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:30.341833+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-6-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:30.343722+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:37.956663+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/source-7-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:37.958534+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:45.228149+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-0-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:45.229607+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:48.144269+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-1-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:48.145710+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:50.832282+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-2-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:50.833648+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:53.594750+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-3-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:53.598622+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:56.452903+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-4-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:56.454772+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:18:59.473684+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-5-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:18:59.475833+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:02.319538+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-6-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/H",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:02.321314+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:05.253685+00:00"
+  },
+  {
+    "name": "timings/AH-BAABABBA/scroll-7-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AH-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:05.255624+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:08.148805+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-0-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:08.150074+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:15.626504+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-1-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:15.628066+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:22.990867+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-2-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:22.993264+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:30.470763+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-3-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:30.472626+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:37.783261+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-4-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:37.784481+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:44.997895+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-5-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:44.999279+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:52.357397+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-6-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:52.358812+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:19:59.359986+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/source-7-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:19:59.361266+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:06.251233+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-0-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:06.253299+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:08.814742+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-1-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:08.816137+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:11.403413+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-2-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:11.404823+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:13.900599+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-3-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:13.901815+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:17.241826+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-4-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:17.250067+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:20.015416+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-5-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:20.016907+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:22.681643+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-6-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:22.683200+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:25.440400+00:00"
+  },
+  {
+    "name": "timings/AP-ABBABAAB/scroll-7-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-ABBABAAB/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:25.441935+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:28.363858+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-0-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:28.365578+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:35.829825+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-1-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:35.831729+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:42.871605+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-2-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:42.874660+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:49.656490+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-3-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:49.657995+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:20:55.802384+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-4-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:20:55.804145+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:02.334650+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-5-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:02.336040+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:10.529186+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-6-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:10.531437+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:20.833712+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/source-7-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "source",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/source-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:20.844052+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:30.712761+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-0-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:30.725104+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:35.021126+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-1-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:35.024907+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:38.395147+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-2-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:38.398210+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:41.428226+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-3-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:41.429575+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:44.257618+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-4-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:44.259119+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:46.864622+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-5-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:46.866166+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:49.493842+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-6-B",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/P",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-B.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:49.495135+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:52.084560+00:00"
+  },
+  {
+    "name": "timings/AP-BAABABBA/scroll-7-A",
+    "command": [
+      "dotnet",
+      "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A/Avalonia.Controls.DataGrid.UnitTests.dll",
+      "-class",
+      "*ReviewPerformanceTests",
+      "-parallel",
+      "none"
+    ],
+    "cwd": "/Users/runner/work/_temp/perf399-host-controls-42017254130-1/runtime-bins/A",
+    "timeout_seconds": 240,
+    "benchmark_environment": {
+      "DOTNET_TieredCompilation": "0",
+      "REVIEW_SCENARIO": "scroll",
+      "REVIEW_OUTPUT": "/Users/runner/work/ProDataGrid/ProDataGrid/evidence/timings/AP-BAABABBA/scroll-A.jsonl"
+    },
+    "started_utc": "2026-11-05T11:21:52.087258+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-05T11:21:54.726304+00:00"
+  }
+]

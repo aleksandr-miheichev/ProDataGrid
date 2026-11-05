@@ -1,0 +1,11 @@
+{
+  "repository": "aleksandr-miheichev/ProDataGrid",
+  "workflow_sha": "251f5debd908400683b850b5ae3824caf5663af7",
+  "ref": "refs/heads/codex/verify-perf399-native-original-20261105",
+  "event": "push",
+  "run_id": "42006138785",
+  "run_attempt": "1",
+  "runner": "macos-26",
+  "rid": "osx-arm64",
+  "started_utc": "2026-11-05T09:53:45.4841990Z"
+}

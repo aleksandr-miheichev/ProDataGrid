@@ -1,0 +1,5 @@
+[rtk] /!\ No hook installed — run `rtk init -g` for automatic token savings
+scroll-A: samples=1450; eventsLost=0; hasStacks=True; output=C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\profile-analysis\parsed\scroll-A-allocations.json
+scroll-C: samples=1469; eventsLost=0; hasStacks=True; output=C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\profile-analysis\parsed\scroll-C-allocations.json
+source-A: samples=11288; eventsLost=0; hasStacks=True; output=C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\profile-analysis\parsed\source-A-allocations.json
+source-C: samples=11295; eventsLost=0; hasStacks=True; output=C:\Users\Mama\.codex\visualizations\2026\11\01\01a19899-aff6-7f60-9874-23bb58c9e26e\evidence\perf-progrid399-2026-11-05\profile-analysis\parsed\source-C-allocations.json

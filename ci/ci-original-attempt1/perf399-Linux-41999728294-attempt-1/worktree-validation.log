@@ -1,0 +1,3 @@
+{"name": "worktree-validation", "command": ["git", "worktree", "add", "--detach", "/home/runner/work/_temp/perf399-41999728294-1/validation", "596db0a6e401eb9c26b98e67de3ff6f247f0bed9"], "cwd": "/home/runner/work/ProDataGrid/ProDataGrid/ci-checkout", "timeout_seconds": 600, "started_utc": "2026-11-05T09:07:36.286747+00:00"}
+Preparing worktree (detached HEAD 596db0a6)
+HEAD is now at 596db0a6 build: update SourceLink to patched stable 10.0.403

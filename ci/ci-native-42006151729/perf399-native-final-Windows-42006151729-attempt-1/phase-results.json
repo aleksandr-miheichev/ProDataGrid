@@ -1,0 +1,41 @@
+{
+  "full-solution-tests": {
+    "status": "not_run",
+    "reason": "Native-only revalidation; reuse earlier exact-source evidence without rerunning this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "source-generation-semantic-validation": {
+    "status": "not_run",
+    "reason": "Native-only revalidation; reuse earlier exact-source evidence without rerunning this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "primary-ABBABAAB": {
+    "status": "not_run",
+    "reason": "Native-only revalidation; reuse earlier exact-source evidence without rerunning this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "primary-BAABABBA": {
+    "status": "not_run",
+    "reason": "Native-only revalidation; reuse earlier exact-source evidence without rerunning this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "same-source-control-ABBABAAB": {
+    "status": "not_run",
+    "reason": "Native-only revalidation; reuse earlier exact-source evidence without rerunning this phase",
+    "source_sha": "d0a415f76adcc0a2a42998121e0c8353ca5650ab",
+    "evidence_run": "https://github.com/aleksandr-miheichev/ProDataGrid/actions/runs/42001896241"
+  },
+  "provenance-and-preflight": {
+    "status": "passed"
+  },
+  "strict-native-aot": {
+    "status": "passed"
+  },
+  "reflection-enabled-negative-control": {
+    "status": "passed"
+  }
+}
